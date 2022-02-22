@@ -35,15 +35,15 @@ public class UserService {
         user.setEmail(input);
         user.setRegTime(LocalDateTime.now());
         user.setId(++i);
-        if (isValidEmail(user.getEmail()) && userDAO.getUsers().isEmpty()) {
-            userDAO.addUser(user);
-        }
-        if (isValidEmail(user.getEmail()) && !userDAO.getUsers().isEmpty() && !user.getEmail()
-                .equals(userDAO.findUserByEmail(user.getEmail()).getEmail())) {
-            userDAO.addUser(user);
+        if (isValidEmail(user.getEmail())) {
+            if (userDAO.getUsers().isEmpty() || !userDAO.findUserByEmail(input).getEmail().equals(user.getEmail())) {
+                System.out.println(userDAO);
+                userDAO.addUser(user);
+            } else {
+                logger.error("Такой адрес электронной почты уже зарегистрирован");
+            }
         } else {
-            logger.error("Неверный формат ввода или " +
-                    "такой адрес электронной почты уже зарегистрирован");
+            logger.error("Неверный формат ввода");
         }
     }
 

@@ -25,6 +25,11 @@ public class PostDAOTest extends TestCase {
     List<Post> expected;
     List<Post> actual;
 
+    UserDAO userDAO = new UserDAO();
+
+    List<User> expectedUser;
+    List<User> actualUser;
+
     protected void setUp() {
         expected = new ArrayList<>();
         expected.add(post1);
@@ -34,14 +39,21 @@ public class PostDAOTest extends TestCase {
         postDAO.addPost(post1);
         postDAO.addPost(post2);
         postDAO.addPost(post3);
+
+        expectedUser = new ArrayList<>();
+        expectedUser.add(user);
+        expectedUser.add(user1);
+        actualUser = new ArrayList<>();
+        userDAO.addUser(user);
+        userDAO.addUser(user1);
     }
 
-    public void testRead() {
+    public void testReadPost() {
         actual = postDAO.read();
         assertEquals(expected, actual);
     }
 
-    public void testUpdateByEmail() {
+    public void testUpdatePostByEmail() {
         expected.remove(post1);
         expected.add(post4);
         postDAO.updatePost(post1, post4);
@@ -49,7 +61,7 @@ public class PostDAOTest extends TestCase {
         assertEquals(expected, actual);
     }
 
-    public void testDeleteByEmail() {
+    public void testDeletePostByEmail() {
         expected.remove(post2);
         postDAO.deletePost(post2);
         actual = postDAO.read();
@@ -60,5 +72,13 @@ public class PostDAOTest extends TestCase {
         Post expected = post3;
         Post actual = postDAO.findPostByTitle("Пост №3");
         assertEquals(expected, actual);
+    }
+
+    public void testFindUserByEmail() {
+        User expectedUser = user;
+        User actualUser = userDAO.findUserByEmail("sasha@mail.ru");
+        System.out.println(expectedUser);
+        System.out.println(actualUser);
+        assertEquals(expectedUser, actualUser);
     }
 }

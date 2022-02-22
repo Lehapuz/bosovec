@@ -39,15 +39,15 @@ public class ModeratorService {
         moderator.setEmail(input);
         moderator.setRegTime(LocalDateTime.now());
         moderator.setId(++i);
-        if (isValidEmail(moderator.getEmail()) && moderatorDAO.getModerators().isEmpty()) {
-            moderatorDAO.addModerator(moderator);
-        }
-        if (isValidEmail(moderator.getEmail()) && !moderatorDAO.getModerators().isEmpty() && !moderator.getEmail()
-                .equals(moderatorDAO.findModeratorByEmail(moderator.getEmail()).getEmail())) {
-            moderatorDAO.addModerator(moderator);
+        if (isValidEmail(moderator.getEmail())) {
+            if (moderatorDAO.getModerators().isEmpty() || !moderatorDAO.findModeratorByEmail(input)
+                    .getEmail().equals(moderator.getEmail())) {
+                moderatorDAO.addModerator(moderator);
+            } else {
+                logger.error("Такой адрес электронной почты уже зарегистрирован");
+            }
         } else {
-            logger.error("Неверный формат ввода или " +
-                    "такой адрес электронной почты уже зарегистрирован");
+            logger.error("Неверный формат ввода");
         }
     }
 
