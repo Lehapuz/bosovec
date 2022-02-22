@@ -8,6 +8,8 @@ import Bean.User;
 import DAO.PostDAO;
 import DAO.SettingsDAO;
 import DAO.UserDAO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class PostServise {
     private final PostDAO postDAO;
     private final UserDAO userDAO;
     private final SettingsDAO settingsDAO;
+    private final Logger logger = LogManager.getRootLogger();
 
     public PostServise(PostDAO postDAO, UserDAO userDAO, SettingsDAO settingsDAO) {
         this.postDAO = postDAO;
@@ -35,14 +38,14 @@ public class PostServise {
                 Post post = new Post();
                 int i = 0;
                 List<PostComment> postComments = new ArrayList<>();
-                System.out.println("Введите адрес электронной почты");
+                logger.info("Введите адрес электронной почты");
                 String input = scanner.nextLine();
                 User user = userDAO.findUserByEmail(input);
                 post.setUser(user);
-                System.out.println("Введите заголовок");
+                logger.info("Введите заголовок");
                 input = scanner.nextLine();
                 post.setTitle(input);
-                System.out.println("Введите текст");
+                logger.info("Введите текст");
                 input = scanner.nextLine();
                 post.setText(input);
                 post.setId(++i);
@@ -53,12 +56,12 @@ public class PostServise {
                 post.setPostComments(postComments);
                 post.setModeratorStatus(ModeratorStatus.NEW);
                 postDAO.addPost(post);
-                System.out.println("Пост добавлен");
+                logger.info("Пост добавлен");
             } else {
-                System.out.println("На добавление новых постов доступ запрещен");
+                logger.error("На добавление новых постов доступ запрещен");
             }
         } catch (Exception e) {
-            System.out.println("Настройки сайта не заданы обратитесь к модератору");
+            logger.error("Настройки сайта не заданы обратитесь к модератору");
         }
     }
 
@@ -68,13 +71,13 @@ public class PostServise {
         posts = postDAO.read();
         for (Post post : posts) {
             if (post.getModeratorStatus().equals(ModeratorStatus.ACCEPTED)) {
-                System.out.println(post.toString());
+                logger.info(post.toString());
             }
             if (post.getModeratorStatus().equals(ModeratorStatus.DECLINED)) {
-                System.out.println("Пост отклонен модератором");
+                logger.info("Пост отклонен модератором");
             }
             if (post.getModeratorStatus().equals(ModeratorStatus.NEW)) {
-                System.out.println("Пост на модерации");
+                logger.info("Пост на модерации");
             }
         }
     }
@@ -83,20 +86,20 @@ public class PostServise {
     public void deletePostByTitle() {
         try {
             Post post;
-            System.out.println("Введите название который хотите удалить");
+            logger.info("Введите название который хотите удалить");
             String input = scanner.nextLine();
             post = postDAO.findPostByTitle(input);
             postDAO.deletePost(post);
-            System.out.println("Пост удален");
+            logger.info("Пост удален");
         } catch (Exception e) {
-            System.out.println("Пост не найден");
+            logger.error("Пост не найден");
         }
     }
 
 
     public void updatePostByTitle() {
         try {
-            System.out.println("Введите название  который хотите откорректировать");
+            logger.info("Введите название  который хотите откорректировать");
             Post post;
             Post post1 = new Post();
             String input = scanner.nextLine();
@@ -110,15 +113,15 @@ public class PostServise {
             post1.setTime(LocalDateTime.now());
             post1.setModeratorStatus(ModeratorStatus.NEW);
             postDAO.updatePost(post, post1);
-            System.out.println("Введите новое название");
+            logger.info("Введите новое название");
             input = scanner.nextLine();
             post1.setTitle(input);
-            System.out.println("Введите новый текст");
+            logger.info("Введите новый текст");
             input = scanner.nextLine();
             post1.setText(input);
-            System.out.println("Пост обновлен");
+            logger.info("Пост обновлен");
         } catch (Exception e) {
-            System.out.println("Пост не найден");
+            logger.error("Пост не найден");
         }
     }
 }

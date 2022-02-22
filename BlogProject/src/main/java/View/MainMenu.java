@@ -1,6 +1,8 @@
 package View;
 
 import Controller.DefaultController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
@@ -8,6 +10,7 @@ public class MainMenu {
 
     Scanner scanner = new Scanner(System.in);
     private final DefaultController defaultController;
+    private final Logger logger = LogManager.getRootLogger();
 
     public MainMenu(DefaultController defaultController) {
         this.defaultController = defaultController;
@@ -15,17 +18,17 @@ public class MainMenu {
 
     public void run() {
         try {
-            System.out.println("Список доступных команд для незарегистрированного пользователя:");
+            logger.info("Список доступных команд для незарегистрированного пользователя:");
 
-            System.out.println("Регистрация модератора: нажмите 1");
-            System.out.println("Просмотр аккаунта модератора: нажмите 2");
-            System.out.println("Авторизация модератора: нажмите 3");
-            System.out.println("Регистрация пользователя: нажмите 4");
-            System.out.println("Просмотр всех пользователей: нажмите 5");
-            System.out.println("Просмотр всех постов: нажмите 6");
-            System.out.println("Проголосовать за пост: нажмите 7");
-            System.out.println("Авторизация: нажмите 8");
-            System.out.println("Просмотр комментариев к постам: нажмите 9");
+            logger.info("Регистрация модератора: нажмите 1");
+            logger.info("Просмотр аккаунта модератора: нажмите 2");
+            logger.info("Авторизация модератора: нажмите 3");
+            logger.info("Регистрация пользователя: нажмите 4");
+            logger.info("Просмотр всех пользователей: нажмите 5");
+            logger.info("Просмотр всех постов: нажмите 6");
+            logger.info("Проголосовать за пост: нажмите 7");
+            logger.info("Авторизация: нажмите 8");
+            logger.info("Просмотр комментариев к постам: нажмите 9");
 
             String input = scanner.nextLine();
 
@@ -58,7 +61,7 @@ public class MainMenu {
                     defaultController.getPostCommentService().getAllPostComments();
 
                 default:
-                    System.out.println("Неверная команда ввода: " + input);
+                    logger.error("Неверная команда ввода: " + input);
             }
         } catch (Exception e) {
             e.printStackTrace();

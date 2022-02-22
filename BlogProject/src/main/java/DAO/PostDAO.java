@@ -1,12 +1,15 @@
 package DAO;
 
 import Bean.Post;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PostDAO {
     List<Post> posts = new ArrayList<>();
+    private final Logger logger = LogManager.getRootLogger();
 
     public void addPost(Post post) {
         posts.add(post);
@@ -14,7 +17,7 @@ public class PostDAO {
 
     public List<Post> read() {
         if (posts.size() == 0) {
-            System.out.println("Посты отсутствуют");
+            logger.info("Посты отсутствуют");
         }
         return posts;
     }

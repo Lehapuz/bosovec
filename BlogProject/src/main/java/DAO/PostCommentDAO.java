@@ -1,6 +1,8 @@
 package DAO;
 
 import Bean.PostComment;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.List;
 public class PostCommentDAO {
 
     List<PostComment> postComments = new ArrayList<>();
+    private final Logger logger = LogManager.getRootLogger();
 
     public void addPostComment(PostComment postComment) {
         postComments.add(postComment);
@@ -15,10 +18,10 @@ public class PostCommentDAO {
 
     public void read() {
         if (postComments.size() == 0) {
-            System.out.println("Комментарии отсутствуют");
+            logger.info("Комментарии отсутствуют");
         }
         for (PostComment postComment : postComments) {
-            System.out.println(postComment.toString());
+            logger.info(postComment.toString());
         }
     }
 

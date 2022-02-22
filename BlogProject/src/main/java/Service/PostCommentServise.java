@@ -4,6 +4,8 @@ import Bean.Post;
 import Bean.PostComment;
 import DAO.PostCommentDAO;
 import DAO.PostDAO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -12,6 +14,7 @@ public class PostCommentServise {
 
     private final PostDAO postDAO;
     private final PostCommentDAO postCommentDAO;
+    private final Logger logger = LogManager.getRootLogger();
 
     public PostCommentServise(PostDAO postDAO, PostCommentDAO postCommentDAO) {
         this.postDAO = postDAO;
@@ -26,10 +29,10 @@ public class PostCommentServise {
             PostComment postComment = new PostComment();
             int i = 0;
             Post post;
-            System.out.println("Выберите пост по названию");
+            logger.info("Выберите пост по названию");
             String input = scanner.nextLine();
             post = postDAO.findPostByTitle(input);
-            System.out.println("Добавьте комментарий");
+            logger.info("Добавьте комментарий");
             input = scanner.nextLine();
             postComment.setId(++i);
             postComment.setPost(post);
@@ -38,9 +41,9 @@ public class PostCommentServise {
             postComment.setTime(LocalDateTime.now());
             post.setPostComments(post.getPostComments());
             postCommentDAO.addPostComment(postComment);
-            System.out.println("Комментарий успешно добавлен");
+            logger.info("Комментарий успешно добавлен");
         } catch (Exception e) {
-            System.out.println("Такого поста не существует");
+            logger.error("Такого поста не существует");
         }
     }
 
@@ -51,19 +54,19 @@ public class PostCommentServise {
 
     public void deletePostComment() {
         try {
-            System.out.println("Введите текст комментария который хотите удалить");
+            logger.info("Введите текст комментария который хотите удалить");
             PostComment postComment;
             String input = scanner.nextLine();
             postComment = postCommentDAO.findCommentByText(input);
             postCommentDAO.deletePostComment(postComment);
         } catch (Exception e) {
-            System.out.println("Такого комментария не существует");
+            logger.error("Такого комментария не существует");
         }
     }
 
     public void updatePostCommentByText() {
         try {
-            System.out.println("Введите текст комментария который хотите откорректировать");
+            logger.info("Введите текст комментария который хотите откорректировать");
             PostComment postComment;
             PostComment postComment1 = new PostComment();
             String input = scanner.nextLine();
@@ -72,11 +75,11 @@ public class PostCommentServise {
             postComment1.setPost(postComment.getPost());
             postComment1.setUser(postComment.getUser());
             postCommentDAO.updatePostComment(postComment, postComment1);
-            System.out.println("Введите комментарий");
+            logger.info("Введите комментарий");
             input = scanner.nextLine();
             postComment1.setText(input);
         } catch (Exception e) {
-            System.out.println("Такого поста не существует");
+            logger.error("Такого поста не существует");
         }
     }
 }

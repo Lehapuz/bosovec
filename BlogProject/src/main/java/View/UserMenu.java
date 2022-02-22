@@ -1,6 +1,8 @@
 package View;
 
 import Controller.DefaultController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
@@ -8,6 +10,7 @@ public class UserMenu {
 
     Scanner scanner = new Scanner(System.in);
     private final DefaultController defaultController;
+    private final Logger logger = LogManager.getRootLogger();
 
     public UserMenu(DefaultController defaultController) {
         this.defaultController = defaultController;
@@ -15,19 +18,19 @@ public class UserMenu {
 
     public void run() {
         try {
-            System.out.println("Список доступных команд для зарегистрированного пользователя:");
+            logger.info("Список доступных команд для зарегистрированного пользователя:");
 
-            System.out.println("Обновление аккаунта пользователя: нажмите 1");
-            System.out.println("Удаление аккаунта пользователя: нажмите 2");
-            System.out.println("Добавление поста: нажмите 3");
-            System.out.println("Просмотр всех постов: нажмите 4");
-            System.out.println("Удалить пост: нажмите 5");
-            System.out.println("Обновить пост: нажмите 6");
-            System.out.println("Добавить комментарий: нажмите 7");
-            System.out.println("Просмотр комментариев к постам: нажмите 8");
-            System.out.println("Удалить комментарий: нажмите 9");
-            System.out.println("Обновить комментарий: нажмите 10");
-            System.out.println("Выход: нажмите 11");
+            logger.info("Обновление аккаунта пользователя: нажмите 1");
+            logger.info("Удаление аккаунта пользователя: нажмите 2");
+            logger.info("Добавление поста: нажмите 3");
+            logger.info("Просмотр всех постов: нажмите 4");
+            logger.info("Удалить пост: нажмите 5");
+            logger.info("Обновить пост: нажмите 6");
+            logger.info("Добавить комментарий: нажмите 7");
+            logger.info("Просмотр комментариев к постам: нажмите 8");
+            logger.info("Удалить комментарий: нажмите 9");
+            logger.info("Обновить комментарий: нажмите 10");
+            logger.info("Выход: нажмите 11");
 
             String input = scanner.nextLine();
 
@@ -66,7 +69,7 @@ public class UserMenu {
                     defaultController.getUserService().exit();
                     break;
                 default:
-                    System.out.println("Неверная команда ввода: " + input);
+                    logger.error("Неверная команда ввода: " + input);
             }
         } catch (Exception e) {
             e.printStackTrace();

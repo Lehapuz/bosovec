@@ -1,6 +1,8 @@
 package DAO;
 
 import Bean.Moderator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,31 +10,32 @@ import java.util.List;
 public class ModeratorDAO {
 
     List<Moderator> moderators = new ArrayList<>();
+    private final Logger logger = LogManager.getRootLogger();
 
     public void addModerator(Moderator moderator) {
         moderators.add(moderator);
-        System.out.println("Модератор - " + moderator.getName() + " успешно зарегистрирован");
+        logger.info("Модератор - " + moderator.getName() + " успешно зарегистрирован");
     }
 
     public void read() {
         if (moderators.size() == 0) {
-            System.out.println("Модераторы отсутствуют");
+            logger.info("Модераторы отсутствуют");
         }
         for (Moderator moderator : moderators) {
-            System.out.println(moderator.toString());
+            logger.info(moderator.toString());
         }
     }
 
     public void updateModerator(Moderator moderator, Moderator newModerator) {
         moderators.removeIf(moderator1 -> moderator1.equals(moderator));
         moderators.add(newModerator);
-        System.out.println("Аккаунт модератора - " + moderator.getName() + " успешно изменен на аккаунт модератора - "
+        logger.info("Аккаунт модератора - " + moderator.getName() + " успешно изменен на аккаунт модератора - "
                 + newModerator.getName());
     }
 
     public void deleteModerator(Moderator moderator) {
         moderators.removeIf(moderator1 -> moderator1.equals(moderator));
-        System.out.println("Аккаунт модератора - " + moderator.getName() + " успешно удален");
+        logger.info("Аккаунт модератора - " + moderator.getName() + " успешно удален");
     }
 
     public Moderator findModeratorByEmail(String email) {

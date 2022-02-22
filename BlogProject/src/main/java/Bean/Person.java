@@ -3,7 +3,7 @@ package Bean;
 import java.time.LocalDateTime;
 import java.util.List;
 
-abstract class Person {
+public abstract class Person {
     private int id;
     private String name;
     private String email;
