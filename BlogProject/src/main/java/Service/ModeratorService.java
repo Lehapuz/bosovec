@@ -40,11 +40,10 @@ public class ModeratorService {
         moderator.setRegTime(LocalDateTime.now());
         moderator.setId(++i);
         if (isValidEmail(moderator.getEmail())) {
-            if (moderatorDAO.getModerators().isEmpty() || !moderatorDAO.findModeratorByEmail(input)
-                    .getEmail().equals(moderator.getEmail())) {
-                moderatorDAO.addModerator(moderator);
-            } else {
+            if (moderatorDAO.findModeratorByEmail(moderator.getEmail()) != null) {
                 logger.error("Такой адрес электронной почты уже зарегистрирован");
+            } else {
+                moderatorDAO.addModerator(moderator);
             }
         } else {
             logger.error("Неверный формат ввода");

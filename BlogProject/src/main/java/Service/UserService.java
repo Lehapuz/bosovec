@@ -36,11 +36,10 @@ public class UserService {
         user.setRegTime(LocalDateTime.now());
         user.setId(++i);
         if (isValidEmail(user.getEmail())) {
-            if (userDAO.getUsers().isEmpty() || !userDAO.findUserByEmail(input).getEmail().equals(user.getEmail())) {
-                System.out.println(userDAO);
-                userDAO.addUser(user);
-            } else {
+            if (userDAO.findUserByEmail(user.getEmail()) != null) {
                 logger.error("Такой адрес электронной почты уже зарегистрирован");
+            } else {
+                userDAO.addUser(user);
             }
         } else {
             logger.error("Неверный формат ввода");
