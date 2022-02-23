@@ -1,6 +1,6 @@
 package View;
 
-import Controller.DefaultController;
+import Command.Command;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,11 +9,12 @@ import java.util.Scanner;
 public class ModeratorMenu {
 
     Scanner scanner = new Scanner(System.in);
-    private final DefaultController defaultController;
+    private final Command command;
     private final Logger logger = LogManager.getRootLogger();
 
-    public ModeratorMenu(DefaultController defaultController) {
-        this.defaultController = defaultController;
+    public ModeratorMenu(Command command) {
+
+        this.command = command;
     }
 
     public void run() {
@@ -33,28 +34,28 @@ public class ModeratorMenu {
 
             switch (input) {
                 case "1":
-                    defaultController.getModeratorService().updateModeratorByEmail();
+                    command.getModeratorService().updateModeratorByEmail();
                     break;
                 case "2":
-                    defaultController.getModeratorService().deleteModeratorByEmail();
+                    command.getModeratorService().deleteModeratorByEmail();
                     break;
                 case "3":
-                    defaultController.getSettingsService().setSettings();
+                    command.getSettingsService().setSettings();
                     break;
                 case "4":
-                    defaultController.getModeratorService().setModeratorStatus();
+                    command.getModeratorService().setModeratorStatus();
                     break;
                 case "5":
-                    defaultController.getPostService().getAllPosts();
+                    command.getPostService().getAllPosts();
                     break;
                 case "6":
-                    defaultController.getPostCommentService().getAllPostComments();
+                    command.getPostCommentService().getAllPostComments();
                     break;
                 case "7":
-                    defaultController.getSettingsService().showSettings();
+                    command.getSettingsService().showSettings();
                     break;
                 case "8":
-                    defaultController.getModeratorService().exit();
+                    command.getModeratorService().exit();
                     break;
                 default:
                     logger.error("Неверная команда ввода: " + input);

@@ -1,6 +1,6 @@
 package View;
 
-import Controller.DefaultController;
+import Command.Command;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,11 +9,12 @@ import java.util.Scanner;
 public class UserMenu {
 
     Scanner scanner = new Scanner(System.in);
-    private final DefaultController defaultController;
+    private final Command command;
     private final Logger logger = LogManager.getRootLogger();
 
-    public UserMenu(DefaultController defaultController) {
-        this.defaultController = defaultController;
+    public UserMenu(Command command) {
+
+        this.command = command;
     }
 
     public void run() {
@@ -36,37 +37,37 @@ public class UserMenu {
 
             switch (input) {
                 case "1":
-                    defaultController.getUserService().updateUserByEmail();
+                    command.getUserService().updateUserByEmail();
                     break;
                 case "2":
-                    defaultController.getUserService().deleteUserByEmail();
+                    command.getUserService().deleteUserByEmail();
                     break;
                 case "3":
-                    defaultController.getPostService().addNewPost();
+                    command.getPostService().addNewPost();
                     break;
                 case "4":
-                    defaultController.getPostService().getAllPosts();
+                    command.getPostService().getAllPosts();
                     break;
                 case "5":
-                    defaultController.getPostService().deletePostByTitle();
+                    command.getPostService().deletePostByTitle();
                     break;
                 case "6":
-                    defaultController.getPostService().updatePostByTitle();
+                    command.getPostService().updatePostByTitle();
                     break;
                 case "7":
-                    defaultController.getPostCommentService().addPostComment();
+                    command.getPostCommentService().addPostComment();
                     break;
                 case "8":
-                    defaultController.getPostCommentService().getAllPostComments();
+                    command.getPostCommentService().getAllPostComments();
                     break;
                 case "9":
-                    defaultController.getPostCommentService().deletePostComment();
+                    command.getPostCommentService().deletePostComment();
                     break;
                 case "10":
-                    defaultController.getPostCommentService().updatePostCommentByText();
+                    command.getPostCommentService().updatePostCommentByText();
                     break;
                 case "11":
-                    defaultController.getUserService().exit();
+                    command.getUserService().exit();
                     break;
                 default:
                     logger.error("Неверная команда ввода: " + input);

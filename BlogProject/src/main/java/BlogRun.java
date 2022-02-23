@@ -1,8 +1,9 @@
 import Command.Command;
+import Controller.DefaultController;
 
 public class BlogRun {
     public static void main(String[] args) {
-        Command command = new Command();
-        command.run();
+        DefaultController defaultController = new DefaultController();
+        defaultController.run();
     }
 }

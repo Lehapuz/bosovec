@@ -1,45 +1,30 @@
 package Controller;
 
-import DAO.*;
-import Service.*;
+import Command.Command;
+import View.MainMenu;
+import View.ModeratorMenu;
+import View.UserMenu;
 
 public class DefaultController {
 
-    UserDAO userDAO = new UserDAO();
-    PostDAO postDAO = new PostDAO();
-    ModeratorDAO moderatorDAO = new ModeratorDAO();
-    PostCommentDAO postCommentDAO = new PostCommentDAO();
-    PostVoteDAO postVoteDAO = new PostVoteDAO();
-    SettingsDAO settingsDAO = new SettingsDAO();
+    Command command = new Command();
+    ModeratorMenu moderatorMenu = new ModeratorMenu(command);
+    UserMenu userMenu = new UserMenu(command);
+    MainMenu menu = new MainMenu(command);
 
-    UserService userService = new UserService(userDAO);
-    ModeratorService moderatorService = new ModeratorService(moderatorDAO, postDAO);
-    PostServise postService = new PostServise(postDAO, userDAO, settingsDAO);
-    PostCommentServise postCommentService = new PostCommentServise(postDAO, postCommentDAO);
-    PostVoteServise postVoteService = new PostVoteServise(postDAO, postVoteDAO);
-    SettingsService settingsService = new SettingsService(settingsDAO);
 
-    public UserService getUserService() {
-        return userService;
-    }
-
-    public ModeratorService getModeratorService() {
-        return moderatorService;
-    }
-
-    public PostServise getPostService() {
-        return postService;
-    }
-
-    public PostCommentServise getPostCommentService() {
-        return postCommentService;
-    }
-
-    public PostVoteServise getPostVoteService() {
-        return postVoteService;
-    }
-
-    public SettingsService getSettingsService() {
-        return settingsService;
+    public void run() {
+        while (true) {
+            if (!command.getUserService().getRegistration() &&
+                    !command.getModeratorService().getRegistration()) {
+                menu.run();
+            }
+            if (command.getModeratorService().getRegistration()) {
+                moderatorMenu.run();
+            }
+            if (command.getUserService().getRegistration()) {
+                userMenu.run();
+            }
+        }
     }
 }

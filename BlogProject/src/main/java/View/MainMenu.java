@@ -1,6 +1,6 @@
 package View;
 
-import Controller.DefaultController;
+import Command.Command;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,11 +9,11 @@ import java.util.Scanner;
 public class MainMenu {
 
     Scanner scanner = new Scanner(System.in);
-    private final DefaultController defaultController;
+    private final Command command;
     private final Logger logger = LogManager.getRootLogger();
 
-    public MainMenu(DefaultController defaultController) {
-        this.defaultController = defaultController;
+    public MainMenu(Command command) {
+        this.command = command;
     }
 
     public void run() {
@@ -34,31 +34,31 @@ public class MainMenu {
 
             switch (input) {
                 case "1":
-                    defaultController.getModeratorService().registerModerator();
+                    command.getModeratorService().registerModerator();
                     break;
                 case "2":
-                    defaultController.getModeratorService().getAllModerators();
+                    command.getModeratorService().getAllModerators();
                     break;
                 case "3":
-                    defaultController.getModeratorService().authorithationModerator();
+                    command.getModeratorService().authorithationModerator();
                     break;
                 case "4":
-                    defaultController.getUserService().registerUser();
+                    command.getUserService().registerUser();
                     break;
                 case "5":
-                    defaultController.getUserService().getAllUsers();
+                    command.getUserService().getAllUsers();
                     break;
                 case "6":
-                    defaultController.getPostService().getAllPosts();
+                    command.getPostService().getAllPosts();
                     break;
                 case "7":
-                    defaultController.getPostVoteService().setPostVote();
+                    command.getPostVoteService().setPostVote();
                     break;
                 case "8":
-                    defaultController.getUserService().authorithationUser();
+                    command.getUserService().authorithationUser();
                     break;
                 case "9":
-                    defaultController.getPostCommentService().getAllPostComments();
+                    command.getPostCommentService().getAllPostComments();
 
                 default:
                     logger.error("Неверная команда ввода: " + input);
