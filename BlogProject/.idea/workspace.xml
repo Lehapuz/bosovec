@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="31f858a9-c42c-4218-973b-515ce291cb82" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BlogProject.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlogProject.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bean/Enum/ModeratorStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bean/Enum/SettingStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bean/Moderator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bean/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bean/Post.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bean/PostComment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bean/PostVote.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bean/Settings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bean/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BlogRun.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Command/Command.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/DefaultController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DATASource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ModeratorDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/PostCommentDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/PostDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/PostVoteDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/SettingsDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Initialize/Initialize.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/ModeratorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/PostCommentServise.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/PostServise.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/PostVoteServise.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/SettingsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/MainMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/ModeratorMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/UserMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DAO/PostDAOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bean/Enum/ModeratorStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bean/Enum/SettingStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bean/Moderator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bean/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bean/Post.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bean/PostComment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bean/PostVote.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bean/Settings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Bean/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/BlogRun.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Command/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controller/DefaultController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/DATASource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/ModeratorDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/PostCommentDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/PostDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/PostVoteDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/SettingsDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DAO/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Initialize/Initialize.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/ModeratorService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/PostCommentServise.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/PostServise.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/PostVoteServise.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/SettingsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/MainMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/ModeratorMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View/UserMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/DAO/PostDAOTest.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="24pu6DdhiSyuXtfB9ke55ZfwITG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../by/epam/basavets/blogproject" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\jawa\bosovec\BlogProject" />
+      <recent name="D:\jawa\bosovec\BlogProject\.idea" />
+      <recent name="D:\jawa\bosovec\BlogProject\src" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="DAO" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="View.settings" />
+      <recent name="View.moderator" />
+      <recent name="View.postvote" />
+      <recent name="View.postcomment" />
+      <recent name="View.post" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.BlogRun">
+    <configuration name="PostDAOTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlogProject" />
+      <option name="PACKAGE_NAME" value="DAO" />
+      <option name="MAIN_CLASS_NAME" value="DAO.PostDAOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDAOTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlogProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DAO.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DAO" />
+      <option name="MAIN_CLASS_NAME" value="DAO.UserDAOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BlogRun" />
+      <module name="BlogProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlogProject" />
+      <option name="PACKAGE_NAME" value="DAO" />
+      <option name="MAIN_CLASS_NAME" value="DAO.PostDAOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostDAOTest.testUpdateByEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlogProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DAO.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DAO" />
+      <option name="MAIN_CLASS_NAME" value="DAO.PostDAOTest" />
+      <option name="METHOD_NAME" value="testUpdateByEmail" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BlogRun" />
+        <item itemvalue="JUnit.PostDAOTest" />
+        <item itemvalue="Android JUnit.PostDAOTest" />
+        <item itemvalue="Android JUnit.UserDAOTest" />
+        <item itemvalue="JUnit.PostDAOTest.testUpdateByEmail" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="31f858a9-c42c-4218-973b-515ce291cb82" name="Default Changelist" comment="" />
+      <created>1644339675804</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1644339675804</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BlogProject$PostDAOTest.ic" NAME="PostDAOTest Coverage Results" MODIFIED="1645547800398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
