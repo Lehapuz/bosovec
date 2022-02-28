@@ -6,112 +6,54 @@
   <component name="ChangeListManager">
     <list default="true" id="31f858a9-c42c-4218-973b-515ce291cb82" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/.idea/BlogProject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/BlogProject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/BlogRun.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/DAO/DataSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/DAO/ModeratorDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/DAO/PostCommentDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/DAO/PostDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/DAO/PostVoteDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/DAO/SettingsDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/DAO/UserDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/bean/Moderator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/bean/Person.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/bean/Post.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/bean/PostComment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/bean/PostVote.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/bean/Settings.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/bean/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/bean/enum/ModeratorStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/bean/enum/SettingStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/command/Command.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/controller/DefaultController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/initialize/Initialize.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/service/ModeratorService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/service/PostCommentServise.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/service/PostServise.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/service/PostVoteServise.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/service/SettingsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/MainMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/ModeratorMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/UserMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/moderator/AuthorithationModeratorMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/moderator/DeleteModeratorMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/moderator/RegistrationModeratorMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/moderator/SetModeratorStatusMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/moderator/UpdateModeratorMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/post/AddPostMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/post/DeletePostMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/post/UpdatePostMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/postcomment/AddPostCommentMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/postcomment/DeletePostCommentMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/postcomment/UpdatePostCommentMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/postvote/SetPostVoteMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/settings/SettingsMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/user/AuthorithationUserMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/user/DeleteUserMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/user/RegistrationUserMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/java/view/user/UpdateUserMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/main/resources/log4j2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/src/test/java/DAO/PostDAOTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Bean/Enum/ModeratorStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Bean/Enum/SettingStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Bean/Moderator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Bean/Person.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Bean/Post.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Bean/PostComment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Bean/PostVote.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Bean/Settings.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Bean/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/BlogRun.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Command/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Controller/DefaultController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/DAO/DataSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/DAO/ModeratorDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/DAO/PostCommentDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/DAO/PostDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/DAO/PostVoteDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/DAO/SettingsDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/DAO/UserDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Initialize/Initialize.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Service/ModeratorService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Service/PostCommentServise.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Service/PostServise.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Service/PostVoteServise.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Service/SettingsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/Service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/MainMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/ModeratorMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/UserMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/moderator/AuthorithationModeratorMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/moderator/DeleteModeratorMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/moderator/RegistrationModeratorMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/moderator/SetModeratorStatusMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/moderator/UpdateModeratorMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/post/AddPostMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/post/DeletePostMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/post/UpdatePostMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/postcomment/AddPostCommentMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/postcomment/DeletePostCommentMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/postcomment/UpdatePostCommentMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/postvote/SetPostVoteMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/settings/SettingsMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/user/AuthorithationUserMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/user/DeleteUserMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/user/RegistrationUserMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/View/user/UpdateUserMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/classes/log4j2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../by/epam/basavets/blogproject/target/test-classes/DAO/PostDAOTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BlogRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/BlogRun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Enum/ModeratorStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Enum/ModeratorStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Enum/SettingStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Enum/SettingStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Moderator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/PostComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/PostComment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/PostVote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/PostVote.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DefaultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/controller/DefaultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/DataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ModeratorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/ModeratorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PostCommentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostCommentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PostDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PostVoteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostVoteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/SettingsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/SettingsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/initialize/Initialize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/initialize/Initialize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/ModeratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ModeratorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/PostCommentServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostCommentServise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/PostServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostServise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/PostVoteServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostVoteServise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/SettingsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/SettingsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ModeratorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/ModeratorMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/UserMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/moderator/AuthorithationModeratorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/moderator/AuthorithationModeratorMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/moderator/DeleteModeratorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/moderator/DeleteModeratorMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/moderator/RegistrationModeratorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/moderator/RegistrationModeratorMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/moderator/SetModeratorStatusMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/moderator/SetModeratorStatusMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/moderator/UpdateModeratorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/moderator/UpdateModeratorMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/post/AddPostMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/post/AddPostMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/post/DeletePostMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/post/DeletePostMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/post/UpdatePostMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/post/UpdatePostMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/postcomment/AddPostCommentMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/postcomment/AddPostCommentMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/postcomment/DeletePostCommentMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/postcomment/DeletePostCommentMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/postcomment/UpdatePostCommentMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/postcomment/UpdatePostCommentMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/postvote/SetPostVoteMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/postvote/SetPostVoteMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/settings/SettingsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/settings/SettingsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/user/AuthorithationUserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/user/AuthorithationUserMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/user/DeleteUserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/user/DeleteUserMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/user/RegistrationUserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/user/RegistrationUserMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/user/UpdateUserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/user/UpdateUserMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dao/PostDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/test/java/dao/PostDAOTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +85,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\jawa\bosovec\BlogProject\src\by.epam.basavets.project" />
       <recent name="D:\jawa\bosovec\BlogProject" />
       <recent name="D:\jawa\bosovec\BlogProject\.idea" />
       <recent name="D:\jawa\bosovec\BlogProject\src" />
@@ -158,7 +101,7 @@
       <recent name="View.post" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BlogProject">
+  <component name="RunManager" selected="JUnit.PostDAOTest">
     <configuration name="PostDAOTest" type="AndroidJUnit" factoryName="Android JUnit" nameIsGenerated="true">
       <module name="BlogProject" />
       <option name="PACKAGE_NAME" value="dao" />
