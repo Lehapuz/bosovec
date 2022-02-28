@@ -1,9 +1,13 @@
 package bean;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Moderator extends Person{
+public class Moderator extends Person implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     public Moderator(int id, String name, String email, String password, LocalDateTime regTime) {
         super(id, name, email, password, regTime);
     }

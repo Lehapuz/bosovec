@@ -11,13 +11,14 @@ public class Command {
     PostCommentDAO postCommentDAO = new PostCommentDAO();
     PostVoteDAO postVoteDAO = new PostVoteDAO();
     SettingsDAO settingsDAO = new SettingsDAO();
+    DataSource dataSource = new DataSource(moderatorDAO, postVoteDAO, postCommentDAO, postDAO, settingsDAO, userDAO);
 
-    UserService userService = new UserService(userDAO);
-    ModeratorService moderatorService = new ModeratorService(moderatorDAO, postDAO);
-    PostServise postService = new PostServise(postDAO, userDAO, settingsDAO);
-    PostCommentServise postCommentService = new PostCommentServise(postDAO, postCommentDAO);
-    PostVoteServise postVoteService = new PostVoteServise(postDAO, postVoteDAO);
-    SettingsService settingsService = new SettingsService(settingsDAO);
+    UserService userService = new UserService(dataSource);
+    ModeratorService moderatorService = new ModeratorService(dataSource);
+    PostServise postService = new PostServise(dataSource);
+    PostCommentServise postCommentService = new PostCommentServise(dataSource);
+    PostVoteServise postVoteService = new PostVoteServise(dataSource);
+    SettingsService settingsService = new SettingsService(dataSource);
 
     public UserService getUserService() {
         return userService;

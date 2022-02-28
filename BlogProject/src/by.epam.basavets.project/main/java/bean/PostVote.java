@@ -1,13 +1,16 @@
 package bean;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class PostVote {
+public class PostVote implements Serializable {
     private int id;
     private int Value;
     private LocalDateTime time;
     private User user;
     private Post post;
+
+    private static final long serialVersionUID = 5L;
 
 
     public PostVote(int id, int value, LocalDateTime time, User user, Post post) {

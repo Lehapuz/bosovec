@@ -2,8 +2,7 @@ package service;
 
 import bean.Post;
 import bean.PostComment;
-import dao.PostCommentDAO;
-import dao.PostDAO;
+import dao.DataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,13 +10,11 @@ import java.time.LocalDateTime;
 
 public class PostCommentServise {
 
-    private final PostDAO postDAO;
-    private final PostCommentDAO postCommentDAO;
+    private final DataSource dataSource;
     private final Logger logger = LogManager.getRootLogger();
 
-    public PostCommentServise(PostDAO postDAO, PostCommentDAO postCommentDAO) {
-        this.postDAO = postDAO;
-        this.postCommentDAO = postCommentDAO;
+    public PostCommentServise(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
 
@@ -26,14 +23,14 @@ public class PostCommentServise {
             PostComment postComment = new PostComment();
             int i = 0;
             Post post;
-            post = postDAO.findPostByTitle(title);
+            post = dataSource.getPostDAO().findPostByTitle(title);
             postComment.setId(++i);
             postComment.setPost(post);
             postComment.setText(textComment);
             postComment.setUser(post.getUser());
             postComment.setTime(LocalDateTime.now());
             post.setPostComments(post.getPostComments());
-            postCommentDAO.addPostComment(postComment);
+            dataSource.getPostCommentDAO().addPostComment(postComment);
             logger.info("Комментарий успешно добавлен");
         } catch (Exception e) {
             logger.error("Такого поста не существует");
@@ -41,14 +38,14 @@ public class PostCommentServise {
     }
 
     public void getAllPostComments() {
-        postCommentDAO.read();
+        dataSource.getPostCommentDAO().read();
     }
 
     public void deletePostComment(String textComment) {
         try {
             PostComment postComment;
-            postComment = postCommentDAO.findCommentByText(textComment);
-            postCommentDAO.deletePostComment(postComment);
+            postComment = dataSource.getPostCommentDAO().findCommentByText(textComment);
+            dataSource.getPostCommentDAO().deletePostComment(postComment);
         } catch (Exception e) {
             logger.error("Такого комментария не существует");
         }
@@ -58,11 +55,11 @@ public class PostCommentServise {
         try {
             PostComment postComment;
             PostComment postComment1 = new PostComment();
-            postComment = postCommentDAO.findCommentByText(textComment);
+            postComment = dataSource.getPostCommentDAO().findCommentByText(textComment);
             postComment1.setId(postComment.getId());
             postComment1.setPost(postComment.getPost());
             postComment1.setUser(postComment.getUser());
-            postCommentDAO.updatePostComment(postComment, postComment1);
+            dataSource.getPostCommentDAO().updatePostComment(postComment, postComment1);
             postComment1.setText(newTextComment);
         } catch (Exception e) {
             logger.error("Такого поста не существует");

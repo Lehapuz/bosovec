@@ -2,10 +2,11 @@ package bean;
 
 import bean.Enum.ModeratorStatus;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Post {
+public class Post implements Serializable {
     private int id;
     private String title;
     private String text;
@@ -16,6 +17,8 @@ public class Post {
     private User user;
     private List<PostComment> postComments;
     private ModeratorStatus moderatorStatus;
+
+    private static final long serialVersionUID = 3L;
 
     public Post(int id, String title, String text, int likeCount, int dislikeCount, int viewCount,
                 LocalDateTime time, User user, ModeratorStatus moderatorStatus) {

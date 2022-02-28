@@ -1,61 +1,47 @@
 package dao;
 
-import bean.*;
-
-import java.util.List;
-import java.util.Set;
-
 public class DataSource {
-    private final List<Moderator> moderators;
-    private final List<PostComment> postComments;
-    private final List<Post> posts;
-    private final List<PostVote> postVotes;
-    private final Set<Settings> settingsSet;
-    private final List<User> users;
 
-    ModeratorDAO moderatorDAO;
-    PostVoteDAO postVoteDAO;
-    PostCommentDAO postCommentDAO;
-    PostDAO postDAO;
-    SettingsDAO settingsDAO;
-    UserDAO userDAO;
+    private final ModeratorDAO moderatorDAO;
+    private final PostVoteDAO postVoteDAO;
+    private final PostCommentDAO postCommentDAO;
+    private final PostDAO postDAO;
+    private final SettingsDAO settingsDAO;
+    private final UserDAO userDAO;
 
 
-
-
-    public DataSource(List<Moderator> moderators, List<PostComment> postComments,
-                      List<Post> posts, List<PostVote> postVotes,
-                      Set<Settings> settingsSet, List<User> users) {
-        this.moderators = moderators;
-        this.postComments = postComments;
-        this.posts = posts;
-        this.postVotes = postVotes;
-        this.settingsSet = settingsSet;
-        this.users = users;
+    public DataSource(ModeratorDAO moderatorDAO, PostVoteDAO postVoteDAO,
+                      PostCommentDAO postCommentDAO, PostDAO postDAO,
+                      SettingsDAO settingsDAO, UserDAO userDAO) {
+        this.moderatorDAO = moderatorDAO;
+        this.postVoteDAO = postVoteDAO;
+        this.postCommentDAO = postCommentDAO;
+        this.postDAO = postDAO;
+        this.settingsDAO = settingsDAO;
+        this.userDAO = userDAO;
     }
 
-
-    public List<Moderator> getModerators() {
-        return moderatorDAO.getModerators();
+    public ModeratorDAO getModeratorDAO() {
+        return moderatorDAO;
     }
 
-    public List<PostComment> getPostComments() {
-        return postCommentDAO.getPostComments();
+    public UserDAO getUserDAO() {
+        return userDAO;
     }
 
-    public List<Post> getPosts() {
-        return postDAO.getPosts();
+    public PostDAO getPostDAO() {
+        return postDAO;
     }
 
-    public List<PostVote> getPostVotes() {
-        return postVoteDAO.getPostVotes();
+    public PostCommentDAO getPostCommentDAO() {
+        return postCommentDAO;
     }
 
-    public Set<Settings> getSettingsSet() {
-        return settingsDAO.getSettingsSet();
+    public PostVoteDAO getPostVoteDAO() {
+        return postVoteDAO;
     }
 
-    public List<User> getUsers() {
-        return userDAO.getUsers();
+    public SettingsDAO getSettingsDAO() {
+        return settingsDAO;
     }
 }

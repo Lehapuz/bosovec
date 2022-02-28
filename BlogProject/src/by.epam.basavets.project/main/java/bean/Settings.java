@@ -2,8 +2,13 @@ package bean;
 
 import bean.Enum.SettingStatus;
 
-public class Settings {
+import java.io.Serializable;
+
+public class Settings implements Serializable {
+
     private SettingStatus settingStatus;
+
+    private static final long serialVersionUID = 6L;
 
 
     public SettingStatus getSettingStatus() {
