@@ -4,13 +4,15 @@ import bean.PostComment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostCommentDAO {
+public class PostCommentDAO implements Serializable {
 
     List<PostComment> postComments = new ArrayList<>();
     private final Logger logger = LogManager.getRootLogger();
+    private static final long serialVersionUID = 13L;
 
     public void addPostComment(PostComment postComment) {
         postComments.add(postComment);

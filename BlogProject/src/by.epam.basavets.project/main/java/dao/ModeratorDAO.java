@@ -4,13 +4,15 @@ import bean.Moderator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModeratorDAO {
+public class ModeratorDAO implements Serializable {
 
-    List<Moderator> moderators = new ArrayList<>();
+    private List<Moderator> moderators = new ArrayList<>();
     private final Logger logger = LogManager.getRootLogger();
+    private static final long serialVersionUID = 12L;
 
     public void addModerator(Moderator moderator) {
         moderators.add(moderator);

@@ -21,6 +21,7 @@ public class DataSource {
         this.userDAO = userDAO;
     }
 
+
     public ModeratorDAO getModeratorDAO() {
         return moderatorDAO;
     }
@@ -44,4 +45,5 @@ public class DataSource {
     public SettingsDAO getSettingsDAO() {
         return settingsDAO;
     }
+
 }

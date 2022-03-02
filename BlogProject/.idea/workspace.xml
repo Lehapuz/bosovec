@@ -5,30 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31f858a9-c42c-4218-973b-515ce291cb82" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/SerializeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ServiceFileCollections.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/BlogRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/BlogRun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/PostComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/PostComment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/PostVote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/PostVote.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/controller/DefaultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/controller/DefaultController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/DataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/ModeratorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/ModeratorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostCommentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostCommentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostVoteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostVoteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/SettingsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/SettingsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ModeratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ModeratorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostCommentServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostCommentServise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostServise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostVoteServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostVoteServise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/SettingsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/SettingsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bean/Moderator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Moderator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Post.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/PostComment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/PostComment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/PostVote.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/PostVote.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/Settings.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Settings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/command/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/command/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/DefaultController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/DefaultController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dao/DataSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/DataSource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/ModeratorDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/ModeratorDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/PostCommentDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/PostCommentDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/PostDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/PostDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/PostVoteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/PostVoteDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/SettingsDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/SettingsDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/ModeratorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/ModeratorService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +59,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>

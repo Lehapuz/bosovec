@@ -4,12 +4,14 @@ import bean.Post;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostDAO {
+public class PostDAO implements Serializable {
     List<Post> posts = new ArrayList<>();
     private final Logger logger = LogManager.getRootLogger();
+    private static final long serialVersionUID = 14L;
 
     public void addPost(Post post) {
         posts.add(post);

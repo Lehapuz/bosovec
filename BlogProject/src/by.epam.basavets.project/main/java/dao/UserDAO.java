@@ -4,13 +4,15 @@ import bean.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO {
+public class UserDAO implements Serializable {
 
     private final List<User> users = new ArrayList<>();
     private final Logger logger = LogManager.getRootLogger();
+    private static final long serialVersionUID = 17L;
 
     public void addUser(User user) {
         users.add(user);

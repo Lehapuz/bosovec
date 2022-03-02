@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 public class ModeratorService {
 
     private final DataSource dataSource;
-
     private boolean isAuthorithated;
     private final Logger logger = LogManager.getRootLogger();
 

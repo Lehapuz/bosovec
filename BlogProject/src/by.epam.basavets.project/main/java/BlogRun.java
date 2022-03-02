@@ -6,3 +6,4 @@ public class BlogRun {
         defaultController.run();
     }
 }
+

@@ -3,7 +3,13 @@ package command;
 import dao.*;
 import service.*;
 
-public class Command {
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Serializable;
+
+public class Command implements Serializable{
+
+    private static final long serialVersionUID = 11L;
 
     UserDAO userDAO = new UserDAO();
     PostDAO postDAO = new PostDAO();
@@ -19,6 +25,11 @@ public class Command {
     PostCommentServise postCommentService = new PostCommentServise(dataSource);
     PostVoteServise postVoteService = new PostVoteServise(dataSource);
     SettingsService settingsService = new SettingsService(dataSource);
+    SerializeService serializeService = new SerializeService(moderatorService, userService, moderatorDAO, userDAO);
+    ServiceFileCollections serviceFileCollections = new ServiceFileCollections(moderatorService, userService,
+            moderatorDAO, userDAO);
+
+
 
     public UserService getUserService() {
         return userService;
@@ -43,7 +54,37 @@ public class Command {
     public SettingsService getSettingsService() {
         return settingsService;
     }
+
+
+    public void runWriteFile(){
+        serializeService.writeFile(moderatorDAO);
+    }
+
+
+
+
+
+
+    public void readFromFile(){
+        serializeService.readFile();
+    }
+
+
+
+    public void writeCollections() throws FileNotFoundException {
+        serviceFileCollections.writeModerator(moderatorDAO);
+        serviceFileCollections.writeUser(userDAO);
+   }
+
+    public void readCollections() throws IOException {
+        serviceFileCollections.readModerators();
+        serviceFileCollections.readUsers();
+    }
 }
+
+
+
+
 
 
 

@@ -2,12 +2,14 @@ package dao;
 
 import bean.PostVote;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostVoteDAO {
+public class PostVoteDAO implements Serializable {
 
     List<PostVote> postVotes = new ArrayList<>();
+    private static final long serialVersionUID = 15L;
 
     public void addPostVote(PostVote postVote) {
         postVotes.add(postVote);
