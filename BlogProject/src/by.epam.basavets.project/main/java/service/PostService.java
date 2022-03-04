@@ -13,12 +13,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostServise {
+public class PostService {
 
     private final DataSource dataSource;
     private final Logger logger = LogManager.getRootLogger();
 
-    public PostServise(DataSource dataSource) {
+    public PostService(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 

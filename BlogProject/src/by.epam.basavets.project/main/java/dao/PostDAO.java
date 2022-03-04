@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PostDAO implements Serializable {
-    List<Post> posts = new ArrayList<>();
+    private final List<Post> posts = new ArrayList<>();
     private final Logger logger = LogManager.getRootLogger();
     private static final long serialVersionUID = 14L;
 

@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class ModeratorMenu {
 
-    Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private final Command command;
     private final Logger logger = LogManager.getRootLogger();
 

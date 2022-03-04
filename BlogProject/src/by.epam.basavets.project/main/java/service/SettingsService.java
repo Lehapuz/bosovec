@@ -8,7 +8,6 @@ import org.apache.logging.log4j.Logger;
 
 public class SettingsService {
 
-
     Settings settings = new Settings();
     private final DataSource dataSource;
     private final Logger logger = LogManager.getRootLogger();
@@ -16,7 +15,6 @@ public class SettingsService {
     public SettingsService(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
 
     public void setSettings(String status) {
         if (status.equals("Yes")) {

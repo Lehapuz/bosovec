@@ -1,9 +1,10 @@
 package bean;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public abstract class Person {
+public abstract class Person implements Serializable {
     private int id;
     private String name;
     private String email;
@@ -11,6 +12,7 @@ public abstract class Person {
     private LocalDateTime regTime;
     private List<Post> posts;
     private List<PostComment> postComments;
+    private static final long serialVersionUID = 1122L;
 
     public Person(int id, String name, String email, String password, LocalDateTime regTime){
         this.id = id;

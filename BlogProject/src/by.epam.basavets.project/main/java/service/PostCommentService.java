@@ -8,12 +8,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDateTime;
 
-public class PostCommentServise {
+
+public class PostCommentService {
 
     private final DataSource dataSource;
     private final Logger logger = LogManager.getRootLogger();
 
-    public PostCommentServise(DataSource dataSource) {
+    public PostCommentService(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 

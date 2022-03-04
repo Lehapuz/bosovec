@@ -8,12 +8,12 @@ import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDateTime;
 
-public class PostVoteServise {
+public class PostVoteService {
 
     private final DataSource dataSource;
     private final Logger logger = LogManager.getRootLogger();
 
-    public PostVoteServise(DataSource dataSource) {
+    public PostVoteService(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 

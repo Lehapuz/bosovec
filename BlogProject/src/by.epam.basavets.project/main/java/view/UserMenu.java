@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class UserMenu {
 
-    Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private final Command command;
     private final Logger logger = LogManager.getRootLogger();
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ModeratorDAO implements Serializable {
 
-    private List<Moderator> moderators = new ArrayList<>();
+    private final List<Moderator> moderators = new ArrayList<>();
     private final Logger logger = LogManager.getRootLogger();
     private static final long serialVersionUID = 12L;
 

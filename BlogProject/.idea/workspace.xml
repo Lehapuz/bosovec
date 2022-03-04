@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31f858a9-c42c-4218-973b-515ce291cb82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/SerializeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ServiceFileCollections.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/test/java/service/TestMockito.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/save.ser" beforeDir="false" afterPath="$PROJECT_DIR$/save.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/BlogRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/BlogRun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/command/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/controller/DefaultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/controller/DefaultController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/DataSource.java" afterDir="false" />
@@ -18,10 +19,19 @@
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostCommentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostCommentDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostVoteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/PostVoteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/SettingsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/SettingsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ModeratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ModeratorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/initialize/Initialize.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostCommentServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostCommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostVoteServise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostVoteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/SerializeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/SerializeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ServiceFileCollections.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/FileCollectionsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/SettingsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/SettingsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/ModeratorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/ModeratorMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/UserMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/BlogRun.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/BlogRun.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bean/Moderator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Moderator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Person.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/command/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/command/Command.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/DefaultController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/DefaultController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dao/DataSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/DataSource.class" afterDir="false" />
@@ -29,9 +39,23 @@
       <change beforePath="$PROJECT_DIR$/target/classes/dao/PostCommentDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/PostCommentDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dao/PostDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/PostDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dao/PostVoteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/PostVoteDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/SettingsDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/SettingsDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/ModeratorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/ModeratorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/initialize/Initialize.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/PostCommentServise.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/PostServise.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/PostVoteServise.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/SerializeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/SerializeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/ServiceFileCollections.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/SettingsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/SettingsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/ModeratorMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/ModeratorMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/UserMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/UserMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/post/AddPostMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/post/AddPostMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/post/DeletePostMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/post/DeletePostMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/post/UpdatePostMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/post/UpdatePostMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/postcomment/AddPostCommentMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/postcomment/AddPostCommentMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/postcomment/DeletePostCommentMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/postcomment/DeletePostCommentMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/postcomment/UpdatePostCommentMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/postcomment/UpdatePostCommentMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/postvote/SetPostVoteMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/postvote/SetPostVoteMenu.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,12 +105,62 @@
       <recent name="View.post" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BlogProject">
+  <component name="RunManager" selected="Android JUnit.TestMockito.testUserService">
     <configuration name="PostDAOTest" type="AndroidJUnit" factoryName="Android JUnit" nameIsGenerated="true">
       <module name="BlogProject" />
       <option name="PACKAGE_NAME" value="dao" />
       <option name="MAIN_CLASS_NAME" value="dao.PostDAOTest" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMockito" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlogProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.TestMockito" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMockito.testService" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlogProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.TestMockito" />
+      <option name="METHOD_NAME" value="testService" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMockito.testUserService" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlogProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.TestMockito" />
+      <option name="METHOD_NAME" value="testUserService" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -129,17 +203,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostDAOTest.testUpdateByEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestMockito.testUserService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BlogProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="dao" />
-      <option name="MAIN_CLASS_NAME" value="dao.PostDAOTest" />
-      <option name="METHOD_NAME" value="testUpdateByEmail" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.TestMockito" />
+      <option name="METHOD_NAME" value="testUserService" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,8 +221,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android JUnit.TestMockito.testUserService" />
+        <item itemvalue="JUnit.TestMockito.testUserService" />
         <item itemvalue="JUnit.PostDAOTest" />
-        <item itemvalue="JUnit.PostDAOTest.testUpdateByEmail" />
+        <item itemvalue="Android JUnit.TestMockito.testService" />
+        <item itemvalue="Android JUnit.TestMockito" />
       </list>
     </recent_temporary>
   </component>
@@ -176,6 +253,12 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BlogProject$TestMockito_testUserService.ic" NAME="TestMockito.testUserService Coverage Results" MODIFIED="1646434423654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/BlogProject$TestMockito_testService.ic" NAME="TestMockito.testService Coverage Results" MODIFIED="1646426516844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>service.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/BlogProject$PostDAOTest.ic" NAME="PostDAOTest Coverage Results" MODIFIED="1645547800398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

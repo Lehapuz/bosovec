@@ -13,9 +13,10 @@ import java.util.Scanner;
 
 public class MainMenu {
 
-    Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private final Command command;
     private final Logger logger = LogManager.getRootLogger();
+    private final String MODERATOR_REGISTRATION = "1";
 
 
     public MainMenu(Command command) {
@@ -70,7 +71,6 @@ public class MainMenu {
                     break;
                 case "9":
                     command.getPostCommentService().getAllPostComments();
-
                 default:
                     logger.error("Неверная команда ввода: " + input);
             }

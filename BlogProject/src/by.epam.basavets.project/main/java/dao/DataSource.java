@@ -1,6 +1,8 @@
 package dao;
 
-public class DataSource {
+import java.io.Serializable;
+
+public class DataSource implements Serializable {
 
     private final ModeratorDAO moderatorDAO;
     private final PostVoteDAO postVoteDAO;
@@ -8,6 +10,7 @@ public class DataSource {
     private final PostDAO postDAO;
     private final SettingsDAO settingsDAO;
     private final UserDAO userDAO;
+    private static final long serialVersionUID = 1000L;
 
 
     public DataSource(ModeratorDAO moderatorDAO, PostVoteDAO postVoteDAO,
@@ -45,5 +48,4 @@ public class DataSource {
     public SettingsDAO getSettingsDAO() {
         return settingsDAO;
     }
-
 }

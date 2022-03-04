@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PostCommentDAO implements Serializable {
 
-    List<PostComment> postComments = new ArrayList<>();
+    private final List<PostComment> postComments = new ArrayList<>();
     private final Logger logger = LogManager.getRootLogger();
     private static final long serialVersionUID = 13L;
 

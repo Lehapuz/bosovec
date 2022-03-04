@@ -7,7 +7,7 @@ import dao.UserDAO;
 
 import java.io.*;
 
-public class ServiceFileCollections {
+public class FileCollectionsService {
 
     private final ModeratorService moderatorService;
     private final UserService userService;
@@ -17,7 +17,7 @@ public class ServiceFileCollections {
     private final String USER_FILE = "save11.txt";
 
 
-    public ServiceFileCollections(ModeratorService moderatorService, UserService userService,
+    public FileCollectionsService(ModeratorService moderatorService, UserService userService,
                                   ModeratorDAO moderatorDAO, UserDAO userDAO) {
         this.moderatorService = moderatorService;
         this.userService = userService;
@@ -36,6 +36,7 @@ public class ServiceFileCollections {
         writer.flush();
         writer.close();
     }
+
 
     public void writeUser(UserDAO userDAO) throws FileNotFoundException {
         PrintWriter writer = new PrintWriter(USER_FILE);

@@ -21,14 +21,13 @@ public class Command implements Serializable{
 
     UserService userService = new UserService(dataSource);
     ModeratorService moderatorService = new ModeratorService(dataSource);
-    PostServise postService = new PostServise(dataSource);
-    PostCommentServise postCommentService = new PostCommentServise(dataSource);
-    PostVoteServise postVoteService = new PostVoteServise(dataSource);
+    PostService postService = new PostService(dataSource);
+    PostCommentService postCommentService = new PostCommentService(dataSource);
+    PostVoteService postVoteService = new PostVoteService(dataSource);
     SettingsService settingsService = new SettingsService(dataSource);
-    SerializeService serializeService = new SerializeService(moderatorService, userService, moderatorDAO, userDAO);
-    ServiceFileCollections serviceFileCollections = new ServiceFileCollections(moderatorService, userService,
+    SerializeService serializeService = new SerializeService(dataSource);
+    FileCollectionsService fileCollectionsService = new FileCollectionsService(moderatorService, userService,
             moderatorDAO, userDAO);
-
 
 
     public UserService getUserService() {
@@ -39,15 +38,15 @@ public class Command implements Serializable{
         return moderatorService;
     }
 
-    public PostServise getPostService() {
+    public PostService getPostService() {
         return postService;
     }
 
-    public PostCommentServise getPostCommentService() {
+    public PostCommentService getPostCommentService() {
         return postCommentService;
     }
 
-    public PostVoteServise getPostVoteService() {
+    public PostVoteService getPostVoteService() {
         return postVoteService;
     }
 
@@ -56,29 +55,25 @@ public class Command implements Serializable{
     }
 
 
-    public void runWriteFile(){
-        serializeService.writeFile(moderatorDAO);
+    public void runWriteFile() throws IOException {
+        serializeService.writeFile();
     }
 
 
-
-
-
-
-    public void readFromFile(){
+    public void readFromFile() throws IOException, ClassNotFoundException {
         serializeService.readFile();
     }
 
 
-
     public void writeCollections() throws FileNotFoundException {
-        serviceFileCollections.writeModerator(moderatorDAO);
-        serviceFileCollections.writeUser(userDAO);
+        fileCollectionsService.writeModerator(moderatorDAO);
+        fileCollectionsService.writeUser(userDAO);
    }
 
+
     public void readCollections() throws IOException {
-        serviceFileCollections.readModerators();
-        serviceFileCollections.readUsers();
+        fileCollectionsService.readModerators();
+        fileCollectionsService.readUsers();
     }
 }
 
