@@ -7,8 +7,8 @@ import java.util.List;
 public class Moderator extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public Moderator(int id, String name, String email, String password, LocalDateTime regTime) {
-        super(id, name, email, password, regTime);
+    public Moderator(int id, String name, String email, String password, LocalDateTime registrationTime) {
+        super(id, name, email, password, registrationTime);
     }
 
     public Moderator(){}

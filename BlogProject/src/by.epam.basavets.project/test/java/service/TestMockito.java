@@ -1,95 +1,67 @@
 package service;
 
-import bean.User;
-import command.Command;
-import dao.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestMockito {
 
-    @Mock
-    private UserDAO userDAO;
-
     @InjectMocks
     private UserService userService;
-
-
-//    Command command = new Command();
-//
-//    PostDAO postDAO;
-//    ModeratorDAO moderatorDAO;
-//    PostCommentDAO postCommentDAO;
-//    PostVoteDAO postVoteDAO;
-//    SettingsDAO settingsDAO;
-//
-//    DataSource dataSource = new DataSource(moderatorDAO, postVoteDAO, postCommentDAO, postDAO, settingsDAO, userDAO);
-
-
-    User user = new User(1, "Саша", "sasha@mail.ru", "987654321", LocalDateTime.now());
-    User user1 = new User(1, "Вася", "fs@mail.ru", "1111", LocalDateTime.now());
-    List<User> userList = new ArrayList<>();
-    List<User> userList1 = new ArrayList<>();
-
-
+    private final String name = "Саша";
+    private final String password = "987654321";
+    private final String email = "sasha@mail.ru";
 
 
     @Test
-    public void testUserService()
-    {
-        userList.add(user);
-        userList1.add(user1);
-        userService.registerUser("Саша", "987654321", "sasha@mail.ru");
+    public void testRegisterUser() {
+        userService = Mockito.mock(UserService.class);
+        Mockito.doNothing().when(userService).registerUser(Mockito.isA(String.class),
+                Mockito.isA(String.class), Mockito.isA(String.class));
+        userService.registerUser(name, password, email);
+        Mockito.verify(userService, Mockito.times(1)).registerUser("Саша", "987654321", "sasha@mail.ru");
+    }
 
+    @Test
+    public void testUpdateUser() {
+        userService = Mockito.mock(UserService.class);
+        Mockito.doNothing().doThrow().when(userService).updateUserByEmail(Mockito.isA(String.class),
+                Mockito.isA(String.class), Mockito.isA(String.class), Mockito.isA(String.class));
+        String newPassword = "111111";
+        userService.updateUserByEmail(email, password, name, newPassword);
+        Mockito.verify(userService, Mockito.times(1)).updateUserByEmail("sasha@mail.ru", "987654321", "Саша", "111111");
+    }
 
-        //userService.deleteUserByEmail("sasha@mail.ru", "987654321");
-        //System.out.println(dataSource.getUserDAO().getUsers());
-        //System.out.println(userList);
+    @Test
+    public void testDeleteUser() {
+        userService = Mockito.mock(UserService.class);
+        Mockito.doNothing().doThrow().when(userService).deleteUserByEmail(Mockito.isA(String.class),
+                Mockito.isA(String.class));
+        userService.deleteUserByEmail(email, password);
+        Mockito.verify(userService, Mockito.times(1)).deleteUserByEmail("sasha@mail.ru", "987654321");
+    }
 
+    @Test
+    public void testAuthorithationUser() {
+        userService = Mockito.mock(UserService.class);
+        Mockito.doNothing().doThrow().when(userService).authorithationUser(Mockito.isA(String.class),
+                Mockito.isA(String.class));
+        userService.authorithationUser(email, password);
+        Mockito.verify(userService, Mockito.times(1)).authorithationUser("sasha@mail.ru", "987654321");
+    }
 
-        //Mockito.doReturn(user).when(userDAO.getUsers());
-        //Mockito.doThrow(userService.registerUser("Саша", "987654321", "sasha@mail.ru"))
-        //        .doAnswer("Пользователь - " + user.getName() + " успешно зарегистрирован");
-
-        //Mockito.doThrow(userDAO.toString()).when(userService.registerUser("Саша", "987654321", "sasha@mail.ru"));
-        Mockito.when(userDAO.getUsers()).thenReturn(userList);
-
-
-
-
-        //        .
-        //dataSource.getUserDAO().read();
-        // определяем поведение калькулятора для операции сложения
-       // userServiceMock.registerUser("Вася", "111", "vas@mail.ru");
-
-        //Mockito.when(userService.registerUser("Вася", "111", "vas@mail.ru"))
-        //        .then(userService.registerUser("Вася", "111", "vas@mail.ru"));
-
-
-
-
-
-        //when(calc.add(10.0, 20.0)).thenReturn(30.0);
-
-        // проверяем действие сложения
-        //assertEquals(calc.add(10, 20), 30.0, 0);
-        // проверяем выполнение действия
-        //verify(mcalc).add(10.0, 20.0);
-
-        // определение поведения с использованием doReturn
-        //doReturn(15.0).when(mcalc).add(10.0, 5.0);
-
-        // проверяем действие сложения
-        //assertEquals(calc.add(10.0, 5.0), 15.0, 0);
-        //verify(mcalc).add(10.0, 5.0);
+    @Test
+    public void testGetAuthorithatedUser() {
+        boolean expected = false;
+        userService = Mockito.mock(UserService.class);
+        Mockito.doNothing().when(userService).exit();
+        userService.exit();
+        Mockito.when(userService.getAuthorithated()).thenReturn(false);
+        assertEquals(expected, userService.getAuthorithated());
     }
 }

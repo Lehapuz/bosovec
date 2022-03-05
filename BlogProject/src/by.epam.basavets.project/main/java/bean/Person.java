@@ -9,7 +9,7 @@ public abstract class Person implements Serializable {
     private String name;
     private String email;
     private String password;
-    private LocalDateTime regTime;
+    private LocalDateTime registrationTime;
     private List<Post> posts;
     private List<PostComment> postComments;
     private static final long serialVersionUID = 1122L;
@@ -19,7 +19,7 @@ public abstract class Person implements Serializable {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.regTime = regTime;
+        this.registrationTime = regTime;
     }
 
     public Person(){}
@@ -57,11 +57,11 @@ public abstract class Person implements Serializable {
     }
 
     public LocalDateTime getRegTime() {
-        return regTime;
+        return registrationTime;
     }
 
     public void setRegTime(LocalDateTime regTime) {
-        this.regTime = regTime;
+        this.registrationTime = regTime;
     }
 
     public List<Post> getPosts() {
@@ -93,6 +93,6 @@ public abstract class Person implements Serializable {
     @Override
     public String toString() {
         return "Имя пользователя  - " + name + " адресс электронной почты - " + email + " " +
-                "дата регистрации - " + regTime;
+                "дата регистрации - " + registrationTime;
     }
 }
