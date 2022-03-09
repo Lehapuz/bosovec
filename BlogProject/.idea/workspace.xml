@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="BlogProject:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31f858a9-c42c-4218-973b-515ce291cb82" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/BlogProject_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/command/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/view/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/test/java/service/TestMockito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/test/java/service/TestMockito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/ModeratorMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/ModeratorMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/UserMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/UserMenu.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +43,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Education/Diploma" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
