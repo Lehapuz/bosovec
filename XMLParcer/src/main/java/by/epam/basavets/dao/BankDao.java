@@ -12,10 +12,21 @@ public class BankDao {
         banks.add(bank);
     }
 
-    public void getBank() {
+    public void printBank() {
         for (Bank bank : banks) {
             System.out.println("Название банка - " + bank.getName() + " Страна - " + bank.getCountry() + " Город - "
                     + bank.getTown() + " Количество вкладчиков банка - " + bank.getDepositors().size());
         }
+    }
+
+    public Bank getBank() {
+        for (Bank bank : banks) {
+            return bank;
+        }
+        return null;
+    }
+
+    public void clearBank() {
+        banks.clear();
     }
 }

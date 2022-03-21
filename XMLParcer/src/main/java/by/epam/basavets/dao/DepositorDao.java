@@ -13,11 +13,22 @@ public class DepositorDao {
         depositors.add(depositor);
     }
 
-    public void getDepositor() {
+    public void printDepositor() {
         for (Depositor depositor : depositors) {
             System.out.println("Id вкладчика - " + depositor.getId() + " Сумма вклада - " + depositor.getAmountOnDeposit()
                     + " Процент по вкладу - " + depositor.getProfitability() + " Дата возврата вклада - "
                     + depositor.getTimeConstraints() + " Вид вклада - " + depositor.getTypeContribution());
         }
+    }
+
+    public Depositor getDepositor() {
+        for (Depositor depositor : depositors) {
+            return depositor;
+        }
+        return null;
+    }
+
+    public void clearDepositor() {
+        depositors.clear();
     }
 }

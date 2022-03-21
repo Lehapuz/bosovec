@@ -77,7 +77,7 @@ public class DOMParseFile {
             }
             dataSource.getBankDao().addBank(bank);
         }
-        dataSource.getBankDao().getBank();
-        dataSource.getDepositorDao().getDepositor();
+        dataSource.getBankDao().printBank();
+        dataSource.getDepositorDao().printDepositor();
     }
 }
