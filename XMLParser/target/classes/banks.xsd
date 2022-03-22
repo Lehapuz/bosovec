@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    <xs:element name="banks">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bank" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name" type="xs:string">
+                            </xs:element>
+                            <xs:element name="country" type="xs:string">
+                            </xs:element>
+                            <xs:element name="town" type="xs:string">
+                            </xs:element>
+                            <xs:element name="typeContribution" type="xs:simpleType" maxOccurs="5">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="toDemand">
+                                        </xs:enumeration>
+                                        <xs:enumeration value="urgent">
+                                        </xs:enumeration>
+                                        <xs:enumeration value="estimated">
+                                        </xs:enumeration>
+                                        <xs:enumeration value="accumulative">
+                                        </xs:enumeration>
+                                        <xs:enumeration value="savings">
+                                        </xs:enumeration>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="depositor" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:positiveInteger">
+                                        </xs:element>
+                                        <xs:element name="amountOnDeposit">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:positiveInteger">
+                                                    <xs:minInclusive value="1000">
+                                                    </xs:minInclusive>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="profitability" type="xs:decimal">
+                                        </xs:element>
+                                        <xs:element name="timeConstraints" type="xs:dateTime">
+                                        </xs:element>
+                                        <xs:element name="typeContribution" type="xs:element">
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
