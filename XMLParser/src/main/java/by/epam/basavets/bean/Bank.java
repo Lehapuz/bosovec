@@ -1,14 +1,21 @@
 package by.epam.basavets.bean;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Bank {
+public class Bank implements Comparable<Bank>{
     private String name;
     private String country;
     private String town;
     private List<Depositor> depositors;
-    private List<JAXBDepositor> jaxbDepositors = new ArrayList<>();
+    private List<JAXBDepositor> jaxbDepositors;
+
+    public Bank(String name, String country, String town){
+        this.name = name;
+        this.country = country;
+        this.town = town;
+    }
+
+    public Bank(){}
 
     public String getName() {
         return name;
@@ -17,7 +24,6 @@ public class Bank {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getCountry() {
         return country;
@@ -50,5 +56,10 @@ public class Bank {
 
     public void setJaxbDepositors(List<JAXBDepositor> jaxbDepositors) {
         this.jaxbDepositors = jaxbDepositors;
+    }
+
+    @Override
+    public int compareTo(Bank o) {
+        return CharSequence.compare(o.getName(), getName());
     }
 }

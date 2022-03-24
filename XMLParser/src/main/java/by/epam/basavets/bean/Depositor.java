@@ -2,12 +2,23 @@ package by.epam.basavets.bean;
 
 import java.time.LocalDateTime;
 
-public class Depositor {
+public class Depositor implements Comparable<Depositor> {
     private int id;
     private int amountOnDeposit;
     private double profitability;
     private LocalDateTime timeConstraints;
     private TypeContribution typeContribution;
+
+    public Depositor(int id, int amountOnDeposit, double profitability, LocalDateTime timeConstraints,
+                     TypeContribution typeContribution){
+        this.id = id;
+        this.amountOnDeposit = amountOnDeposit;
+        this.profitability = profitability;
+        this.timeConstraints = timeConstraints;
+        this.typeContribution = typeContribution;
+    }
+
+    public Depositor(){}
 
     public int getId() {
         return id;
@@ -47,5 +58,10 @@ public class Depositor {
 
     public void setTypeContribution(TypeContribution typeContribution) {
         this.typeContribution = typeContribution;
+    }
+
+    @Override
+    public int compareTo(Depositor o) {
+        return Integer.compare(getId(), o.getId());
     }
 }

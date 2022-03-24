@@ -41,12 +41,9 @@ public class Controller {
 
     public void runStAX() throws IOException, XMLStreamException {
         staxParseFile.parseFile(PATH_FILE);
-        staxParseFile.getBanks();
-        staxParseFile.getDepositors();
     }
 
     public void runJAXB() throws JAXBException {
         jaxbParseFile.parseFile(FILE);
-        jaxbParseFile.printJAXB();
     }
 }

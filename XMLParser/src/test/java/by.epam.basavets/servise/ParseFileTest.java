@@ -3,7 +3,6 @@ package by.epam.basavets.servise;
 import by.epam.basavets.bean.Bank;
 import by.epam.basavets.bean.Depositor;
 import by.epam.basavets.bean.TypeContribution;
-import by.epam.basavets.controller.Controller;
 import by.epam.basavets.dao.BankDao;
 import by.epam.basavets.dao.DataSource;
 import by.epam.basavets.dao.DepositorDao;
@@ -19,7 +18,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DOMParseFileTest extends TestCase {
+public class ParseFileTest extends TestCase {
     Bank expectedBank = new Bank("DeutscheBank", "Germany", "Berlin");
 
     Depositor expectedDepositor1 = new Depositor(1, 100000, 0.3, LocalDateTime.parse("2022-03-14T00:00:00"), TypeContribution.urgent);
@@ -36,6 +35,7 @@ public class DOMParseFileTest extends TestCase {
     SAXParseFile saxParseFile = new SAXParseFile(dataSource);
     StAXParseFile stAXParseFile = new StAXParseFile(dataSource);
     JAXBParseFile jaxbParseFile = new JAXBParseFile(dataSource);
+    String PATH_FILE = "src/main/resources/banks.xml";
     File FILE = new File("src/main/resources/banks.xml");
 
 
@@ -56,29 +56,27 @@ public class DOMParseFileTest extends TestCase {
     }
 
     public void testDOMParseFile() throws ParserConfigurationException, SAXException, IOException {
-
-        domParseFile.parseFile("src/main/resources/banks.xml");
+        domParseFile.parseFile(PATH_FILE);
         Depositor actualDepositor = dataSource.getDepositorDao().getDepositor();
         Bank actualBank = dataSource.getBankDao().getBank();
         assertEquals(expectedDepositor1.getId(), actualDepositor.getId());
-        assertEquals(expectedBank.getDepositors().size(), actualBank.getDepositors().size());
+        assertEquals(expectedBank.getName(), actualBank.getName());
     }
 
-
     public void testSAXParseFile() throws ParserConfigurationException, SAXException, IOException {
-        saxParseFile.parseFile("src/main/resources/banks.xml");
+        saxParseFile.parseFile(PATH_FILE);
         Depositor actualDepositor = dataSource.getDepositorDao().getDepositor();
         Bank actualBank = dataSource.getBankDao().getBank();
         assertEquals(expectedDepositor1.getId(), actualDepositor.getId());
-        assertEquals(expectedBank.getDepositors().size(), actualBank.getDepositors().size());
+        assertEquals(expectedBank.getName(), actualBank.getName());
     }
 
     public void testStAXParseFile() throws IOException, XMLStreamException {
-        stAXParseFile.parseFile("src/main/resources/banks.xml");
+        stAXParseFile.parseFile(PATH_FILE);
         Depositor actualDepositor = dataSource.getDepositorDao().getDepositor();
         Bank actualBank = dataSource.getBankDao().getBank();
         assertEquals(expectedDepositor1.getId(), actualDepositor.getId());
-        assertEquals(expectedBank.getDepositors().size(), actualBank.getDepositors().size());
+        assertEquals(expectedBank.getName(), actualBank.getName());
     }
 
     public void testJAXBParseFile() throws JAXBException {
@@ -86,9 +84,7 @@ public class DOMParseFileTest extends TestCase {
         Depositor actualDepositor = dataSource.getDepositorDao().getDepositor();
         Bank actualBank = dataSource.getBankDao().getBank();
         assertEquals(expectedDepositor1.getId(), actualDepositor.getId());
-        assertEquals(expectedBank.getDepositors().size(), actualBank.getJaxbDepositors().size());
+        assertEquals(expectedBank.getName(), actualBank.getName());
     }
-
-
-    }
+}
 

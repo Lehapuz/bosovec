@@ -27,47 +27,50 @@ public class DOMParseFile {
     }
 
     public void parseFile(String pathFile) throws ParserConfigurationException, IOException, SAXException {
+        dataSource.getBankDao().clearBank();
+        dataSource.getDepositorDao().clearDepositor();
+
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document doc = builder.parse(new File(pathFile));
         doc.getDocumentElement().normalize();
-        NodeList nodeList = doc.getElementsByTagName("bank");
+        NodeList bankList = doc.getElementsByTagName("bank");
 
-        for (int i = 0; i < nodeList.getLength(); i++) {
+        for (int i = 0; i < bankList.getLength(); i++) {
             Bank bank = new Bank();
             List<Depositor> depositors = new ArrayList<>();
-            Node node = nodeList.item(i);
-            NodeList nodeList1 = node.getChildNodes();
+            Node bankNode = bankList.item(i);
+            NodeList bankElements = bankNode.getChildNodes();
 
-            for (int j = 0; j < nodeList1.getLength(); j++) {
-                Node node1 = nodeList1.item(j);
-                if (node1.getNodeName().equals("name")) {
-                    bank.setName(node1.getTextContent());
+            for (int j = 0; j < bankElements.getLength(); j++) {
+                Node bankElement = bankElements.item(j);
+                if ("name".equals(bankElement.getNodeName())) {
+                    bank.setName(bankElement.getTextContent());
                 }
-                if (node1.getNodeName().equals("country")) {
-                    bank.setCountry(node1.getTextContent());
+                if ("country".equals(bankElement.getNodeName())) {
+                    bank.setCountry(bankElement.getTextContent());
                 }
-                if (node1.getNodeName().equals("town")) {
-                    bank.setTown(node1.getTextContent());
+                if ("town".equals(bankElement.getNodeName())) {
+                    bank.setTown(bankElement.getTextContent());
                 }
-                if (node1.getNodeName().equals("depositor")) {
+                if ("depositor".equals(bankElement.getNodeName())) {
                     Depositor depositor = new Depositor();
-                    NodeList nodeList2 = node1.getChildNodes();
-                    for (int k = 0; k < nodeList2.getLength(); k++) {
-                        Node node2 = nodeList2.item(k);
-                        if (node2.getNodeName().equals("id")) {
-                            depositor.setId(Integer.parseInt(node2.getTextContent()));
+                    NodeList depositorList = bankElement.getChildNodes();
+                    for (int k = 0; k < depositorList.getLength(); k++) {
+                        Node depositorElement = depositorList.item(k);
+                        if ("id".equals(depositorElement.getNodeName())) {
+                            depositor.setId(Integer.parseInt(depositorElement.getTextContent()));
                         }
-                        if (node2.getNodeName().equals("amountOnDeposit")) {
-                            depositor.setAmountOnDeposit(Integer.parseInt(node2.getTextContent()));
+                        if ("amountOnDeposit".equals(depositorElement.getNodeName())) {
+                            depositor.setAmountOnDeposit(Integer.parseInt(depositorElement.getTextContent()));
                         }
-                        if (node2.getNodeName().equals("profitability")) {
-                            depositor.setProfitability(Double.parseDouble(node2.getTextContent()));
+                        if ("profitability".equals(depositorElement.getNodeName())) {
+                            depositor.setProfitability(Double.parseDouble(depositorElement.getTextContent()));
                         }
-                        if (node2.getNodeName().equals("timeConstraints")) {
-                            depositor.setTimeConstraints(LocalDateTime.parse(node2.getTextContent()));
+                        if ("timeConstraints".equals(depositorElement.getNodeName())) {
+                            depositor.setTimeConstraints(LocalDateTime.parse(depositorElement.getTextContent()));
                         }
-                        if (node2.getNodeName().equals("typeContribution")) {
-                            depositor.setTypeContribution(TypeContribution.valueOf(node2.getTextContent()));
+                        if ("typeContribution".equals(depositorElement.getNodeName())) {
+                            depositor.setTypeContribution(TypeContribution.valueOf(depositorElement.getTextContent()));
                         }
                     }
                     dataSource.getDepositorDao().addDepositor(depositor);

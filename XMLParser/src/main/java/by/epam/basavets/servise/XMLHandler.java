@@ -8,18 +8,15 @@ import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class XMLHandler extends DefaultHandler {
 
     private final DataSource dataSource;
     private StringBuilder elementValue;
     private final List<Depositor> depositors = new ArrayList<>();
-    private final Set<Depositor> depositorSet = new HashSet<>();
-    private final Set<Bank> bankSet = new HashSet<>();
+    private final Set<Depositor> depositorSet = new TreeSet<>();
+    private final Set<Bank> bankSet = new TreeSet<>();
 
 
     public XMLHandler(DataSource dataSource) {
@@ -39,39 +36,39 @@ public class XMLHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
-        if (qName.equals("bank")) {
+        if ("bank".equals(qName)) {
             depositors.clear();
             Bank bank = new Bank();
             elementValue = new StringBuilder();
             dataSource.getBankDao().addBank(bank);
         }
-        if (qName.equals("name")) {
+        if ("name".equals(qName)) {
             elementValue = new StringBuilder();
         }
-        if (qName.equals("country")) {
+        if ("country".equals(qName)) {
             elementValue = new StringBuilder();
         }
-        if (qName.equals("town")) {
+        if ("town".equals(qName)) {
             elementValue = new StringBuilder();
         }
-        if (qName.equals("depositor")) {
+        if ("depositor".equals(qName)) {
             Depositor depositor = new Depositor();
             elementValue = new StringBuilder();
             dataSource.getDepositorDao().addDepositor(depositor);
         }
-        if (qName.equals("id")) {
+        if ("id".equals(qName)) {
             elementValue = new StringBuilder();
         }
-        if (qName.equals("amountOnDeposit")) {
+        if ("amountOnDeposit".equals(qName)) {
             elementValue = new StringBuilder();
         }
-        if (qName.equals("profitability")) {
+        if ("profitability".equals(qName)) {
             elementValue = new StringBuilder();
         }
-        if (qName.equals("timeConstraints")) {
+        if ("timeConstraints".equals(qName)) {
             elementValue = new StringBuilder();
         }
-        if (qName.equals("typeContribution")) {
+        if ("typeContribution".equals(qName)) {
             elementValue = new StringBuilder();
         }
     }
@@ -79,38 +76,38 @@ public class XMLHandler extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName) {
-        if (qName.equals("bank")) {
+        if ("bank".equals(qName)) {
             dataSource.getBankDao().getBank().setDepositors(depositors);
             bankSet.add(dataSource.getBankDao().getBank());
             dataSource.getBankDao().clearBank();
         }
-        if (qName.equals("name")) {
+        if ("name".equals(qName)) {
             dataSource.getBankDao().getBank().setName(elementValue.toString());
         }
-        if (qName.equals("country")) {
+        if ("country".equals(qName)) {
             dataSource.getBankDao().getBank().setCountry(elementValue.toString());
         }
-        if (qName.equals("town")) {
+        if ("town".equals(qName)) {
             dataSource.getBankDao().getBank().setTown(elementValue.toString());
         }
-        if (qName.equals("depositor")) {
+        if ("depositor".equals(qName)) {
             depositors.add(dataSource.getDepositorDao().getDepositor());
             depositorSet.add(dataSource.getDepositorDao().getDepositor());
             dataSource.getDepositorDao().clearDepositor();
         }
-        if (qName.equals("id")) {
+        if ("id".equals(qName)) {
             dataSource.getDepositorDao().getDepositor().setId(Integer.parseInt(elementValue.toString()));
         }
-        if (qName.equals("amountOnDeposit")) {
+        if ("amountOnDeposit".equals(qName)) {
             dataSource.getDepositorDao().getDepositor().setAmountOnDeposit(Integer.parseInt(elementValue.toString()));
         }
-        if (qName.equals("profitability")) {
+        if ("profitability".equals(qName)) {
             dataSource.getDepositorDao().getDepositor().setProfitability(Double.parseDouble(elementValue.toString()));
         }
-        if (qName.equals("timeConstraints")) {
+        if ("timeConstraints".equals(qName)) {
             dataSource.getDepositorDao().getDepositor().setTimeConstraints(LocalDateTime.parse(elementValue.toString()));
         }
-        if (qName.equals("typeContribution") && dataSource.getDepositorDao().getDepositor() != null) {
+        if ("typeContribution".equals(qName) && dataSource.getDepositorDao().getDepositor() != null) {
             dataSource.getDepositorDao().getDepositor().setTypeContribution(TypeContribution.valueOf(elementValue.toString()));
         }
     }

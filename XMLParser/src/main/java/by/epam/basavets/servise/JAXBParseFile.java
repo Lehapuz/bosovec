@@ -30,6 +30,8 @@ public class JAXBParseFile {
                 });
 
         JAXBBanks jaxbBanks = (JAXBBanks) unmarshaller.unmarshal(file);
+        dataSource.getBankDao().clearBank();
+        dataSource.getDepositorDao().clearDepositor();
 
         for (JAXBBank jaxbBank : jaxbBanks.getBanks()) {
             Bank bank = new Bank();
@@ -38,7 +40,6 @@ public class JAXBParseFile {
             bank.setTown(jaxbBank.getTown());
             bank.setJaxbDepositors(jaxbBank.getDepositors());
             dataSource.getBankDao().addBank(bank);
-
             for (JAXBDepositor jaxbDepositor : jaxbBank.getDepositors()) {
                 Depositor depositor = new Depositor();
                 depositor.setId(jaxbDepositor.getId());
@@ -50,10 +51,6 @@ public class JAXBParseFile {
                 dataSource.getDepositorDao().addDepositor(depositor);
             }
         }
-    }
-
-
-    public void printJAXB() {
         dataSource.getBankDao().printJAXBBank();
         dataSource.getDepositorDao().printDepositor();
     }
