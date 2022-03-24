@@ -10,28 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31f858a9-c42c-4218-973b-515ce291cb82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../XMLParser/src/test/java/by.epam.basavets/servise/ParseFileTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/save10.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/save11.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/controller/DefaultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/controller/DefaultController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ModeratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ModeratorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostCommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostVoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostVoteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/Moderator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Moderator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/DefaultController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/DefaultController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/ModeratorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/ModeratorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/PostCommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/PostCommentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/PostService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/PostVoteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/PostVoteService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../XMLParser/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/bean/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/bean/Bank.java" afterDir="false" />
@@ -41,6 +20,8 @@
       <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/JAXBParseFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/JAXBParseFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/StAXParseFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/StAXParseFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/XMLHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/resources/bankTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/src/test/java/by.epam.basavets/servise/ParseFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/test/java/by.epam.basavets/servise/ParseFileTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/bean/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/bean/Bank.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/bean/Depositor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/bean/Depositor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/controller/Controller.class" afterDir="false" />
@@ -255,7 +236,7 @@
     <SUITE FILE_PATH="coverage/BlogProject$TestMockito_testGetAuthorithatedUser.ic" NAME="TestMockito.testGetAuthorithatedUser Coverage Results" MODIFIED="1646480929869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/BlogProject$TestMockito.ic" NAME="TestMockito Coverage Results" MODIFIED="1646481474644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/BlogProject$TestMockito.ic" NAME="TestMockito Coverage Results" MODIFIED="1648155444483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/BlogProject$TestMockito_testUserService.ic" NAME="TestMockito.testUserService Coverage Results" MODIFIED="1646473809101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -267,7 +248,7 @@
     <SUITE FILE_PATH="coverage/BlogProject$TestMockito_testService.ic" NAME="TestMockito.testService Coverage Results" MODIFIED="1646426516844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/BlogProject$PostDAOTest.ic" NAME="PostDAOTest Coverage Results" MODIFIED="1645547800398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BlogProject$PostDAOTest.ic" NAME="PostDAOTest Coverage Results" MODIFIED="1648155521078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BlogProject$TestMockito_testDeleteUser.ic" NAME="TestMockito.testDeleteUser Coverage Results" MODIFIED="1646474978821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>service.*</FILTER>
     </SUITE>
