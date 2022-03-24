@@ -5,6 +5,7 @@ import view.MainMenu;
 import view.ModeratorMenu;
 import view.UserMenu;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class DefaultController {
@@ -40,7 +41,7 @@ public class DefaultController {
             }
             command.runWriteFile();
 
-// wright in file
+            //wright in file
 //            try {
 //                command.writeCollections();
 //            } catch (FileNotFoundException e) {

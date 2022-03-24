@@ -17,6 +17,7 @@ public class PostService {
 
     private final DataSource dataSource;
     private final Logger logger = LogManager.getRootLogger();
+    private static int i = 0;
 
     public PostService(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -26,7 +27,6 @@ public class PostService {
         try {
             if (dataSource.getSettingsDAO().getSettings().equals(SettingStatus.Yes)) {
                 Post post = new Post();
-                int i = 0;
                 List<PostComment> postComments = new ArrayList<>();
                 User user = dataSource.getUserDAO().findUserByEmail(email);
                 post.setUser(user);

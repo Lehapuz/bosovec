@@ -14,6 +14,7 @@ public class ModeratorService {
     private final DataSource dataSource;
     private boolean isAuthorithated;
     private final Logger logger = LogManager.getRootLogger();
+    private static int i = 0;
 
     public ModeratorService(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -22,7 +23,6 @@ public class ModeratorService {
 
     public void registerModerator(String name, String password, String email) {
         Moderator moderator = new Moderator();
-        int i = 0;
         moderator.setName(name);
         moderator.setPassword(password);
         moderator.setEmail(email);

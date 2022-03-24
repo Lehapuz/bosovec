@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public abstract class Person implements Serializable {
+public abstract class Person implements Serializable, Comparable<Person>{
     private int id;
     private String name;
     private String email;

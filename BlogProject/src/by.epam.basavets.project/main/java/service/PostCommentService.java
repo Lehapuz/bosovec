@@ -13,6 +13,7 @@ public class PostCommentService {
 
     private final DataSource dataSource;
     private final Logger logger = LogManager.getRootLogger();
+    private static int i = 0;
 
     public PostCommentService(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -22,7 +23,6 @@ public class PostCommentService {
     public void addPostComment(String title, String textComment) {
         try {
             PostComment postComment = new PostComment();
-            int i = 0;
             Post post;
             post = dataSource.getPostDAO().findPostByTitle(title);
             postComment.setId(++i);

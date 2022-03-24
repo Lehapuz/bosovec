@@ -12,6 +12,7 @@ public class UserService {
     private final DataSource dataSource;
     private boolean isAuthorizated;
     private final Logger logger = LogManager.getRootLogger();
+    private static int i = 0;
 
 
     public UserService(DataSource dataSource) {
@@ -21,7 +22,6 @@ public class UserService {
 
     public void registerUser(String name, String password, String email) {
         User user = new User();
-        int i = 0;
         user.setName(name);
         user.setPassword(password);
         user.setEmail(email);

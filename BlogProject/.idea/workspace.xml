@@ -10,50 +10,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31f858a9-c42c-4218-973b-515ce291cb82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../CommandLine/CommandLine.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../XMLParser/src/test/java/by.epam.basavets/servise/ParseFileTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CommandLine/Описание выполнения.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../CommandLine/Описание выполнения.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/XMLParcer.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/bean/Bank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/bean/Depositor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/bean/TypeContribution.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/controller/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/dao/BankDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/dao/DataSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/dao/DepositorDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/servise/DOMParseFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/servise/JAXBBank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/servise/JAXBDepositor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/servise/JAXBParseFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/servise/SAXParseFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/servise/StAXParseFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/java/by/epam/basavets/servise/XMLHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/resources/banks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/src/main/resources/banks.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/banks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/banks.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/bean/Bank.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/bean/Depositor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/bean/TypeContribution.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/controller/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/dao/BankDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/dao/DataSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/dao/DepositorDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/servise/DOMParseFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/servise/JAXBBank.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/servise/JAXBDepositor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/servise/JAXBParseFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/servise/SAXParseFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/servise/StAXParseFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../XMLParcer/target/classes/by/epam/basavets/servise/XMLHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/save10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/save10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/save11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/save11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Moderator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/bean/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/controller/DefaultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/controller/DefaultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ModeratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/ModeratorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostCommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostVoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/PostVoteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by.epam.basavets.project/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/Moderator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Moderator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bean/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/DefaultController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/DefaultController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/ModeratorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/ModeratorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/PostCommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/PostCommentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/PostVoteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/PostVoteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/bean/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/bean/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/bean/Depositor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/bean/Depositor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/DOMParseFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/DOMParseFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/JAXBParseFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/JAXBParseFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/StAXParseFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/StAXParseFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/src/main/java/by/epam/basavets/servise/XMLHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/bean/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/bean/Bank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/bean/Depositor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/bean/Depositor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/servise/DOMParseFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/servise/DOMParseFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/servise/JAXBParseFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/servise/JAXBParseFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/servise/StAXParseFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/servise/StAXParseFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/servise/XMLHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../XMLParser/target/classes/by/epam/basavets/servise/XMLHandler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +76,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../XMLParser" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />

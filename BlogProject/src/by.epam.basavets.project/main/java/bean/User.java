@@ -12,7 +12,8 @@ public class User extends Person implements Serializable {
         super(id, name, email, password, registrationTime);
     }
 
-    public User(){}
+    public User() {
+    }
 
     @Override
     public int getId() {
@@ -97,5 +98,11 @@ public class User extends Person implements Serializable {
     @Override
     public String toString() {
         return super.toString();
+    }
+
+
+    @Override
+    public int compareTo(Person o) {
+        return Integer.compare(getId(), o.getId());
     }
 }

@@ -11,7 +11,8 @@ public class Moderator extends Person implements Serializable {
         super(id, name, email, password, registrationTime);
     }
 
-    public Moderator(){}
+    public Moderator() {
+    }
 
     @Override
     public int getId() {
@@ -96,5 +97,10 @@ public class Moderator extends Person implements Serializable {
     @Override
     public String toString() {
         return super.toString();
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        return Integer.compare(getId(), o.getId());
     }
 }

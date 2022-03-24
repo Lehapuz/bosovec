@@ -12,6 +12,7 @@ public class PostVoteService {
 
     private final DataSource dataSource;
     private final Logger logger = LogManager.getRootLogger();
+    private static int i = 0;
 
     public PostVoteService(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -20,7 +21,6 @@ public class PostVoteService {
     public void setPostVote(String postTitle, String value) {
         try {
             PostVote postVote = new PostVote();
-            int i = 0;
             Post post;
             post = dataSource.getPostDAO().findPostByTitle(postTitle);
             postVote.setValue(Integer.parseInt(value));
