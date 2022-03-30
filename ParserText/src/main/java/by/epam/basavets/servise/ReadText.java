@@ -13,14 +13,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ReadText {
-    private final String FILE_PATH = "src/main/resources/text.txt";
     private final Text text = new Text();
     private final Storage storage = new Storage(text);
 
 
-    private Text readText() throws IOException {
+    private Text readText(String path) throws IOException {
         StringBuilder builder = new StringBuilder();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_PATH));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
         while (true) {
             String line = bufferedReader.readLine();
             if (line == null) {
@@ -29,15 +28,16 @@ public class ReadText {
                 builder.append(line).append("\n");
             }
         }
-        storage.getText().setText(builder.toString());
+        storage.getText().setParent(builder.toString());
         return text;
     }
 
 
-    private Storage getStorage() throws IOException {
-        Text text = readText();
+    private Storage getStorage(String path) throws IOException {
+        Text text = readText(path);
+
         List<Paragraph> paragraphList = new ArrayList<>();
-        String[] paragraphs = text.getText().split("\n");
+        String[] paragraphs = text.getParent().split("\n");
         for (int i = 0; i < paragraphs.length; i++) {
             List<Sentence> sentenceList = new ArrayList<>();
             String textParagraph = paragraphs[i];
@@ -46,12 +46,12 @@ public class ReadText {
             storage.setParagraph(paragraph);
             String[] textSentences = textParagraph.split("!|\\?|\\.|…");
             for (int j = 0; j < textSentences.length; j++) {
+                List<Word> wordList = new ArrayList<>();
                 String textSentence = textSentences[j];
                 Sentence sentence = new Sentence(textSentence);
                 sentenceList.add(sentence);
                 storage.setSentence(sentence);
                 String[] textWords = textSentence.split("\\s+");
-                List<Word> wordList = new ArrayList<>();
                 for (int k = 0; k < textWords.length; k++) {
                     String textWord = textWords[k];
                     String validTextWord = textWord.replaceAll("[,;«»:()„“—]", "");
@@ -61,62 +61,94 @@ public class ReadText {
                         storage.setWord(word);
                     }
                 }
-                storage.getSentence().setWordList(wordList);
+                storage.getSentence().setChildrenList(wordList);
             }
-            storage.getParagraph().setSentenceList(sentenceList);
+            storage.getParagraph().setChildrenList(sentenceList);
         }
-        storage.getText().setParagraphList(paragraphList);
+        storage.getText().setChildrenList(paragraphList);
         return storage;
     }
 
 
-    public List<Paragraph> getSortedParagraph() throws IOException {
-        Storage storage = getStorage();
+    public List<Paragraph> getSortedParagraph(String path) throws IOException {
+        Storage storage = getStorage(path);
 
-        storage.getText().getParagraphList().stream().sorted(Paragraph::compareTo)
-                .collect(Collectors.toList()).forEach(paragraph -> paragraph.getSentenceList()
-                .forEach(sentence -> System.out.println(sentence.getSentence())));
+        storage.getText().getChildrenList().stream().sorted(Paragraph::compareTo)
+                .collect(Collectors.toList()).forEach(paragraph -> paragraph.getChildrenList()
+                .forEach(sentence -> System.out.println(sentence.getParent())));
 
-        return storage.getText().getParagraphList().stream().sorted(Paragraph::compareTo)
+        return storage.getText().getChildrenList().stream().sorted(Paragraph::compareTo)
                 .collect(Collectors.toList());
     }
 
 
-    public Sentence getSentenceWithLongWord() throws IOException {
-        Storage storage = getStorage();
-        Sentence sentence = new Sentence();
-        Optional<Word> word = storage.getSentence().getWordList().stream().max(Comparator
-                .comparing(longWord -> longWord.getWord().length()));
-        if (storage.getSentence().getWordList().contains(word.get())) {
-            sentence = storage.getSentence();
+    public Sentence getSentenceWithLongWord(String path) throws IOException {
+        Storage storage = getStorage(path);
+        StringBuilder builderWord = new StringBuilder();
+        StringBuilder builderSentence = new StringBuilder();
+        Sentence maxLongWordSentence = new Sentence();
+
+        storage.getText().getChildrenList().forEach(paragraph -> paragraph.getChildrenList()
+                .forEach(sentence -> builderWord.append(sentence.getChildrenList().stream()
+                        .max(Comparator.comparing(word -> word.getWord().length())).get().getWord() + "\n")
+                ));
+
+        String[] longWords = builderWord.toString().split("\n");
+
+        storage.getText().getChildrenList().forEach(paragraph -> paragraph.getChildrenList()
+                .forEach(sentence -> builderSentence.append(sentence.getParent() + "\n")
+                ));
+
+        String[] longWordSentences = builderSentence.toString().split("\n");
+
+        for (int i = 0; i < longWordSentences.length; i++) {
+            String longWordSentence = longWordSentences[i];
+            if (longWordSentence.contains(maxLengthWord(longWords))) {
+                maxLongWordSentence.setParent(longWordSentence);
+            }
         }
-        System.out.println(sentence.getSentence());
-        return sentence;
+        System.out.println(maxLongWordSentence.getParent());
+        return maxLongWordSentence;
+    }
+
+    private String maxLengthWord(String[] words) {
+        String maxLengthWord = "";
+        for (int i = 0; i < words.length; i++) {
+            String longWord = words[i];
+            for (int j = 0; j < words.length; j++) {
+                String longWord1 = words[j];
+                if (longWord1.length() > longWord.length()) {
+                    maxLengthWord = longWord1;
+                }
+            }
+        }
+        return maxLengthWord;
     }
 
 
-    public Text getTextWithLongSentences() throws IOException {
-        Storage storage = getStorage();
+    public Text getTextWithLongSentences(String path) throws IOException {
+        Storage storage = getStorage(path);
         StringBuilder stringBuilder = new StringBuilder();
+        int minLength = 30;
 
-        storage.getText().getParagraphList().forEach(paragraph -> paragraph.getSentenceList()
-                .stream().filter(sentence -> sentence.getWordList().size() > 30)
+        storage.getText().getChildrenList().forEach(paragraph -> paragraph.getChildrenList()
+                .stream().filter(sentence -> sentence.getChildrenList().size() > minLength)
                 .collect(Collectors.toList()).forEach(sentence ->
-                        stringBuilder.append(sentence.getSentence() + "." + "\n")));
+                        stringBuilder.append(sentence.getParent() + "." + "\n")));
 
-        text.setText(stringBuilder.toString());
-        System.out.println(text.getText());
+        text.setParent(stringBuilder.toString());
+        System.out.println(text.getParent());
 
         return text;
     }
 
 
-    public int getCountRepeatWord() throws IOException {
+    public int getCountRepeatWord(String path) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
-        Storage storage = getStorage();
+        Storage storage = getStorage(path);
 
-        storage.getText().getParagraphList().forEach(paragraph -> paragraph.getSentenceList()
-                .forEach(sentence -> sentence.getWordList().forEach(word -> stringBuilder.append(word.getWord() + "\n")
+        storage.getText().getChildrenList().forEach(paragraph -> paragraph.getChildrenList()
+                .forEach(sentence -> sentence.getChildrenList().forEach(word -> stringBuilder.append(word.getWord() + "\n")
                 )));
 
         String[] words = stringBuilder.toString().toLowerCase().split("\n");
@@ -129,35 +161,40 @@ public class ReadText {
                 System.out.println("Слово - " + word + " Количество повторений - " + wordMap.get(word));
             }
         }
-        System.out.println("Количество повторений - " + (words.length - wordMap.size()));
+        System.out.println("Количество повторяющихся слов - " + (words.length - wordMap.size()));
         return words.length - wordMap.size();
     }
 
 
-    public void getVowelsCount() throws IOException {
-        List<Character> vowels = Arrays.asList('а', 'е', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я');
-        Storage storage = getStorage();
+    public void getVowelsCount(String path) throws IOException {
+        Storage storage = getStorage(path);
         StringBuilder stringBuilder = new StringBuilder();
 
-        storage.getText().getParagraphList().forEach(paragraph -> paragraph.getSentenceList()
-                .forEach(sentence -> stringBuilder.append(sentence.getSentence() + "\n")));
+        storage.getText().getChildrenList().forEach(paragraph -> paragraph.getChildrenList()
+                .forEach(sentence -> stringBuilder.append(sentence.getParent() + "\n")));
 
         String text = stringBuilder.toString().replaceAll("[^А-я\n]", "");
 
         String[] sentences = text.split("\n");
         for (int i = 0; i < sentences.length; i++) {
-            int countVowels = 0;
-            int countConsonants = 0;
             String sentence = sentences[i];
-            for (int j = 0; j < sentence.length(); j++) {
-                if (vowels.contains(sentence.charAt(j))) {
-                    countVowels += 1;
-                } else {
-                    countConsonants += 1;
-                }
-            }
-            System.out.println("Количество гласных в предложении " + i + " - " + countVowels
-                    + " Количество согласных в предложеии - " + countConsonants);
+            getVowelsCountSentence(sentence);
         }
+    }
+
+    public int getVowelsCountSentence(String sentence) {
+        List<Character> vowels = Arrays.asList('а', 'е', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я');
+        int countVowels = 0;
+        int countConsonants = 0;
+        for (int j = 0; j < sentence.length(); j++) {
+            if (vowels.contains(sentence.toLowerCase().charAt(j))) {
+                countVowels += 1;
+            } else {
+                countConsonants += 1;
+            }
+        }
+        System.out.println("Количество гласных в предложении - " + countVowels
+                + " Количество согласных в предложеии - " + countConsonants);
+        return countVowels;
     }
 }

@@ -2,10 +2,9 @@ package by.epam.basavets.bean;
 
 import java.util.List;
 
-public class Text {
+public class Text implements Parent<Paragraph> {
     private String text;
     private List<Paragraph> paragraphList;
-    private List<Sentence> sentenceList;
 
     public Text(String text) {
         this.text = text;
@@ -14,27 +13,23 @@ public class Text {
     public Text() {
     }
 
-    public String getText() {
+    @Override
+    public String getParent() {
         return text;
     }
 
-    public void setText(String text) {
+    @Override
+    public void setParent(String text) {
         this.text = text;
     }
 
-    public List<Paragraph> getParagraphList() {
+    @Override
+    public List<Paragraph> getChildrenList() {
         return paragraphList;
     }
 
-    public void setParagraphList(List<Paragraph> paragraphList) {
+    @Override
+    public void setChildrenList(List<Paragraph> paragraphList) {
         this.paragraphList = paragraphList;
-    }
-
-    public List<Sentence> getSentenceList() {
-        return sentenceList;
-    }
-
-    public void setSentenceList(List<Sentence> sentenceList) {
-        this.sentenceList = sentenceList;
     }
 }

@@ -2,7 +2,7 @@ package by.epam.basavets.bean;
 
 import java.util.List;
 
-public class Sentence {
+public class Sentence implements Parent<Word> {
     private String sentence;
     private List<Word> wordList;
 
@@ -13,19 +13,23 @@ public class Sentence {
     public Sentence() {
     }
 
-    public String getSentence() {
+    @Override
+    public String getParent() {
         return sentence;
     }
 
-    public void setSentence(String sentence) {
+    @Override
+    public void setParent(String sentence) {
         this.sentence = sentence;
     }
 
-    public List<Word> getWordList() {
+    @Override
+    public List<Word> getChildrenList() {
         return wordList;
     }
 
-    public void setWordList(List<Word> wordList) {
+    @Override
+    public void setChildrenList(List<Word> wordList) {
         this.wordList = wordList;
     }
 }
