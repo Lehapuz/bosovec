@@ -10,17 +10,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31f858a9-c42c-4218-973b-515ce291cb82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ParserText/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ParserText/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ParserText/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ParserText/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ParserText/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ParserText/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ParserText/ParserText.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ParserText/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ParserText/src/main/java/by/epam/basavets/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ParserText/src/main/java/by/epam/basavets/servise/ReadText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/ParserText.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/java/by/epam/basavets/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/java/by/epam/basavets/bean/Paragraph.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/java/by/epam/basavets/bean/Parent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/java/by/epam/basavets/bean/Sentence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/java/by/epam/basavets/bean/Text.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/java/by/epam/basavets/bean/Word.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/java/by/epam/basavets/dao/Storage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/java/by/epam/basavets/servise/ReadText.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/resources/testText.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/resources/testText1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/main/resources/text.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/test/java/by/epam/basavets/servise/CountRepeatWordTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/test/java/by/epam/basavets/servise/SentenceWithLongWordTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/test/java/by/epam/basavets/servise/SortedParagraphTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/test/java/by/epam/basavets/servise/TextWithLongSentenceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/src/test/java/by/epam/basavets/servise/VowelsCountTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/by/epam/basavets/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/by/epam/basavets/bean/Paragraph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/by/epam/basavets/bean/Parent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/by/epam/basavets/bean/Sentence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/by/epam/basavets/bean/Text.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/by/epam/basavets/bean/Word.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/by/epam/basavets/dao/Storage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/by/epam/basavets/servise/ReadText.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/testText.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/testText1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/classes/text.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/test-classes/by/epam/basavets/servise/CountRepeatWordTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/test-classes/by/epam/basavets/servise/SentenceWithLongWordTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/test-classes/by/epam/basavets/servise/SortedParagraphTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/test-classes/by/epam/basavets/servise/TextWithLongSentenceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ParserText/target/test-classes/by/epam/basavets/servise/VowelsCountTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
