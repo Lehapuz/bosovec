@@ -1,6 +1,5 @@
 package by.epam.basavets.bean;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -16,9 +15,6 @@ public class Ship {
     public Ship(){
         shipContainers = new CopyOnWriteArrayList<>();
     }
-
-
-
 
 
     public void setShipContainers(List<Container> shipContainers) {
@@ -56,5 +52,10 @@ public class Ship {
 
     public void setUnloaded(boolean unloaded) {
         this.unloaded = unloaded;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

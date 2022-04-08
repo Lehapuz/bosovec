@@ -29,12 +29,14 @@ public class Main {
         System.out.println(processors);
         ExecutorService service = Executors.newFixedThreadPool(processors);
         service.execute(shipGenerator);
+
         //service.execute(shipGenerator);
         //service.execute(shipGenerator);
         //service.execute(shipGenerator);
-        service.execute(shipDelete);
+
         service.execute(warehouseLoad);
         service.execute(shipLoad);
+        service.execute(shipDelete);
 
 
 //        //service.execute(port);

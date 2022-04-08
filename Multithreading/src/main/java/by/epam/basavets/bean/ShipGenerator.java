@@ -35,9 +35,9 @@ public class ShipGenerator implements Runnable{
             ship.setShipContainers(containers);
 
             port.add(ship);
-            port.warehouseLoader();
-            port.shipLoader();
-            port.delete();
+            //port.warehouseLoader();
+            //port.shipLoader();
+            //port.delete();
 
 
         }
