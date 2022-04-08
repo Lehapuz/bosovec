@@ -1,4 +1,8 @@
-package by.epam.basavets.bean;
+package by.epam.basavets.service;
+
+import by.epam.basavets.bean.Container;
+import by.epam.basavets.bean.Ship;
+import by.epam.basavets.bean.Warehouse;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -6,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Port {
+public class PortService {
     private final int JETTY_COUNT = 5;
     private List<Ship> ships;
     private int shipCount = 0;
@@ -18,7 +22,7 @@ public class Port {
     //Semaphore semaphore;
 
 
-    public Port() {
+    public PortService() {
         ships = new CopyOnWriteArrayList<>();
     }
 
@@ -35,18 +39,6 @@ public class Port {
             System.out.println("Корабль - " + ship.getId() + " зашел в порт - " + ship.isProcessed());
             System.out.println("Число контейнеров на корабле - " + ship.getShipContainers().size());
         }
-
-        if (warehouse.getWarehouseContainers().size() < ship.getMAX_CONTAINERS_SIZE()) {
-            notifyAll();
-        }
-
-        if (shipCount > JETTY_COUNT) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
 
@@ -60,12 +52,10 @@ public class Port {
 
             Ship ship = ships.get(shipCount - JETTY_COUNT);
             if (ship.isProcessed()) {
-                notifyAll();
                 shipCount--;
                 ships.remove(ship);
                 System.out.println("Корабль - " + ship.getId() + " вышел из порта" + " Статус - " + ship.isProcessed());
             }
-
         }
     }
 
@@ -81,21 +71,10 @@ public class Port {
 
             for (Ship ship : ships) {
                 if (!ship.isProcessed() && !ship.isUnloaded()) {
-                    for (int i = 0; i < ship.getShipContainers().size(); i++) {
+                    for (Container container : ship.getShipContainers()) {
 
-                        Container container = ship.getShipContainers().get(i);
                         ship.getShipContainers().remove(container);
                         warehouse.getWarehouseContainers().add(container);
-
-                        if (warehouse.getWarehouseContainers().size() > warehouse.getMAX_SIZE()) {
-                            try {
-                                wait();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            notify();
-                        }
                     }
 
                     System.out.println("Корабль разгружен - " + ship.getId());
@@ -106,7 +85,9 @@ public class Port {
 
                 if (ship.getShipContainers().size() == 0) {
                     ship.setUnloaded(true);
-                    System.out.println("Корабль полностью разгружен" + ship.isUnloaded());
+                }
+
+                if (warehouse.getWarehouseContainers().size() > warehouse.getMAX_SIZE()) {
                     try {
                         wait();
                     } catch (InterruptedException e) {
@@ -118,7 +99,7 @@ public class Port {
     }
 
 
-    synchronized public void shipLoader() {
+    public synchronized void shipLoader() {
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
@@ -127,9 +108,12 @@ public class Port {
 
         for (Ship ship : ships) {
 
-            if (warehouse.getWarehouseContainers().size() >= ship.getMAX_CONTAINERS_SIZE()
-                    && ship.isUnloaded() && !ship.isProcessed()) {
+            if (warehouse.getWarehouseContainers().size() <= warehouse.getMAX_SIZE()) {
+                notifyAll();
+            }
 
+            if (warehouse.getWarehouseContainers().size() > ship.getMAX_CONTAINERS_SIZE()
+                    && ship.isUnloaded() && !ship.isProcessed()) {
                 for (Container container : warehouse.getWarehouseContainers()) {
                     warehouse.getWarehouseContainers().remove(container);
                     ship.getShipContainers().add(container);
@@ -141,58 +125,11 @@ public class Port {
                 System.out.println("Корабль загружен - " + ship.getId());
                 System.out.println("Число контейнеров загруженных на корабль - " + ship.getShipContainers().size());
                 System.out.println("Число контейнеров оставвшихся на складе - " + warehouse.getWarehouseContainers().size());
-                System.out.println(ship.isProcessed());
 
                 if (ship.getShipContainers().size() == ship.getMAX_CONTAINERS_SIZE()) {
                     ship.setProcessed(true);
                 }
             }
-
-            if (ship.getShipContainers().size() != 0
-                    && warehouse.getWarehouseContainers().size() < ship.getMAX_CONTAINERS_SIZE()) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                notify();
-            }
         }
     }
-
-
-    public Ship getShip(int shipId) {
-        for (Ship ship : ships) {
-            if (ship.getId() == shipId) {
-                return ship;
-            }
-        }
-        return null;
-    }
-
-    public int getShipId() {
-        return shipId;
-    }
-
-    public int getJETTY_COUNT() {
-        return JETTY_COUNT;
-    }
-
-
-    public List<Ship> getShips() {
-        return ships;
-    }
-
-    public void setShips(List<Ship> ships) {
-        this.ships = ships;
-    }
-
-//    public int getShipNumber() {
-//        return shipNumber;
-//    }
-//
-//    public void setShipNumber(int shipNumber) {
-//        this.shipNumber = shipNumber;
-//    }
 }

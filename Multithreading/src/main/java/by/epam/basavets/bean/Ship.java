@@ -10,9 +10,9 @@ public class Ship {
     private List<Container> shipContainers;
     private boolean processed = false;
     private boolean unloaded = false;
-    private Port port;
 
-    public Ship(){
+
+    public Ship() {
         shipContainers = new CopyOnWriteArrayList<>();
     }
 
@@ -28,7 +28,6 @@ public class Ship {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public int getMAX_CONTAINERS_SIZE() {
         return MAX_CONTAINERS_SIZE;

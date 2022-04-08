@@ -1,31 +1,23 @@
-package by.epam.basavets.bean;
+package by.epam.basavets.flow;
 
-import java.util.ArrayList;
+import by.epam.basavets.bean.Container;
+import by.epam.basavets.bean.Ship;
+import by.epam.basavets.service.PortService;
+
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.locks.ReentrantLock;
 
-public class ShipGenerator implements Runnable{
+public class ShipGenerator implements Runnable {
 
-       private Port port;
-    private int shipId = 1;
-    private int shipCount = 0;
-    private ReentrantLock locker = new ReentrantLock();
-    private List<Ship>ships;
+    private final PortService port;
 
-    public ShipGenerator(Port port){
+    public ShipGenerator(PortService port) {
         this.port = port;
-        ships = new CopyOnWriteArrayList<>();
     }
-
-
 
     @Override
     public void run() {
-
-
         while (true) {
-
             Ship ship = new Ship();
             List<Container> containers = new CopyOnWriteArrayList<>();
             for (int i = 0; i < ship.getMAX_CONTAINERS_SIZE(); i++) {
@@ -33,13 +25,7 @@ public class ShipGenerator implements Runnable{
                 containers.add(container);
             }
             ship.setShipContainers(containers);
-
             port.add(ship);
-            //port.warehouseLoader();
-            //port.shipLoader();
-            //port.delete();
-
-
         }
     }
 }

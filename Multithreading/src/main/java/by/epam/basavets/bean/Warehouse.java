@@ -1,17 +1,14 @@
 package by.epam.basavets.bean;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Warehouse {
 
-    private final int MAX_SIZE = 100;
+    private final int MAX_SIZE = 40;
     private List<Container> warehouseContainers;
 
-
-
-    public Warehouse(){
+    public Warehouse() {
         warehouseContainers = new CopyOnWriteArrayList<>();
     }
 
