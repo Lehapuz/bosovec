@@ -7,8 +7,6 @@ import by.epam.basavets.bean.Warehouse;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class PortService {
     private final int JETTY_COUNT = 5;
@@ -16,8 +14,8 @@ public class PortService {
     private int shipCount = 0;
     private int shipId = 0;
     private final Warehouse warehouse = new Warehouse();
-    private ReentrantLock locker = new ReentrantLock();
-    private Condition condition = locker.newCondition();
+    //private ReentrantLock locker = new ReentrantLock();
+    //private Condition condition = locker.newCondition();
 
     //Semaphore semaphore;
 
@@ -68,7 +66,6 @@ public class PortService {
         }
 
         if (ships.size() != 0) {
-
             for (Ship ship : ships) {
                 if (!ship.isProcessed() && !ship.isUnloaded()) {
                     for (Container container : ship.getShipContainers()) {
@@ -80,7 +77,6 @@ public class PortService {
                     System.out.println("Корабль разгружен - " + ship.getId());
                     System.out.println("Число контейнеров на корабле - " + ship.getShipContainers().size());
                     System.out.println("Число контейнеров на складе - " + warehouse.getWarehouseContainers().size());
-                    System.out.println(ship.isProcessed());
                 }
 
                 if (ship.getShipContainers().size() == 0) {
