@@ -1,25 +1,25 @@
 package by.epam.basavets.bean;
 
+import by.epam.basavets.Service.PortService;
+
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Ship {
+public class Ship implements Runnable {
 
     private int id;
     private final int MAX_CONTAINERS_SIZE = 20;
     private List<Container> shipContainers;
     private boolean processed;
     private boolean unloaded;
+    private final PortService portService;
 
 
-    public Ship() {
+    public Ship(PortService portService) {
+        this.portService = portService;
         shipContainers = new CopyOnWriteArrayList<>();
     }
 
-
-    public void setShipContainers(List<Container> shipContainers) {
-        this.shipContainers = shipContainers;
-    }
 
     public int getId() {
         return id;
@@ -35,6 +35,10 @@ public class Ship {
 
     public List<Container> getShipContainers() {
         return shipContainers;
+    }
+
+    public void setShipContainers(List<Container> shipContainers) {
+        this.shipContainers = shipContainers;
     }
 
     public boolean isProcessed() {
@@ -56,5 +60,10 @@ public class Ship {
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
+    }
+
+    @Override
+    public void run() {
+        portService.shipIn(this);
     }
 }

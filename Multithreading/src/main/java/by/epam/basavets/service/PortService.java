@@ -83,14 +83,13 @@ public class PortService {
 
                     if (warehouse.getWarehouseContainers().size() > warehouse.getMAX_SIZE()) {
                         try {
-
                             condition.await();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
 
-                    System.out.println("Корабль разгружен - " + ship.getId());
+                    System.out.println("Корабль - " + ship.getId() + " разгружен");
                     System.out.println("Число контейнеров на корабле - " + ship.getShipContainers().size());
                     System.out.println("Число контейнеров на складе - " + warehouse.getWarehouseContainers().size());
                 }
@@ -128,7 +127,7 @@ public class PortService {
                     }
                 }
 
-                System.out.println("Корабль загружен - " + ship.getId());
+                System.out.println("Корабль - " + ship.getId() + " зазгружен");
                 System.out.println("Число контейнеров загруженных на корабль - " + ship.getShipContainers().size());
                 System.out.println("Число контейнеров оставвшихся на складе - " + warehouse.getWarehouseContainers().size());
 
