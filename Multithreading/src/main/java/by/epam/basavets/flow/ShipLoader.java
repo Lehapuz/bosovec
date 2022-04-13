@@ -2,11 +2,11 @@ package by.epam.basavets.flow;
 
 import by.epam.basavets.service.PortService;
 
-public class ShipLoad implements Runnable {
+public class ShipLoader implements Runnable {
 
     private final PortService port;
 
-    public ShipLoad(PortService port) {
+    public ShipLoader(PortService port) {
         this.port = port;
     }
 

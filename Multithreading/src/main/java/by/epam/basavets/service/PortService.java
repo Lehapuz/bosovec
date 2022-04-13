@@ -10,14 +10,18 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class PortService {
     private final int JETTY_COUNT = 5;
     private List<Ship> ships;
     private int shipCount = 0;
     private int shipId = 0;
     private final Warehouse warehouse = new Warehouse();
-    private final ReentrantLock locker = new ReentrantLock();
-    private final Condition condition = locker.newCondition();
+    private final ReentrantLock lock = new ReentrantLock();
+    private final Condition condition = lock.newCondition();
+    private final Logger logger = LogManager.getRootLogger();
 
 
     public PortService() {
@@ -33,19 +37,19 @@ public class PortService {
         }
 
         if (shipCount < JETTY_COUNT) {
-            locker.lock();
+            lock.lock();
             ships.add(ship);
             ship.setId(++shipId);
             ++shipCount;
-            System.out.println("Корабль - " + ship.getId() + " зашел в порт - " + ship.isProcessed());
-            System.out.println("Число контейнеров на корабле - " + ship.getShipContainers().size());
-            locker.unlock();
+            logger.info("Корабль - " + ship.getId() + " зашел в порт - " + ship.isProcessed());
+            logger.info("Число контейнеров на корабле - " + ship.getShipContainers().size());
+            lock.unlock();
         }
     }
 
 
     public void delete() {
-        locker.lock();
+        lock.lock();
         if (shipCount == JETTY_COUNT) {
             try {
                 TimeUnit.SECONDS.sleep(1);
@@ -57,10 +61,10 @@ public class PortService {
             if (ship.isProcessed()) {
                 shipCount--;
                 ships.remove(ship);
-                System.out.println("Корабль - " + ship.getId() + " вышел из порта" + " Статус - " + ship.isProcessed());
+                logger.info("Корабль - " + ship.getId() + " вышел из порта" + " Статус - " + ship.isProcessed());
             }
         }
-        locker.unlock();
+        lock.unlock();
     }
 
 
@@ -72,7 +76,7 @@ public class PortService {
         }
 
         if (ships.size() != 0) {
-            locker.lock();
+            lock.lock();
             for (Ship ship : ships) {
 
                 if (!ship.isProcessed() && !ship.isUnloaded()) {
@@ -89,16 +93,16 @@ public class PortService {
                         }
                     }
 
-                    System.out.println("Корабль - " + ship.getId() + " разгружен");
-                    System.out.println("Число контейнеров на корабле - " + ship.getShipContainers().size());
-                    System.out.println("Число контейнеров на складе - " + warehouse.getWarehouseContainers().size());
+                    logger.info("Корабль - " + ship.getId() + " разгружен");
+                    logger.info("Число контейнеров на корабле - " + ship.getShipContainers().size());
+                    logger.info("Число контейнеров на складе - " + warehouse.getWarehouseContainers().size());
                 }
 
                 if (ship.getShipContainers().size() == 0) {
                     ship.setUnloaded(true);
                 }
             }
-            locker.unlock();
+            lock.unlock();
         }
     }
 
@@ -110,7 +114,7 @@ public class PortService {
             e.printStackTrace();
         }
 
-        locker.lock();
+        lock.lock();
         for (Ship ship : ships) {
 
             if (warehouse.getWarehouseContainers().size() <= warehouse.getMAX_SIZE()) {
@@ -127,15 +131,15 @@ public class PortService {
                     }
                 }
 
-                System.out.println("Корабль - " + ship.getId() + " зазгружен");
-                System.out.println("Число контейнеров загруженных на корабль - " + ship.getShipContainers().size());
-                System.out.println("Число контейнеров оставвшихся на складе - " + warehouse.getWarehouseContainers().size());
+                logger.info("Корабль - " + ship.getId() + " загружен");
+                logger.info("Число контейнеров загруженных на корабль - " + ship.getShipContainers().size());
+                logger.info("Число контейнеров оставвшихся на складе - " + warehouse.getWarehouseContainers().size());
 
                 if (ship.getShipContainers().size() == ship.getMAX_CONTAINERS_SIZE()) {
                     ship.setProcessed(true);
                 }
             }
         }
-        locker.unlock();
+        lock.unlock();
     }
 }

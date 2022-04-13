@@ -2,10 +2,10 @@ package by.epam.basavets.flow;
 
 import by.epam.basavets.service.PortService;
 
-public class ShipDelete implements Runnable {
+public class ShipDeleter implements Runnable {
     private final PortService port;
 
-    public ShipDelete(PortService port) {
+    public ShipDeleter(PortService port) {
         this.port = port;
     }
 
