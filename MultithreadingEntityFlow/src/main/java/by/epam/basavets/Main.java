@@ -22,8 +22,6 @@ public class Main {
             service.execute(ship);
             service.execute(warehouse);
         }
-
-        service.execute(warehouse);
         service.shutdown();
         System.out.println(service.toString());
     }

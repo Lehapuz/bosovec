@@ -18,8 +18,8 @@ public class PortService {
     private final int JETTY_COUNT = 5;
     private int shipCount = 0;
     private int shipID = 0;
-    private final ReentrantLock locker = new ReentrantLock();
-    private final Condition condition = locker.newCondition();
+    private final ReentrantLock lock = new ReentrantLock();
+    private final Condition condition = lock.newCondition();
     private final Logger logger = LogManager.getRootLogger();
 
     public PortService() {
@@ -28,7 +28,7 @@ public class PortService {
 
 
     public void shipIn(Ship ship) {
-        locker.lock();
+        lock.lock();
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
@@ -55,12 +55,12 @@ public class PortService {
                 + " Количество контейнеров - " + ship.getShipContainers().size());
         logger.info(shipCount);
         ships.add(ship);
-        locker.unlock();
+        lock.unlock();
     }
 
 
     public void warehouseLoader(Warehouse warehouse) {
-        locker.lock();
+        lock.lock();
 
         try {
             TimeUnit.SECONDS.sleep(1);
@@ -127,7 +127,7 @@ public class PortService {
                 logger.info(shipCount);
             }
         }
-        locker.unlock();
+        lock.unlock();
     }
 }
 
