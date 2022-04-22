@@ -18,8 +18,11 @@ public class DeletePostMenu {
 
     public void show() {
         String input;
+        String input1;
         logger.info("Введите название который хотите удалить");
         input = scanner.nextLine();
-        //command.getPostService().deletePostByTitle(input);
+        logger.info("Введите свой адрес электронной почты");
+        input1 = scanner.nextLine();
+        command.getPostService().deletePostByTitle(input, input1);
     }
 }

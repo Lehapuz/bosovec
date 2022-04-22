@@ -31,7 +31,7 @@ public class SerializeService {
         //dataSource.getModeratorDAO().read();
         //dataSource.getUserDAO().read();
         //System.out.println(dataSource.getPostDAO().read());
-        dataSource.getPostCommentDAO().read();
+        //dataSource.getPostCommentDAO().read();
         objectInputStream.close();
     }
 }

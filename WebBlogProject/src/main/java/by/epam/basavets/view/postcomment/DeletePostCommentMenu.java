@@ -4,6 +4,7 @@ import by.epam.basavets.command.Command;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class DeletePostCommentMenu {
@@ -16,10 +17,13 @@ public class DeletePostCommentMenu {
         this.command = command;
     }
 
-    public void show() {
+    public void show() throws SQLException {
         String input;
+        String input1;
         logger.info("Введите текст комментария который хотите удалить");
         input = scanner.nextLine();
-        command.getPostCommentService().deletePostComment(input);
+        logger.info("Введите адрес электронной почты");
+        input1 = scanner.nextLine();
+        command.getPostCommentService().deletePostComment(input, input1);
     }
 }

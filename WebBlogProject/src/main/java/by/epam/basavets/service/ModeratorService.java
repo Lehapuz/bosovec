@@ -18,7 +18,6 @@ public class ModeratorService {
     private final Logger logger = LogManager.getRootLogger();
 
     public ModeratorService(ModeratorDAO moderatorDAO, PostDAO postDAO) {
-
         this.moderatorDAO = moderatorDAO;
         this.postDAO = postDAO;
     }
@@ -98,8 +97,7 @@ public class ModeratorService {
                     logger.info("Авторизация пользователя прошла успешно");
                     logger.info(moderator.toString());
                     isAuthorithated = true;
-                }
-                else {
+                } else {
                     logger.error("Пароль неверный");
                 }
             } else {
@@ -110,18 +108,24 @@ public class ModeratorService {
         }
     }
 
-/// Нужно править метод так не получается
+
     public void setModeratorStatus(String postTitle, String status) {
         try {
             Post post;
             if (postTitle.equals(postDAO.findPostByTitle(postTitle).getTitle())) {
                 post = postDAO.findPostByTitle(postTitle);
                 if (status.equals("OK")) {
+                    int id = post.getId();
+                    post.setId(id);
                     post.setModeratorStatus(ModeratorStatus.ACCEPTED);
+                    postDAO.updatePostModeratorStatus(post);
                     logger.info(("Статус изменен"));
                 }
                 if (status.equals("NO")) {
+                    int id = post.getId();
+                    post.setId(id);
                     post.setModeratorStatus(ModeratorStatus.DECLINED);
+                    postDAO.updatePostModeratorStatus(post);
                     logger.info(("Статус изменен"));
                 }
             }

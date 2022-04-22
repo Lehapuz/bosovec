@@ -2,8 +2,6 @@ package by.epam.basavets.dao;
 
 import by.epam.basavets.DBConnection;
 import by.epam.basavets.bean.Enum.ModeratorStatus;
-import by.epam.basavets.bean.Enum.SettingStatus;
-import by.epam.basavets.bean.Moderator;
 import by.epam.basavets.bean.Post;
 import by.epam.basavets.bean.User;
 import org.apache.logging.log4j.LogManager;
@@ -43,7 +41,6 @@ public class PostDAO implements Serializable {
 
         logger.info("Пост - " + post.getTitle() + " успешно добавлен");
     }
-
 
 
     public List<Post> readPosts() throws SQLException {
@@ -95,23 +92,70 @@ public class PostDAO implements Serializable {
     }
 
 
-
-    public void updatePost(Post post, Post newPost) throws SQLException {
-        readPosts().removeIf(post1 -> post1.equals(post));
-        readPosts().add(newPost);
+    public void updatePostModeratorStatus(Post post) throws SQLException {
+        String sql = "UPDATE posts SET moderator_status = ? WHERE id = ?";
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, post.getModeratorStatus().toString());
+        statement.setInt(2, post.getId());
+        statement.executeUpdate();
     }
 
+
+    public void updatePost(Post post) throws SQLException {
+        Connection connection = DBConnection.getConnection();
+        String sql = "UPDATE posts SET title = ?, text = ?, moderator_status = ? WHERE id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setString(1, post.getTitle());
+        statement.setString(2, post.getText());
+        statement.setString(3, post.getModeratorStatus().toString());
+        statement.setInt(4, post.getId());
+        statement.executeUpdate();
+    }
+
+
     public void deletePost(Post post) throws SQLException {
-        readPosts().removeIf(user1 -> user1.equals(post));
+        String sql = "DELETE FROM posts WHERE title = ?";
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, post.getTitle());
+        statement.execute();
     }
 
 
     public Post findPostByTitle(String title) throws SQLException {
-        for (Post post : readPosts()) {
-            if (post.getTitle().equals(title)) {
-                return post;
-            }
+        String sql = "SELECT * FROM posts WHERE title = ?";
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, title);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            Post post = new Post();
+            post.setId(resultSet.getInt("id"));
+            post.setTitle(resultSet.getString("title"));
+            post.setText(resultSet.getString("text"));
+            post.setLikeCount(resultSet.getInt("like_count"));
+            post.setDislikeCount(resultSet.getInt("dislike_count"));
+            post.setViewCount(resultSet.getInt("view_count"));
+            post.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
+                    .ofPattern("yyyy-MM-dd HH:mm:ss")));
+            post.setUser(findUserById(resultSet.getInt("user_id")));
+            post.setModeratorStatus(ModeratorStatus.valueOf(resultSet.getString("moderator_status")));
+            return post;
         }
         return null;
+    }
+
+
+    public void updatePostByPostVote(Post post) throws SQLException {
+        String sql = "UPDATE posts SET like_count = ?, dislike_count = ?, view_count = ? WHERE id = ?";
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, post.getLikeCount());
+        statement.setInt(2, post.getDislikeCount());
+        statement.setInt(3, post.getViewCount());
+        statement.setInt(4, post.getId());
+        statement.executeUpdate();
     }
 }

@@ -20,7 +20,6 @@ public class PostService {
     private final UserDAO userDAO;
     private final SettingsDAO settingsDAO;
     private final Logger logger = LogManager.getRootLogger();
-    private static int i = 0;
 
     public PostService(PostDAO postDAO, UserDAO userDAO, SettingsDAO settingsDAO) {
         this.postDAO = postDAO;
@@ -32,20 +31,16 @@ public class PostService {
         try {
             if (settingsDAO.getSettings().equals(SettingStatus.Yes)) {
                 Post post = new Post();
-                //List<PostComment> postComments = new ArrayList<>();
                 User user = userDAO.findUserByEmail(email);
                 post.setUser(user);
                 post.setTitle(title);
                 post.setText(text);
-                post.setId(++i);
                 post.setLikeCount(0);
                 post.setDislikeCount(0);
                 post.setViewCount(0);
                 post.setTime(LocalDateTime.now());
-                //post.setPostComments(postComments);
                 post.setModeratorStatus(ModeratorStatus.NEW);
                 postDAO.addPost(post);
-                //logger.info("Пост добавлен");
             } else {
                 logger.error("На добавление новых постов доступ запрещен");
             }
@@ -72,37 +67,44 @@ public class PostService {
     }
 
 
-//    public void deletePostByTitle(String title) {
-//        try {
-//            Post post;
-//            post = dataSource.getPostDAO().findPostByTitle(title);
-//            dataSource.getPostDAO().deletePost(post);
-//            logger.info("Пост удален");
-//        } catch (Exception e) {
-//            logger.error("Пост не найден");
-//        }
-//    }
-//
-//
-//    public void updatePostByTitle(String title, String newTitle, String text) {
-//        try {
-//            Post post;
-//            Post post1 = new Post();
-//            post = dataSource.getPostDAO().findPostByTitle(title);
-//            post1.setId(post.getId());
-//            post1.setUser(post.getUser());
-//            post1.setPostComments(post.getPostComments());
-//            post1.setLikeCount(post.getLikeCount());
-//            post1.setDislikeCount(post.getDislikeCount());
-//            post1.setViewCount(post.getViewCount());
-//            post1.setTime(LocalDateTime.now());
-//            post1.setModeratorStatus(ModeratorStatus.NEW);
-//            dataSource.getPostDAO().updatePost(post, post1);
-//            post1.setTitle(newTitle);
-//            post1.setText(text);
-//            logger.info("Пост обновлен");
-//        } catch (Exception e) {
-//            logger.error("Пост не найден");
-//        }
-//    }
+    public void deletePostByTitle(String title, String email) {
+        try {
+            Post post = postDAO.findPostByTitle(title);
+            int id = post.getUser().getId();
+            User user = postDAO.findUserById(id);
+            User currentUser = userDAO.findUserByEmail(email);
+            if (user.getId() == currentUser.getId()){
+                postDAO.deletePost(post);
+                logger.info("Пост удален");
+            }
+            else {
+                logger.info("Вы не являетесь автором поста");
+            }
+        } catch (Exception e) {
+            logger.error("Пост не найден");
+        }
+    }
+
+
+    public void updatePostByTitle(String title, String email, String newTitle, String text) {
+        try {
+            Post post = postDAO.findPostByTitle(title);
+            int id = post.getUser().getId();
+            User user = postDAO.findUserById(id);
+            User currentUser = userDAO.findUserByEmail(email);
+            if (user.getId() == currentUser.getId()){
+                post.setId(post.getId());
+                post.setTitle(newTitle);
+                post.setText(text);
+                post.setModeratorStatus(ModeratorStatus.NEW);
+                postDAO.updatePost(post);
+                logger.info("Пост обновлен");
+            }
+            else {
+                logger.info("Вы не являетесь автором поста");
+            }
+        } catch (Exception e) {
+            logger.error("Пост не найден");
+        }
+    }
 }

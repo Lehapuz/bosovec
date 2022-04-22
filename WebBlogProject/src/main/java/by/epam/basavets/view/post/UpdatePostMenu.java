@@ -20,12 +20,15 @@ public class UpdatePostMenu {
         String input;
         String input1;
         String input2;
+        String input3;
         logger.info("Введите название  который хотите откорректировать");
         input = scanner.nextLine();
-        logger.info("Введите новое название");
+        logger.info("Введите свой адрес электронной почты");
         input1 = scanner.nextLine();
-        logger.info("Введите новый текст");
+        logger.info("Введите новое название");
         input2 = scanner.nextLine();
-        //command.getPostService().updatePostByTitle(input, input1, input2);
+        logger.info("Введите новый текст");
+        input3 = scanner.nextLine();
+        command.getPostService().updatePostByTitle(input, input1, input2, input3);
     }
 }

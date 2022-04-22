@@ -23,8 +23,8 @@ public class Command implements Serializable {
     UserService userService = new UserService(userDAO);
     ModeratorService moderatorService = new ModeratorService(moderatorDAO, postDAO);
     PostService postService = new PostService(postDAO, userDAO, settingsDAO);
-    PostCommentService postCommentService = new PostCommentService(dataSource);
-    PostVoteService postVoteService = new PostVoteService(dataSource);
+    PostCommentService postCommentService = new PostCommentService(postCommentDAO, postDAO, userDAO);
+    PostVoteService postVoteService = new PostVoteService(postVoteDAO, postDAO);
     SettingsService settingsService = new SettingsService(settingsDAO);
     SerializeService serializeService = new SerializeService(dataSource);
     FileCollectionsService fileCollectionsService = new FileCollectionsService(moderatorService, userService,

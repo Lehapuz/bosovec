@@ -57,7 +57,7 @@ public class PostDAOTest extends TestCase {
     public void testUpdatePostByEmail() throws SQLException {
         expected.remove(post1);
         expected.add(post4);
-        postDAO.updatePost(post1, post4);
+        postDAO.updatePost(post1);
         actual = postDAO.readPosts();
         assertEquals(expected, actual);
     }
