@@ -18,13 +18,14 @@ public class DBConnection {
     private static String PASS;
 
 
-    private void getResource() throws IOException {
+    private void getResource() throws IOException, SQLException {
         Properties properties = new Properties();
         String propertiesFileName = "connection.properties";
         properties.load(getClass().getClassLoader().getResourceAsStream(propertiesFileName));
         URL = properties.getProperty("url");
         USER = properties.getProperty("username");
         PASS = properties.getProperty("password");
+        DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         logger.info("Настройки БД получены");
     }
 

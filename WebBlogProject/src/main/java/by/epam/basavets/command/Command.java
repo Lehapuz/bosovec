@@ -3,11 +3,7 @@ package by.epam.basavets.command;
 import by.epam.basavets.dao.*;
 import by.epam.basavets.service.*;
 
-import java.io.Serializable;
-
-public class Command implements Serializable {
-
-    private static final long serialVersionUID = 11L;
+public class Command {
 
     UserDAO userDAO = new UserDAO();
     PostDAO postDAO = new PostDAO();
@@ -22,7 +18,6 @@ public class Command implements Serializable {
     PostCommentService postCommentService = new PostCommentService(postCommentDAO, postDAO, userDAO);
     PostVoteService postVoteService = new PostVoteService(postVoteDAO, postDAO);
     SettingsService settingsService = new SettingsService(settingsDAO);
-
 
     public UserService getUserService() {
         return userService;
