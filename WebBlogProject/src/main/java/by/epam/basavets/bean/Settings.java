@@ -2,12 +2,9 @@ package by.epam.basavets.bean;
 
 import by.epam.basavets.bean.Enum.SettingStatus;
 
-import java.io.Serializable;
-
-public class Settings implements Serializable {
+public class Settings {
 
     private SettingStatus settingStatus;
-    private static final long serialVersionUID = 6L;
 
     public Settings() {
     }

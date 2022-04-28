@@ -1,13 +1,12 @@
 package by.epam.basavets.dao;
 
-import by.epam.basavets.DBConnection;
+import by.epam.basavets.utils.DBConnection;
 import by.epam.basavets.bean.Enum.ModeratorStatus;
 import by.epam.basavets.bean.Post;
 import by.epam.basavets.bean.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,9 +16,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostDAO implements Serializable {
+public class PostDAO {
     private final Logger logger = LogManager.getRootLogger();
-    private static final long serialVersionUID = 14L;
 
 
     public void addPost(Post post) throws SQLException {
@@ -28,7 +26,6 @@ public class PostDAO implements Serializable {
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
-
         statement.setString(1, post.getTitle());
         statement.setString(2, post.getText());
         statement.setInt(3, post.getLikeCount());
@@ -38,8 +35,9 @@ public class PostDAO implements Serializable {
         statement.setInt(7, post.getUser().getId());
         statement.setString(8, post.getModeratorStatus().toString());
         statement.execute();
-
         logger.info("Пост - " + post.getTitle() + " успешно добавлен");
+        statement.close();
+        connection.close();
     }
 
 
@@ -49,25 +47,27 @@ public class PostDAO implements Serializable {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet resultSet = statement.executeQuery();
-        if (resultSet == null) {
-            logger.info("Посты отсутствуют");
-        } else {
-            while (resultSet.next()) {
-                Post post = new Post();
-                post.setId(resultSet.getInt("id"));
-                post.setTitle(resultSet.getString("title"));
-                post.setText(resultSet.getString("text"));
-                post.setLikeCount(resultSet.getInt("like_count"));
-                post.setDislikeCount(resultSet.getInt("dislike_count"));
-                post.setViewCount(resultSet.getInt("view_count"));
-                post.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
-                        .ofPattern("yyyy-MM-dd HH:mm:ss")));
-                post.setUser(findUserById(resultSet.getInt("user_id")));
-                post.setModeratorStatus(ModeratorStatus.valueOf(resultSet.getString("moderator_status")));
-                posts.add(post);
-            }
+        while (resultSet.next()) {
+            Post post = new Post();
+            post.setId(resultSet.getInt("id"));
+            post.setTitle(resultSet.getString("title"));
+            post.setText(resultSet.getString("text"));
+            post.setLikeCount(resultSet.getInt("like_count"));
+            post.setDislikeCount(resultSet.getInt("dislike_count"));
+            post.setViewCount(resultSet.getInt("view_count"));
+            post.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
+                    .ofPattern("yyyy-MM-dd HH:mm:ss")));
+            post.setUser(findUserById(resultSet.getInt("user_id")));
+            post.setModeratorStatus(ModeratorStatus.valueOf(resultSet.getString("moderator_status")));
+            posts.add(post);
         }
-      return posts;
+        if (!resultSet.next()) {
+            logger.info("Посты отсутствуют");
+        }
+        resultSet.close();
+        statement.close();
+        connection.close();
+        return posts;
     }
 
 
@@ -77,7 +77,6 @@ public class PostDAO implements Serializable {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
-
         while (resultSet.next()) {
             User user = new User();
             user.setId(resultSet.getInt("id"));
@@ -88,6 +87,9 @@ public class PostDAO implements Serializable {
                     .ofPattern("yyyy-MM-dd HH:mm:ss")));
             return user;
         }
+        resultSet.close();
+        statement.close();
+        connection.close();
         return null;
     }
 
@@ -99,6 +101,8 @@ public class PostDAO implements Serializable {
         statement.setString(1, post.getModeratorStatus().toString());
         statement.setInt(2, post.getId());
         statement.executeUpdate();
+        statement.close();
+        connection.close();
     }
 
 
@@ -106,12 +110,13 @@ public class PostDAO implements Serializable {
         Connection connection = DBConnection.getConnection();
         String sql = "UPDATE posts SET title = ?, text = ?, moderator_status = ? WHERE id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
-
         statement.setString(1, post.getTitle());
         statement.setString(2, post.getText());
         statement.setString(3, post.getModeratorStatus().toString());
         statement.setInt(4, post.getId());
         statement.executeUpdate();
+        statement.close();
+        connection.close();
     }
 
 
@@ -121,6 +126,8 @@ public class PostDAO implements Serializable {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, post.getTitle());
         statement.execute();
+        statement.close();
+        connection.close();
     }
 
 
@@ -144,6 +151,9 @@ public class PostDAO implements Serializable {
             post.setModeratorStatus(ModeratorStatus.valueOf(resultSet.getString("moderator_status")));
             return post;
         }
+        resultSet.close();
+        statement.close();
+        connection.close();
         return null;
     }
 
@@ -157,5 +167,7 @@ public class PostDAO implements Serializable {
         statement.setInt(3, post.getViewCount());
         statement.setInt(4, post.getId());
         statement.executeUpdate();
+        statement.close();
+        connection.close();
     }
 }

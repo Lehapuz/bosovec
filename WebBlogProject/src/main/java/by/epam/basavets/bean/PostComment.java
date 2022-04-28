@@ -1,17 +1,14 @@
 package by.epam.basavets.bean;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class PostComment implements Serializable {
+public class PostComment {
 
     private int id;
     private String text;
     private LocalDateTime time;
     private Post post;
     private User user;
-
-    private static final long serialVersionUID = 4L;
 
 
     public PostComment(int id, String text, LocalDateTime time, Post post, User user) {

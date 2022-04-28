@@ -1,12 +1,9 @@
 package by.epam.basavets.bean;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class User extends Person implements Serializable {
-
-    private static final long serialVersionUID = 2L;
+public class User extends Person {
 
     public User(int id, String name, String email, String password, LocalDateTime registrationTime) {
         super(id, name, email, password, registrationTime);

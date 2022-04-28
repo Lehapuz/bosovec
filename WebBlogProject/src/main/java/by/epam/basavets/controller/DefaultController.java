@@ -5,7 +5,6 @@ import by.epam.basavets.view.MainMenu;
 import by.epam.basavets.view.ModeratorMenu;
 import by.epam.basavets.view.UserMenu;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 public class DefaultController {
@@ -16,19 +15,8 @@ public class DefaultController {
     MainMenu menu = new MainMenu(command);
 
 
-    public void read() throws IOException, ClassNotFoundException {
-        command.readFromFile();
-    }
-
-    public void run() throws IOException, SQLException {
+    public void run() throws SQLException {
         while (true) {
-            // read from file
-//            try {
-//                command.readCollections();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
             if (!command.getUserService().getAuthorithated() &&
                     !command.getModeratorService().getAuthorithated()) {
                 menu.run();
@@ -39,14 +27,6 @@ public class DefaultController {
             if (command.getUserService().getAuthorithated()) {
                 userMenu.run();
             }
-            command.runWriteFile();
-
-            //wright in file
-//            try {
-//                command.writeCollections();
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }
         }
     }
 }

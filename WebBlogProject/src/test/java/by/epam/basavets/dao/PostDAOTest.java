@@ -75,11 +75,11 @@ public class PostDAOTest extends TestCase {
         assertEquals(expected, actual);
     }
 
-//    public void testFindUserByEmail() {
-//        User expectedUser = user;
-//        User actualUser = userDAO.findUserByEmail("sasha@mail.ru");
-//        System.out.println(expectedUser);
-//        System.out.println(actualUser);
-//        assertEquals(expectedUser, actualUser);
-//    }
+    public void testFindUserByEmail() throws SQLException {
+        User expectedUser = user;
+        User actualUser = userDAO.findUserByEmail("sasha@mail.ru");
+        System.out.println(expectedUser);
+        System.out.println(actualUser);
+        assertEquals(expectedUser, actualUser);
+    }
 }

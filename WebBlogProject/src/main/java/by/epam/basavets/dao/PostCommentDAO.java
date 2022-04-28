@@ -1,6 +1,6 @@
 package by.epam.basavets.dao;
 
-import by.epam.basavets.DBConnection;
+import by.epam.basavets.utils.DBConnection;
 import by.epam.basavets.bean.Enum.ModeratorStatus;
 import by.epam.basavets.bean.Post;
 import by.epam.basavets.bean.PostComment;
@@ -8,21 +8,16 @@ import by.epam.basavets.bean.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
-public class PostCommentDAO implements Serializable {
+public class PostCommentDAO {
 
-    private final List<PostComment> postComments = new ArrayList<>();
     private final Logger logger = LogManager.getRootLogger();
-    private static final long serialVersionUID = 13L;
 
 
     public void addPostComment(PostComment postComment) throws SQLException {
@@ -36,6 +31,8 @@ public class PostCommentDAO implements Serializable {
         statement.setInt(4, postComment.getUser().getId());
         statement.execute();
         logger.info("Комментарий к посту - " + postComment.getPost().getText() + " успешно добавлен");
+        statement.close();
+        connection.close();
     }
 
 
@@ -45,7 +42,6 @@ public class PostCommentDAO implements Serializable {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
-
         while (resultSet.next()) {
             Post post = new Post();
             post.setId(resultSet.getInt("id"));
@@ -60,6 +56,9 @@ public class PostCommentDAO implements Serializable {
             post.setModeratorStatus(ModeratorStatus.valueOf(resultSet.getString("moderator_status")));
             return post;
         }
+        resultSet.close();
+        statement.close();
+        connection.close();
         return null;
     }
 
@@ -70,7 +69,6 @@ public class PostCommentDAO implements Serializable {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
-
         while (resultSet.next()) {
             User user = new User();
             user.setId(resultSet.getInt("id"));
@@ -81,6 +79,9 @@ public class PostCommentDAO implements Serializable {
                     .ofPattern("yyyy-MM-dd HH:mm:ss")));
             return user;
         }
+        resultSet.close();
+        statement.close();
+        connection.close();
         return null;
     }
 
@@ -90,20 +91,22 @@ public class PostCommentDAO implements Serializable {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet resultSet = statement.executeQuery();
-        if (resultSet == null) {
-            logger.info("Комментарии отсутствуют");
-        } else {
-            while (resultSet.next()) {
-                PostComment postComment = new PostComment();
-                postComment.setId(resultSet.getInt("id"));
-                postComment.setText(resultSet.getString("text"));
-                postComment.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
-                        .ofPattern("yyyy-MM-dd HH:mm:ss")));
-                postComment.setPost(findPostById(resultSet.getInt("post_id")));
-                postComment.setUser(findUserById(resultSet.getInt("user_id")));
-                logger.info(postComment.toString());
-            }
+        while (resultSet.next()) {
+            PostComment postComment = new PostComment();
+            postComment.setId(resultSet.getInt("id"));
+            postComment.setText(resultSet.getString("text"));
+            postComment.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
+                    .ofPattern("yyyy-MM-dd HH:mm:ss")));
+            postComment.setPost(findPostById(resultSet.getInt("post_id")));
+            postComment.setUser(findUserById(resultSet.getInt("user_id")));
+            logger.info(postComment.toString());
         }
+        if (!resultSet.next()) {
+            logger.info("Комментарии отсутствуют");
+        }
+        resultSet.close();
+        statement.close();
+        connection.close();
     }
 
 
@@ -123,6 +126,9 @@ public class PostCommentDAO implements Serializable {
             postComment.setUser(findUserById(resultSet.getInt("user_id")));
             return postComment;
         }
+        resultSet.close();
+        statement.close();
+        connection.close();
         return null;
     }
 
@@ -134,6 +140,8 @@ public class PostCommentDAO implements Serializable {
         statement.setString(1, postComment.getText());
         statement.setInt(2, postComment.getId());
         statement.executeUpdate();
+        statement.close();
+        connection.close();
     }
 
 
@@ -143,10 +151,7 @@ public class PostCommentDAO implements Serializable {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, postComment.getText());
         statement.execute();
-    }
-
-
-    public List<PostComment> getPostComments() {
-        return postComments;
+        statement.close();
+        connection.close();
     }
 }

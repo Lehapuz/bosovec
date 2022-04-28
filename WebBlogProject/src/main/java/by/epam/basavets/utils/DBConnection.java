@@ -1,4 +1,4 @@
-package by.epam.basavets;
+package by.epam.basavets.utils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,9 +11,8 @@ import java.util.Properties;
 
 public class DBConnection {
 
-
     private static final Logger logger = LogManager.getRootLogger();
-    private static DBConnection dbConnection = new DBConnection();
+    private static final DBConnection dbConnection = new DBConnection();
     private static String URL;
     private static String USER;
     private static String PASS;
