@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
 
@@ -34,7 +36,8 @@ public class UserDAO {
     }
 
 
-    public void read() throws SQLException {
+    public List<User> read() throws SQLException {
+        List <User> users = new ArrayList<>();
         String sql = "SELECT * FROM users";
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -48,13 +51,12 @@ public class UserDAO {
             user.setRegTime(LocalDateTime.parse(resultSet.getString("registration_time"), DateTimeFormatter
                     .ofPattern("yyyy-MM-dd HH:mm:ss")));
             logger.info(user.toString());
-        }
-        if (!resultSet.next()) {
-            logger.info("Пользователи отсутствуют");
+            users.add(user);
         }
         resultSet.close();
         statement.close();
         connection.close();
+        return users;
     }
 
 

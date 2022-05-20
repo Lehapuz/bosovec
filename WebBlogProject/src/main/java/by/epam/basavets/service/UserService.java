@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserService {
 
@@ -36,8 +37,9 @@ public class UserService {
     }
 
 
-    public void getAllUsers() throws SQLException {
-        userDAO.read();
+    public List<User> getAllUsers() throws SQLException {
+        //userDAO.read();
+        return userDAO.read();
     }
 
 

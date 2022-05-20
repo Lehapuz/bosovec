@@ -65,7 +65,8 @@ public class DBConnection {
                 "time DATETIME NOT NULL, " +
                 "user_id INT NOT NULL, " +
                 "moderator_status TEXT NOT NULL, " +
-                "PRIMARY KEY(id))");
+                "PRIMARY KEY(id), " +
+                "FOREIGN KEY(user_id) REFERENCES users(id))");
 
         connection.createStatement().execute("CREATE TABLE IF NOT EXISTS post_comments(" +
                 "id INT NOT NULL AUTO_INCREMENT, " +
@@ -73,7 +74,9 @@ public class DBConnection {
                 "time DATETIME NOT NULL, " +
                 "post_id INT NOT NULL, " +
                 "user_id INT NOT NULL, " +
-                "PRIMARY KEY(id))");
+                "PRIMARY KEY(id), " +
+                "FOREIGN KEY(post_id) REFERENCES posts(id), " +
+                "FOREIGN KEY(user_id) REFERENCES users(id))");
 
         connection.createStatement().execute("CREATE TABLE IF NOT EXISTS post_votes(" +
                 "id INT NOT NULL AUTO_INCREMENT, " +
@@ -81,7 +84,9 @@ public class DBConnection {
                 "time DATETIME NOT NULL, " +
                 "post_id INT NOT NULL, " +
                 "user_id INT NOT NULL, " +
-                "PRIMARY KEY(id))");
+                "PRIMARY KEY(id), " +
+                "FOREIGN KEY(post_id) REFERENCES posts(id), " +
+                "FOREIGN KEY(user_id) REFERENCES users(id))");
 
         connection.createStatement().execute("CREATE TABLE IF NOT EXISTS settings(" +
                 "setting_status VARCHAR(5) NOT NULL, " +
