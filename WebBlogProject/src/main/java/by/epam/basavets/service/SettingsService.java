@@ -35,11 +35,12 @@ public class SettingsService {
     }
 
 
-    public void showSettings() throws SQLException {
-        if (settings.getSettingStatus() == null) {
+    public SettingStatus showSettings() throws SQLException {
+        if (settingsDAO.getSettings() == null) {
             settings.setSettingStatus(SettingStatus.No);
             settingsDAO.addSettings(settings);
         }
-        logger.info("Статус добавления постов - " + settings.getSettingStatus());
+        logger.info("Статус добавления постов - " + settingsDAO.getSettings());
+        return settingsDAO.getSettings();
     }
 }

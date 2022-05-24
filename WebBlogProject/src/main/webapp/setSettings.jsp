@@ -4,50 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create user</title>
+<title>Set settings</title>
 </head>
 
 <body>
-<h3>Регистрация Модератора</h3>
+<h3>Установка настройки для сайта</h3>
+
 <form method="post">
-
-<label>Name</label>
-<br>
-<input name="name" type="string"/>
-
-<br>
-<br>
-
-<label>Password</label>
-<br>
-<input name="password" type="password"/>
-
-<br>
-<br>
-
-<label>Email</label>
-<br>
-<input name="email" type="email"/>
-
-<br>
-<br>
-
-<label>Secrete code</label>
-<br>
-<input name="secretCode" type="string"/>
-
-<br>
-<br>
-
-<input type="submit" value="Save"/>
+    <select name="status">
+        <option value="Yes">Разрешить добавление постов</option>
+        <option value="No">Запретить добавление постов</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Save"/>
 </form>
 
-<p>"${registration}"</p>
-
 <br>
 <br>
-
-<a href="/">Назад</a>
 
 </body>
 </html>
