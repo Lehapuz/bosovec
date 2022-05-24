@@ -3,18 +3,20 @@ package by.epam.basavets.service;
 import by.epam.basavets.bean.Enum.ModeratorStatus;
 import by.epam.basavets.bean.Moderator;
 import by.epam.basavets.bean.Post;
+import by.epam.basavets.bean.User;
 import by.epam.basavets.dao.ModeratorDAO;
 import by.epam.basavets.dao.PostDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class ModeratorService {
 
     private final ModeratorDAO moderatorDAO;
     private final PostDAO postDAO;
-    private boolean isAuthorithated;
+    private boolean isAuthorizated;
     private final Logger logger = LogManager.getRootLogger();
 
     public ModeratorService(ModeratorDAO moderatorDAO, PostDAO postDAO) {
@@ -23,13 +25,13 @@ public class ModeratorService {
     }
 
 
-    public void registerModerator(String name, String password, String email) throws SQLException {
+    public void registrationModerator(String name, String password, String email) throws SQLException {
         Moderator moderator = new Moderator();
         moderator.setName(name);
         moderator.setPassword(password);
         moderator.setEmail(email);
         if (isValidEmail(moderator.getEmail())) {
-            if (moderatorDAO.findModeratorByEmail(moderator.getEmail()) != null) {
+            if (findModeratorByEmail(moderator.getEmail()) != null) {
                 logger.error("Такой адрес электронной почты уже зарегистрирован");
             } else {
                 moderatorDAO.addModerator(moderator);
@@ -40,8 +42,8 @@ public class ModeratorService {
     }
 
 
-    public void getAllModerators() throws SQLException {
-        moderatorDAO.read();
+    public List<Moderator> getAllModerators() throws SQLException {
+        return moderatorDAO.read();
     }
 
 
@@ -52,7 +54,7 @@ public class ModeratorService {
                 Moderator moderator = moderatorDAO.findModeratorByEmail(email);
                 if (password.equals(moderator.getPassword())) {
                     moderatorDAO.deleteModerator(moderator);
-                    isAuthorithated = false;
+                    isAuthorizated = false;
                 } else {
                     logger.error("Адрес электронной почты не верный");
                 }
@@ -89,14 +91,14 @@ public class ModeratorService {
     }
 
 
-    public void authorithationModerator(String email, String password) {
+    public void authorizationModerator(String email, String password) {
         try {
             if (email.equals(moderatorDAO.findModeratorByEmail(email).getEmail())) {
                 Moderator moderator = moderatorDAO.findModeratorByEmail(email);
                 if (password.equals(moderator.getPassword())) {
                     logger.info("Авторизация пользователя прошла успешно");
                     logger.info(moderator.toString());
-                    isAuthorithated = true;
+                    isAuthorizated = true;
                 } else {
                     logger.error("Пароль неверный");
                 }
@@ -135,13 +137,18 @@ public class ModeratorService {
     }
 
 
-    public void exit() {
-        isAuthorithated = false;
+    public Moderator findModeratorByEmail(String email) throws SQLException {
+        return moderatorDAO.findModeratorByEmail(email);
     }
 
 
-    public boolean getAuthorithated() {
-        return isAuthorithated;
+    public void exit() {
+        isAuthorizated = false;
+    }
+
+
+    public boolean getAuthorizated() {
+        return isAuthorizated;
     }
 
 

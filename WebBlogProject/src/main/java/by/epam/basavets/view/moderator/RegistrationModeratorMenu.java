@@ -27,6 +27,6 @@ public class RegistrationModeratorMenu {
         input1 = scanner.nextLine();
         logger.info("пароль добавлен" + "\n" + "Введите адресс электронной почты");
         input2 = scanner.nextLine();
-        command.getModeratorService().registerModerator(input, input1, input2);
+        command.getModeratorService().registrationModerator(input, input1, input2);
     }
 }

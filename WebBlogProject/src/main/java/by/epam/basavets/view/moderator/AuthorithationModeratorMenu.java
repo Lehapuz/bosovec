@@ -22,6 +22,6 @@ public class AuthorithationModeratorMenu {
         input = scanner.nextLine();
         logger.info("Введите пароль");
         input1 = scanner.nextLine();
-        command.getModeratorService().authorithationModerator(input, input1);
+        command.getModeratorService().authorizationModerator(input, input1);
     }
 }

@@ -12,13 +12,13 @@
     <div>
     <h2>Список доступных команд для незарегистрированного пользователя:</h2>
         <div>
-        <button onclick="location.href='/registerModerator'">Регистрация модератора</button>
+        <button onclick="location.href='/registrationModerator'">Регистрация модератора</button>
         <br></br>
         <button onclick="location.href='/getModerators'">Просмотр всех модераторов</button>
         <br></br>
         <button onclick="location.href='/authorizationModerator'">Авторизация модератора</button>
         <br></br>
-        <button onclick="location.href='/registerUser'">Регистрация пользователя</button>
+        <button onclick="location.href='/registrationUser'">Регистрация пользователя</button>
         <br></br>
         <button onclick="location.href='/getUsers'">Просмотр всех пользователей</button>
         <br></br>

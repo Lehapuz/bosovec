@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<c:if test="${user == null}">
+<c:if test="${register == null}">
     <p>Visible</p>
 </c:if>
 

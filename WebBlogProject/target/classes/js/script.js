@@ -11,7 +11,6 @@ $(document).on('click', '.post-link', function(){
             url: '/' + postId,
             success: function(response)
             {
-
                var code = '<span>Автор:' + response.author + '</span>';
                 link.parent().append(code);
             },

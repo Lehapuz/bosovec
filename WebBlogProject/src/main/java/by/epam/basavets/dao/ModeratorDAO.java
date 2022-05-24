@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModeratorDAO {
 
@@ -33,7 +35,8 @@ public class ModeratorDAO {
     }
 
 
-    public void read() throws SQLException {
+    public List<Moderator> read() throws SQLException {
+        List<Moderator> moderators = new ArrayList<>();
         String sql = "SELECT * FROM moderators";
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -47,6 +50,7 @@ public class ModeratorDAO {
             moderator.setRegTime(LocalDateTime.parse(resultSet.getString("registration_time"), DateTimeFormatter
                     .ofPattern("yyyy-MM-dd HH:mm:ss")));
             logger.info(moderator.toString());
+            moderators.add(moderator);
         }
         if (!resultSet.next()) {
             logger.info("Модераторы отсутствуют");
@@ -54,6 +58,7 @@ public class ModeratorDAO {
         resultSet.close();
         statement.close();
         connection.close();
+        return moderators;
     }
 
 

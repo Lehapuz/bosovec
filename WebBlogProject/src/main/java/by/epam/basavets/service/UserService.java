@@ -26,7 +26,7 @@ public class UserService {
         user.setPassword(password);
         user.setEmail(email);
         if (isValidEmail(user.getEmail())) {
-            if (userDAO.findUserByEmail(user.getEmail()) != null) {
+            if (findUserByEmail(email) != null) {
                 logger.error("Такой адрес электронной почты уже зарегистрирован");
             } else {
                 userDAO.addUser(user);
@@ -38,7 +38,6 @@ public class UserService {
 
 
     public List<User> getAllUsers() throws SQLException {
-        //userDAO.read();
         return userDAO.read();
     }
 
@@ -86,7 +85,7 @@ public class UserService {
     }
 
 
-    public void authorithationUser(String email, String password) {
+    public void authorizationUser(String email, String password) {
         try {
             if (email.equals(userDAO.findUserByEmail(email).getEmail())) {
                 User user = userDAO.findUserByEmail(email);
@@ -105,13 +104,17 @@ public class UserService {
         }
     }
 
+    public User findUserByEmail(String email) throws SQLException {
+        return userDAO.findUserByEmail(email);
+    }
+
 
     public void exit() {
         isAuthorizated = false;
     }
 
 
-    public boolean getAuthorithated() {
+    public boolean getAuthorizated() {
         return isAuthorizated;
     }
 

@@ -22,6 +22,6 @@ public class AuthorithationUserMenu {
         input = scanner.nextLine();
         logger.info("Введите пароль");
         input1 = scanner.nextLine();
-        command.getUserService().authorithationUser(input, input1);
+        command.getUserService().authorizationUser(input, input1);
     }
 }
