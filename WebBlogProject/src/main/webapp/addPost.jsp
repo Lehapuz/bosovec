@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Delete user</title>
+<title>Create post</title>
 </head>
 
 <body>
-<h3>Удаление аккаунта пользователя</h3>
+<h3>Добавление поста</h3>
 <form method="post">
 
 <label>Email</label>
@@ -18,9 +18,16 @@
 <br>
 <br>
 
-<label>Password</label>
+<label>Title</label>
 <br>
-<input name="password" type="password"/>
+<input name="title" type="string"/>
+
+<br>
+<br>
+
+<label>Text</label>
+<br>
+<input name="text" type="string"/>
 
 <br>
 <br>
@@ -28,12 +35,12 @@
 <input type="submit" value="Save"/>
 </form>
 
-<p>"${delete}"</p>
+<p>"${correctEmail}"</p>
 
 <br>
 <br>
 
-<a href="/moderator.jsp">Назад</a>
+<a href="/user.jsp">Назад</a>
 
 </body>
 </html>

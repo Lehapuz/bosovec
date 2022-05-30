@@ -1,5 +1,6 @@
 package by.epam.basavets.servlet.user;
 
+import by.epam.basavets.bean.User;
 import by.epam.basavets.command.Command;
 
 import javax.servlet.ServletException;
@@ -16,44 +17,44 @@ public class UserUpdateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
+        if (Command.getInstance().getUserService().getAuthoriseUser() != null) {
+            getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
+        } else {
+            getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
+        }
     }
 
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Command command = new Command();
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String name = req.getParameter("name");
         String newPassword = req.getParameter("newPassword");
         HttpSession session = req.getSession();
+        User user = Command.getInstance().getUserService().getAuthoriseUser();
         try {
-            if (command.getUserService().findUserByEmail(email) == null) {
+            if (Command.getInstance().getUserService().findUserByEmail(email) == null ||
+                    !user.getEmail().equals(Command.getInstance().getUserService().findUserByEmail(email).getEmail())) {
                 session.setAttribute("update", "Неверный адрес электронной почты");
                 resp.setCharacterEncoding("UTF-8");
                 getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
             }
-            if (!command.getUserService().findUserByEmail(email).getPassword().equals(password)) {
+            else if (!user.getPassword().equals(password)) {
                 session.setAttribute("update", "Неверный пароль");
                 resp.setCharacterEncoding("UTF-8");
                 getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
-            }
-            if (name.length() == 0) {
+            } else if (name.length() == 0) {
                 session.setAttribute("update", "Имя должно быть указано");
                 resp.setCharacterEncoding("UTF-8");
                 getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
-            }
-            if (newPassword.length() < 6) {
+            } else if (newPassword.length() < 6) {
                 session.setAttribute("update", "Новый пароль слишком короткий");
                 resp.setCharacterEncoding("UTF-8");
                 getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
-            }
-            if (command.getUserService().findUserByEmail(email) != null && command
-                    .getUserService().findUserByEmail(email).getPassword().equals(password) &&
-                    name.length() != 0 && newPassword.length() >= 6) {
+            } else {
                 session.setAttribute("update", "Аккаунт пользователя успешно обновлен");
-                command.getUserService().updateUserByEmail(email, password, name, newPassword);
+                Command.getInstance().getUserService().updateUserByEmail(email, password, name, newPassword);
                 resp.setCharacterEncoding("UTF-8");
                 getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);
             }

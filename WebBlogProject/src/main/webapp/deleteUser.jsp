@@ -33,7 +33,7 @@
 <br>
 <br>
 
-<a href="/authorizationModerator">Назад</a>
+<a href="/user.jsp">Назад</a>
 
 </body>
 </html>

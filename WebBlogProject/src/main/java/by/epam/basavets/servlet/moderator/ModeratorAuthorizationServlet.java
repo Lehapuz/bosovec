@@ -1,6 +1,7 @@
 package by.epam.basavets.servlet.moderator;
 
 import by.epam.basavets.command.Command;
+import by.epam.basavets.service.ModeratorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,12 +22,11 @@ public class ModeratorAuthorizationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Command command = new Command();
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         HttpSession session = req.getSession();
-        command.getModeratorService().authorizationModerator(email, password);
-        if (command.getModeratorService().getAuthorizated()) {
+        Command.getInstance().getModeratorService().authorizationModerator(email, password);
+        if (Command.getInstance().getModeratorService().getAuthorizeModerator() != null) {
             session.setAttribute("authorization", "Авторизация прошла успешно");
             resp.setCharacterEncoding("UTF-8");
             getServletContext().getRequestDispatcher("/moderator.jsp").forward(req, resp);

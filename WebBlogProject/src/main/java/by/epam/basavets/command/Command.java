@@ -5,19 +5,21 @@ import by.epam.basavets.service.*;
 
 public class Command {
 
-    UserDAO userDAO = new UserDAO();
-    PostDAO postDAO = new PostDAO();
-    ModeratorDAO moderatorDAO = new ModeratorDAO();
-    PostCommentDAO postCommentDAO = new PostCommentDAO();
-    PostVoteDAO postVoteDAO = new PostVoteDAO();
-    SettingsDAO settingsDAO = new SettingsDAO();
+    private final UserDAO userDAO = new UserDAO();
+    private final PostDAO postDAO = new PostDAO();
+    private final ModeratorDAO moderatorDAO = new ModeratorDAO();
+    private final PostCommentDAO postCommentDAO = new PostCommentDAO();
+    private final PostVoteDAO postVoteDAO = new PostVoteDAO();
+    private final SettingsDAO settingsDAO = new SettingsDAO();
 
-    UserService userService = new UserService(userDAO);
-    ModeratorService moderatorService = new ModeratorService(moderatorDAO, postDAO);
-    PostService postService = new PostService(postDAO, userDAO, settingsDAO);
-    PostCommentService postCommentService = new PostCommentService(postCommentDAO, postDAO, userDAO);
-    PostVoteService postVoteService = new PostVoteService(postVoteDAO, postDAO);
-    SettingsService settingsService = new SettingsService(settingsDAO);
+    private final UserService userService = new UserService(userDAO);
+    private final ModeratorService moderatorService = new ModeratorService(moderatorDAO, postDAO);
+    private final PostService postService = new PostService(postDAO, userDAO, settingsDAO);
+    private final PostCommentService postCommentService = new PostCommentService(postCommentDAO, postDAO, userDAO);
+    private final PostVoteService postVoteService = new PostVoteService(postVoteDAO, postDAO);
+    private final SettingsService settingsService = new SettingsService(settingsDAO);
+
+    private static Command instance;
 
     public UserService getUserService() {
         return userService;
@@ -42,6 +44,14 @@ public class Command {
     public SettingsService getSettingsService() {
         return settingsService;
     }
+
+    public synchronized static Command getInstance() {
+        if (instance == null) {
+            instance = new Command();
+        }
+        return instance;
+    }
+
 }
 
 

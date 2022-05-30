@@ -16,7 +16,7 @@ public class ModeratorService {
 
     private final ModeratorDAO moderatorDAO;
     private final PostDAO postDAO;
-    private boolean isAuthorizated;
+    private static Moderator authorizeModerator;
     private final Logger logger = LogManager.getRootLogger();
 
     public ModeratorService(ModeratorDAO moderatorDAO, PostDAO postDAO) {
@@ -49,12 +49,10 @@ public class ModeratorService {
 
     public void deleteModeratorByEmail(String email, String password) {
         try {
-
-            if (email.equals(moderatorDAO.findModeratorByEmail(email).getEmail())) {
-                Moderator moderator = moderatorDAO.findModeratorByEmail(email);
-                if (password.equals(moderator.getPassword())) {
-                    moderatorDAO.deleteModerator(moderator);
-                    isAuthorizated = false;
+            if (email.equals(authorizeModerator.getEmail())) {
+                if (password.equals(authorizeModerator.getPassword())) {
+                    moderatorDAO.deleteModerator(authorizeModerator);
+                    setAuthorizeModerator(null);
                 } else {
                     logger.error("Адрес электронной почты не верный");
                 }
@@ -69,16 +67,14 @@ public class ModeratorService {
 
     public void updateModeratorByEmail(String email, String password, String name, String newPassword) {
         try {
-            Moderator moderator;
-            if (email.equals(moderatorDAO.findModeratorByEmail(email).getEmail())) {
-                moderator = moderatorDAO.findModeratorByEmail(email);
-                if (password.equals(moderator.getPassword())) {
-                    int id = moderator.getId();
-                    moderator.setId(id);
-                    moderator.setEmail(email);
-                    moderator.setName(name);
-                    moderator.setPassword(newPassword);
-                    moderatorDAO.updateModerator(moderator);
+            if (email.equals(authorizeModerator.getEmail())) {
+                if (password.equals(authorizeModerator.getPassword())) {
+                    int id = authorizeModerator.getId();
+                    authorizeModerator.setId(id);
+                    authorizeModerator.setEmail(email);
+                    authorizeModerator.setName(name);
+                    authorizeModerator.setPassword(newPassword);
+                    moderatorDAO.updateModerator(authorizeModerator);
                 } else {
                     logger.error("Адрес электронной почты не верный");
                 }
@@ -96,9 +92,9 @@ public class ModeratorService {
             if (email.equals(moderatorDAO.findModeratorByEmail(email).getEmail())) {
                 Moderator moderator = moderatorDAO.findModeratorByEmail(email);
                 if (password.equals(moderator.getPassword())) {
+                    setAuthorizeModerator(findModeratorByEmail(email));
                     logger.info("Авторизация пользователя прошла успешно");
-                    logger.info(moderator.toString());
-                    isAuthorizated = true;
+                    logger.info(authorizeModerator.toString());
                 } else {
                     logger.error("Пароль неверный");
                 }
@@ -143,16 +139,20 @@ public class ModeratorService {
 
 
     public void exit() {
-        isAuthorizated = false;
-    }
-
-
-    public boolean getAuthorizated() {
-        return isAuthorizated;
+        setAuthorizeModerator(null);
     }
 
 
     private boolean isValidEmail(String email) {
         return email.matches("\\w+@\\w+\\.\\w+");
+    }
+
+
+    public Moderator getAuthorizeModerator() {
+        return authorizeModerator;
+    }
+
+    public void setAuthorizeModerator(Moderator authorizeModerator) {
+        ModeratorService.authorizeModerator = authorizeModerator;
     }
 }

@@ -47,7 +47,7 @@
 <br>
 <br>
 
-<a href="/authorizationModerator">Назад</a>
+<a href="/moderator.jsp">Назад</a>
 
 </body>
 </html>

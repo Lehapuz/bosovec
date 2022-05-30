@@ -12,5 +12,10 @@
 
 <p>"${settings}"</p>
 
+<br>
+<br>
+
+<a href="/moderator.jsp">Назад</a>
+
 </body>
 </html>

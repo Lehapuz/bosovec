@@ -11,7 +11,7 @@ import java.util.List;
 public class UserService {
 
     private final UserDAO userDAO;
-    private boolean isAuthorizated;
+    private User authoriseUser;
     private final Logger logger = LogManager.getRootLogger();
 
 
@@ -44,11 +44,10 @@ public class UserService {
 
     public void deleteUserByEmail(String email, String password) {
         try {
-            if (email.equals(userDAO.findUserByEmail(email).getEmail())) {
-                User user = userDAO.findUserByEmail(email);
-                if (password.equals(user.getPassword())) {
-                    userDAO.deleteUser(user);
-                    isAuthorizated = false;
+            if (email.equals(getAuthoriseUser().getEmail())) {
+                if (password.equals(authoriseUser.getPassword())) {
+                    userDAO.deleteUser(authoriseUser);
+                    setAuthoriseUser(null);
                 } else {
                     logger.error("Адрес электронной почты не верный");
                 }
@@ -63,16 +62,14 @@ public class UserService {
 
     public void updateUserByEmail(String email, String password, String name, String newPassword) {
         try {
-            User user;
-            if (email.equals(userDAO.findUserByEmail(email).getEmail())) {
-                user = userDAO.findUserByEmail(email);
-                if (password.equals(user.getPassword())) {
-                    int id = user.getId();
-                    user.setId(id);
-                    user.setEmail(email);
-                    user.setName(name);
-                    user.setPassword(newPassword);
-                    userDAO.updateUser(user);
+            if (email.equals(authoriseUser.getEmail())) {
+                if (password.equals(authoriseUser.getPassword())) {
+                    int id = authoriseUser.getId();
+                    authoriseUser.setId(id);
+                    authoriseUser.setEmail(email);
+                    authoriseUser.setName(name);
+                    authoriseUser.setPassword(newPassword);
+                    userDAO.updateUser(authoriseUser);
                 } else {
                     logger.error("Адрес электронной почты не верный");
                 }
@@ -90,9 +87,9 @@ public class UserService {
             if (email.equals(userDAO.findUserByEmail(email).getEmail())) {
                 User user = userDAO.findUserByEmail(email);
                 if (password.equals(user.getPassword())) {
+                    setAuthoriseUser(findUserByEmail(email));
                     logger.info("Авторизация пользователя прошла успешно");
-                    logger.info(user.toString());
-                    isAuthorizated = true;
+                    logger.info(authoriseUser.toString());
                 } else {
                     logger.error("Пароль неверный");
                 }
@@ -104,22 +101,26 @@ public class UserService {
         }
     }
 
+
     public User findUserByEmail(String email) throws SQLException {
         return userDAO.findUserByEmail(email);
     }
 
 
     public void exit() {
-        isAuthorizated = false;
-    }
-
-
-    public boolean getAuthorizated() {
-        return isAuthorizated;
+        setAuthoriseUser(null);
     }
 
 
     private boolean isValidEmail(String email) {
         return email.matches("\\w+@\\w+\\.\\w+");
+    }
+
+    public void setAuthoriseUser(User authoriseUser) {
+        this.authoriseUser = authoriseUser;
+    }
+
+    public User getAuthoriseUser(){
+        return authoriseUser;
     }
 }

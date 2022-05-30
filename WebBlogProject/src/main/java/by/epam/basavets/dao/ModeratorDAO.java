@@ -52,9 +52,6 @@ public class ModeratorDAO {
             logger.info(moderator.toString());
             moderators.add(moderator);
         }
-        if (!resultSet.next()) {
-            logger.info("Модераторы отсутствуют");
-        }
         resultSet.close();
         statement.close();
         connection.close();

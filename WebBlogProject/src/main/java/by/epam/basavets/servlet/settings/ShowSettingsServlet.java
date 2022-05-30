@@ -16,14 +16,17 @@ public class ShowSettingsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Command command = new Command();
         HttpSession session = req.getSession();
-        try {
-            session.setAttribute("settings", command.getSettingsService().showSettings());
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        if (Command.getInstance().getModeratorService().getAuthorizeModerator() != null) {
+            try {
+                session.setAttribute("settings", Command.getInstance().getSettingsService().showSettings());
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            resp.setCharacterEncoding("UTF-8");
+            getServletContext().getRequestDispatcher("/showSettings.jsp").forward(req, resp);
+        } else {
+            getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
         }
-        resp.setCharacterEncoding("UTF-8");
-        getServletContext().getRequestDispatcher("/showSettings.jsp").forward(req, resp);
     }
 }

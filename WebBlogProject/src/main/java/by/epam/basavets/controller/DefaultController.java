@@ -17,14 +17,14 @@ public class DefaultController {
 
     public void run() throws SQLException {
         while (true) {
-            if (!command.getUserService().getAuthorizated() &&
-                    !command.getModeratorService().getAuthorizated()) {
+            if (command.getUserService().getAuthoriseUser() == null &&
+                    command.getModeratorService().getAuthorizeModerator() == null) {
                 menu.run();
             }
-            if (command.getModeratorService().getAuthorizated()) {
+            if (command.getModeratorService().getAuthorizeModerator() != null) {
                 moderatorMenu.run();
             }
-            if (command.getUserService().getAuthorizated()) {
+            if (command.getUserService().getAuthoriseUser() != null) {
                 userMenu.run();
             }
         }

@@ -63,7 +63,7 @@ public class TestMockito {
         userService = Mockito.mock(UserService.class);
         Mockito.doNothing().when(userService).exit();
         userService.exit();
-        Mockito.when(userService.getAuthorizated()).thenReturn(false);
-        assertEquals(expected, userService.getAuthorizated());
+        //Mockito.when(userService.getAuthorizated()).thenReturn(false);
+        //assertEquals(expected, userService.getAuthorizated());
     }
 }

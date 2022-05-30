@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet("/authorizationUser")
 public class UserAuthorizationServlet extends HttpServlet {
@@ -22,12 +21,11 @@ public class UserAuthorizationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Command command = new Command();
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         HttpSession session = req.getSession();
-        command.getUserService().authorizationUser(email, password);
-        if (command.getUserService().getAuthorizated()) {
+        Command.getInstance().getUserService().authorizationUser(email, password);
+        if (Command.getInstance().getUserService().getAuthoriseUser() != null) {
             session.setAttribute("authorization", "Авторизация прошла успешно");
             resp.setCharacterEncoding("UTF-8");
             getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);

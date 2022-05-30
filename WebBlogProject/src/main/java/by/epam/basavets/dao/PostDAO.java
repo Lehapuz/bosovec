@@ -61,9 +61,6 @@ public class PostDAO {
             post.setModeratorStatus(ModeratorStatus.valueOf(resultSet.getString("moderator_status")));
             posts.add(post);
         }
-        if (!resultSet.next()) {
-            logger.info("Посты отсутствуют");
-        }
         resultSet.close();
         statement.close();
         connection.close();

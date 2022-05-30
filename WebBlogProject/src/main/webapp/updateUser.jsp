@@ -47,7 +47,7 @@
 <br>
 <br>
 
-<a href="/authorizationUser">Назад</a>
+<a href="/user.jsp">Назад</a>
 
 </body>
 </html>
