@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 @WebServlet("/getPosts")
 public class PostServlet extends HttpServlet {
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -30,14 +31,36 @@ public class PostServlet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        correctPosts = posts.stream().filter(post -> post.getModeratorStatus().equals(ModeratorStatus.ACCEPTED))
-                .collect(Collectors.toList());
-        if (correctPosts.size() == 0) {
-            session.setAttribute("post", "Посты отсутствуют");
+        if (Command.getInstance().getModeratorService().getAuthorizeModerator() != null) {
+            if (posts.size() == 0) {
+                session.setAttribute("post", "Посты отсутствуют");
+            } else {
+                session.setAttribute("post", posts);
+                resp.setCharacterEncoding("UTF-8");
+                getServletContext().getRequestDispatcher("/listModeratorPost.jsp").forward(req, resp);
+            }
+        } else if (Command.getInstance().getUserService().getAuthoriseUser() != null) {
+            correctPosts = posts.stream().filter(post -> post.getModeratorStatus().equals(ModeratorStatus.ACCEPTED))
+                    .collect(Collectors.toList());
+            if (correctPosts.size() == 0) {
+                session.setAttribute("post", "Посты отсутствуют");
+            } else {
+                session.setAttribute("post", correctPosts);
+            }
+            resp.setCharacterEncoding("UTF-8");
+            getServletContext().getRequestDispatcher("/listUserPost.jsp").forward(req, resp);
         } else {
-            session.setAttribute("post", correctPosts);
+            correctPosts = posts.stream().filter(post -> post.getModeratorStatus().equals(ModeratorStatus.ACCEPTED))
+                    .collect(Collectors.toList());
+            if (correctPosts.size() == 0) {
+                session.setAttribute("post", "Посты отсутствуют");
+            } else {
+                session.setAttribute("post", correctPosts);
+            }
+            resp.setCharacterEncoding("UTF-8");
+            getServletContext().getRequestDispatcher("/listPost.jsp").forward(req, resp);
         }
-        resp.setCharacterEncoding("UTF-8");
-        getServletContext().getRequestDispatcher("/listPost.jsp").forward(req, resp);
     }
+
+
 }

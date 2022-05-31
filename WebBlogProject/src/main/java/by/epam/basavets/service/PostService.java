@@ -52,21 +52,21 @@ public class PostService {
 
 
     public List<Post> getAllPosts() throws SQLException {
-        List<Post> posts;
-        posts = postDAO.readPosts();
-        for (Post post : posts) {
-            if (post.getModeratorStatus().equals(ModeratorStatus.ACCEPTED)) {
-                posts.add(post);
-                logger.info(post.toString());
-            }
-            if (post.getModeratorStatus().equals(ModeratorStatus.DECLINED)) {
-                logger.info("Пост отклонен модератором");
-            }
-            if (post.getModeratorStatus().equals(ModeratorStatus.NEW)) {
-                logger.info("Пост на модерации");
-            }
-        }
-        return posts;
+//        List<Post> posts;
+//        posts = postDAO.readPosts();
+//        for (Post post : posts) {
+//            if (post.getModeratorStatus().equals(ModeratorStatus.ACCEPTED)) {
+//                posts.add(post);
+//                logger.info(post.toString());
+//            }
+//            if (post.getModeratorStatus().equals(ModeratorStatus.DECLINED)) {
+//                logger.info("Пост отклонен модератором");
+//            }
+//            if (post.getModeratorStatus().equals(ModeratorStatus.NEW)) {
+//                logger.info("Пост на модерации");
+//            }
+//        }
+        return postDAO.readPosts();
     }
 
 
@@ -101,40 +101,31 @@ public class PostService {
     }
 
 
-    public void deletePostByTitle(String title, String email) {
+    public Post getPostByTitle(String title) throws SQLException {
+        return postDAO.findPostByTitle(title);
+    }
+
+
+    public void deletePostByTitle(String title) {
         try {
             Post post = postDAO.findPostByTitle(title);
-            int id = post.getUser().getId();
-            User user = postDAO.findUserById(id);
-            User currentUser = userDAO.findUserByEmail(email);
-            if (user.getId() == currentUser.getId()) {
-                postDAO.deletePost(post);
-                logger.info("Пост удален");
-            } else {
-                logger.info("Вы не являетесь автором поста");
-            }
+            postDAO.deletePost(post);
+            logger.info("Пост удален");
         } catch (Exception e) {
             logger.error("Пост не найден");
         }
     }
 
 
-    public void updatePostByTitle(String title, String email, String newTitle, String text) {
+    public void updatePostByTitle(String title, String newTitle, String text) {
         try {
             Post post = postDAO.findPostByTitle(title);
-            int id = post.getUser().getId();
-            User user = postDAO.findUserById(id);
-            User currentUser = userDAO.findUserByEmail(email);
-            if (user.getId() == currentUser.getId()) {
-                post.setId(post.getId());
-                post.setTitle(newTitle);
-                post.setText(text);
-                post.setModeratorStatus(ModeratorStatus.NEW);
-                postDAO.updatePost(post);
-                logger.info("Пост обновлен");
-            } else {
-                logger.info("Вы не являетесь автором поста");
-            }
+            post.setId(post.getId());
+            post.setTitle(newTitle);
+            post.setText(text);
+            post.setModeratorStatus(ModeratorStatus.NEW);
+            postDAO.updatePost(post);
+            logger.info("Пост обновлен");
         } catch (Exception e) {
             logger.error("Пост не найден");
         }

@@ -3,7 +3,6 @@ package by.epam.basavets.service;
 import by.epam.basavets.bean.Enum.ModeratorStatus;
 import by.epam.basavets.bean.Moderator;
 import by.epam.basavets.bean.Post;
-import by.epam.basavets.bean.User;
 import by.epam.basavets.dao.ModeratorDAO;
 import by.epam.basavets.dao.PostDAO;
 import org.apache.logging.log4j.LogManager;

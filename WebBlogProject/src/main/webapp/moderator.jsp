@@ -19,9 +19,7 @@
         <br></br>
         <button onclick="location.href='/authorizationModerator/setSettings'">Установка настройки сайта</button>
         <br></br>
-        <button onclick="location.href='/authorizationModerator/moderatorPost'">Модерировать новый пост</button>
-        <br></br>
-        <button onclick="location.href='/getPost'">Просмотр всех постов</button>
+        <button onclick="location.href='/getPosts'">Просмотр всех постов</button>
         <br></br>
         <button onclick="location.href='/getComments'">Просмотр комментариев к постам</button>
         <br></br>

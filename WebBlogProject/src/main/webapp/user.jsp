@@ -17,13 +17,11 @@
         <br></br>
         <button onclick="location.href='/authorizationUser/deleteUser'">Удаление аккаунта пользователя</button>
         <br></br>
-        <button onclick="location.href='/getPost'">Просмотр всех постов</button>
+        <button onclick="location.href='/getPosts'">Просмотр всех постов</button>
         <br></br>
         <button onclick="location.href='/addPost'">Добавление поста</button>
         <br></br>
-        <button onclick="location.href='/deletePost'">Удалить пост</button>
-        <br></br>
-        <button onclick="location.href='/updatePost'">Обновить пост</button>
+        <button onclick="location.href='/getMyPosts'">Просмотр моих постов</button>
         <br></br>
         <button onclick="location.href='/getComments'">Просмотр комментариев к постам</button>
         <br></br>
