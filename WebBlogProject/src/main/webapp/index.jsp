@@ -24,8 +24,6 @@
         <br></br>
         <button onclick="location.href='/getPosts'">Просмотр всех постов</button>
         <br></br>
-        <button onclick="location.href='/votePost'">Проголосовать за пост</button>
-        <br></br>
         <button onclick="location.href='/authorizationUser'">Авторизация пользователя</button>
         <br></br>
         </div>

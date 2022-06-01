@@ -20,6 +20,8 @@
     <br></br>
     <a href='<c:url value="/post/getComments?title=${post.title}" />'>Просмотр комментариев</a>
     <br></br>
+    <a href='<c:url value="/post/vote?title=${post.title}" />'>Проголосовать за пост</a>
+    <br></br>
     </li>
 </c:forEach>
 <br></br>
