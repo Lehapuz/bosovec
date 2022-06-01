@@ -28,8 +28,6 @@
         <br></br>
         <button onclick="location.href='/authorizationUser'">Авторизация пользователя</button>
         <br></br>
-        <button onclick="location.href='/getComment'">Просмотр комментариев к постам</button>
-        <br></br>
         </div>
     </div>
 </body>

@@ -9,11 +9,19 @@
 <body>
 <h1>Посты</h1>
 <ul>
-<a href = "/post/id">
 <c:forEach var="post" items="${post}">
-    <li><c:out value="${post}"/></li>
+    <li>
+    <c:out value="${post}"/>
+    <br></br>
+    <c:out value="${post.id}"/>
+    <td>${post.id}</td>
+    <br></br>
+    <c:out value="${post.title}"/>
+    <br></br>
+    <a href='<c:url value="/post/getComments?title=${post.title}" />'>Просмотр комментариев</a>
+    <br></br>
+    </li>
 </c:forEach>
-</a>
 <br></br>
 <a href = "/">Назад</a>
 </ul>

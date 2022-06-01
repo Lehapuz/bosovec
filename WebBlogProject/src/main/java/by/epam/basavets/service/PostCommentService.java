@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 public class PostCommentService {
@@ -44,8 +45,8 @@ public class PostCommentService {
     }
 
 
-    public void getAllPostComments() throws SQLException {
-        postCommentDAO.read();
+    public List<PostComment> getAllPostComments() throws SQLException {
+        return postCommentDAO.read();
     }
 
 
@@ -65,6 +66,11 @@ public class PostCommentService {
         } catch (Exception e) {
             logger.error("Такого комментария не существует");
         }
+    }
+
+
+    public PostComment getPostCommentByText(String textComment) throws SQLException {
+        return postCommentDAO.findCommentByText(textComment);
     }
 
 

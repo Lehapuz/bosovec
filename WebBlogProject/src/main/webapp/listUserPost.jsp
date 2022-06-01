@@ -14,6 +14,9 @@
     <c:out value="${post}"/>
     <br></br>
     <button onclick="location.href='/addComment'">Добавить комментарий к посту</button>
+    <br></br>
+    <a href='<c:url value="/post/getComments?title=${post.title}" />'>Просмотр комментариев</a>
+    <br></br>
     </li>
 </c:forEach>
 <br></br>

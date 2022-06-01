@@ -23,13 +23,7 @@
         <br></br>
         <button onclick="location.href='/getMyPosts'">Просмотр моих постов</button>
         <br></br>
-        <button onclick="location.href='/getComments'">Просмотр комментариев к постам</button>
-        <br></br>
-        <button onclick="location.href='/addComment'">Добавить комментарий</button>
-        <br></br>
-        <button onclick="location.href='/deleteComment'">Удалить комментарий</button>
-        <br></br>
-        <button onclick="location.href='/updateComment'">Обновить комментарий</button>
+        <button onclick="location.href='/getMyComments'">Просмотр моих комментариев к постам</button>
         <br></br>
         <button onclick="location.href='/exitUser'">Выход</button>
         <br></br>

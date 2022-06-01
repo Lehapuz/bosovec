@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PostCommentDAO {
 
@@ -86,11 +88,12 @@ public class PostCommentDAO {
     }
 
 
-    public void read() throws SQLException {
+    public List<PostComment> read() throws SQLException {
         String sql = "SELECT * FROM post_comments";
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet resultSet = statement.executeQuery();
+        List<PostComment> postComments = new ArrayList<>();
         while (resultSet.next()) {
             PostComment postComment = new PostComment();
             postComment.setId(resultSet.getInt("id"));
@@ -99,14 +102,17 @@ public class PostCommentDAO {
                     .ofPattern("yyyy-MM-dd HH:mm:ss")));
             postComment.setPost(findPostById(resultSet.getInt("post_id")));
             postComment.setUser(findUserById(resultSet.getInt("user_id")));
+            postComments.add(postComment);
             logger.info(postComment.toString());
         }
         if (!resultSet.next()) {
             logger.info("Комментарии отсутствуют");
         }
+
         resultSet.close();
         statement.close();
         connection.close();
+        return postComments;
     }
 
 
