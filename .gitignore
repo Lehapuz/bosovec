@@ -5,9 +5,14 @@
 ### Java ###
 # Compiled class file
 *.class
+target/
+.idea/
+bosovec/
+*.iml
 
 # Log file
 *.log
 
 # BlueJ files
 *.ctxt
+
