@@ -5,7 +5,7 @@ console.log(is)
 name = "Леха";
 console.log(name)
 
-
+//fgdfgdfgdfgdfg
 
 $(document).on('click', '.post-link', function(){
         var link = $(this);
