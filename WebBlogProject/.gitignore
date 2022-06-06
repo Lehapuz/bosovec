@@ -5,8 +5,8 @@
 ### Java ###
 # Compiled class file
 *.class
-target#
-.idea#
+target/
+.idea/
 *.iml
 
 # Log file
