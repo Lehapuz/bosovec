@@ -33,7 +33,8 @@ public class Controller extends HttpServlet {
                 case "6" -> CommandProvider.getInstance().getSettings(req, resp);
                 case "7" -> CommandProvider.getInstance().getPostById(req, resp);
                 case "8" -> CommandProvider.getInstance().getMyComments(req, resp);
-                default -> req.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+                case "9" -> req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
+                case "10" -> req.getServletContext().getRequestDispatcher("/deleteUser.jsp").forward(req, resp);
             }
         }
     }
@@ -53,6 +54,8 @@ public class Controller extends HttpServlet {
                     case "6" -> CommandProvider.getInstance().setSettings(req, resp);
                     case "7" -> CommandProvider.getInstance().actionPostById(req, resp);
                     case "8" -> CommandProvider.getInstance().actionMyComments(req, resp);
+                    case "9" -> CommandProvider.getInstance().updateUser(req, resp);
+                    case "10" -> CommandProvider.getInstance().deleteUser(req, resp);
                 }
             }
         } catch (Exception e) {

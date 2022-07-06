@@ -148,11 +148,9 @@ public class CommandProvider {
                     } else if (newUser != null) {
                         session.setAttribute(REGISTRATION_ACCOUNT_USER, "Пользователь с таким адресом электронной почты " +
                                 "уже зарегистрирован");
-                    }
-                    else if (!Factory.getInstance().getUserService().isValidEmail(email)) {
+                    } else if (!Factory.getInstance().getUserService().isValidEmail(email)) {
                         session.setAttribute(REGISTRATION_ACCOUNT_USER, "Неккоректный адрес электронной почты");
-                    }
-                    else {
+                    } else {
                         session.setAttribute(REGISTRATION_ACCOUNT_USER, "Пользователь успешно зарегистрирован");
                         Factory.getInstance().getUserService().addRole(secreteCode);
                         Factory.getInstance().getUserService().registerUser(name, password, email);
@@ -160,56 +158,72 @@ public class CommandProvider {
                     req.getServletContext().getRequestDispatcher("/authorizationUser.jsp").forward(req, resp);
                 }
                 break;
-                case UPDATE_USER: {
-                    String email = req.getParameter(EMAIL);
-                    String password = req.getParameter(PASSWORD);
-                    String name = req.getParameter(NAME);
-                    String newPassword = req.getParameter(NEW_PASSWORD);
-                    HttpSession session = req.getSession();
-                    User updateUser = (User) session.getAttribute(AUTHORIZE_USER);
-                    if (Factory.getInstance().getUserService().findUserByEmail(email) == null ||
-                            !updateUser.getEmail().equals(Factory.getInstance().getUserService().findUserByEmail(email).getEmail())) {
-                        session.setAttribute(UPDATE_ACCOUNT_USER, "Неверный адрес электронной почты");
-                        req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
-                    } else if (!updateUser.getPassword().equals(password)) {
-                        session.setAttribute(UPDATE_ACCOUNT_USER, "Неверный пароль");
-                        req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
-                    } else if (name.length() == 0) {
-                        session.setAttribute(UPDATE_ACCOUNT_USER, "Имя должно быть указано");
-                        req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
-                    } else if (newPassword.length() < 6) {
-                        session.setAttribute(UPDATE_ACCOUNT_USER, "Новый пароль слишком короткий");
-                        req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
-                    } else {
-                        session.setAttribute(UPDATE_ACCOUNT_USER, "Аккаунт пользователя успешно обновлен");
-                        Factory.getInstance().getUserService().updateUserByEmail(updateUser, email, password, name, newPassword);
-                        switch (updateUser.getRole().getRoleTypes().toString()) {
-                            case MODERATOR -> req.getServletContext().getRequestDispatcher("/moderator.jsp").forward(req, resp);
-                            case USER -> req.getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);
-                        }
+            }
+        } catch (SQLException | ServletException | IOException e) {
+            throw new CommandProviderException(e.getMessage());
+        }
+    }
+
+
+    public void updateUser(HttpServletRequest req, HttpServletResponse resp) {
+        String action = req.getParameter(ACTION);
+        try {
+            if (UPDATE_USER.equals(action)) {
+                String email = req.getParameter(EMAIL);
+                String password = req.getParameter(PASSWORD);
+                String name = req.getParameter(NAME);
+                String newPassword = req.getParameter(NEW_PASSWORD);
+                HttpSession session = req.getSession();
+                User updateUser = (User) session.getAttribute(AUTHORIZE_USER);
+                if (Factory.getInstance().getUserService().findUserByEmail(email) == null ||
+                        !updateUser.getEmail().equals(Factory.getInstance().getUserService().findUserByEmail(email).getEmail())) {
+                    session.setAttribute(UPDATE_ACCOUNT_USER, "Неверный адрес электронной почты");
+                    req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
+                } else if (!updateUser.getPassword().equals(password)) {
+                    session.setAttribute(UPDATE_ACCOUNT_USER, "Неверный пароль");
+                    req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
+                } else if (name.length() == 0) {
+                    session.setAttribute(UPDATE_ACCOUNT_USER, "Имя должно быть указано");
+                    req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
+                } else if (newPassword.length() < 6) {
+                    session.setAttribute(UPDATE_ACCOUNT_USER, "Новый пароль слишком короткий");
+                    req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
+                } else {
+                    session.setAttribute(UPDATE_ACCOUNT_USER, "Аккаунт пользователя успешно обновлен");
+                    Factory.getInstance().getUserService().updateUserByEmail(updateUser, email, password, name, newPassword);
+                    switch (updateUser.getRole().getRoleTypes().toString()) {
+                        case MODERATOR -> req.getServletContext().getRequestDispatcher("/moderator.jsp").forward(req, resp);
+                        case USER -> req.getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);
                     }
                 }
-                break;
-                case DELETE_USER: {
-                    String email = req.getParameter(EMAIL);
-                    String password = req.getParameter(PASSWORD);
-                    HttpSession session = req.getSession();
-                    User deleteUser = (User) session.getAttribute(AUTHORIZE_USER);
-                    if (Factory.getInstance().getUserService().findUserByEmail(email) == null ||
-                            !deleteUser.getEmail().equals(Factory.getInstance().getUserService().findUserByEmail(email).getEmail())) {
-                        session.setAttribute(DELETE_ACCOUNT_USER, "Неверный адрес электронной почты");
-                        req.getServletContext().getRequestDispatcher("/deleteUser.jsp").forward(req, resp);
-                    } else if (!deleteUser.getPassword().equals(password)) {
-                        session.setAttribute(DELETE_ACCOUNT_USER, "Неверный пароль");
-                        req.getServletContext().getRequestDispatcher("/deleteUser.jsp").forward(req, resp);
-                    } else {
-                        session.setAttribute(DELETE_ACCOUNT_USER, "Аккаунт пользователя успешно удален");
-                        Factory.getInstance().getUserService().deleteUserByEmail(deleteUser, email, password);
-                        session.setAttribute(AUTHORIZE_USER, null);
-                        req.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
-                    }
+            }
+        } catch (SQLException | ServletException | IOException e) {
+            throw new CommandProviderException(e.getMessage());
+        }
+    }
+
+
+    public void deleteUser(HttpServletRequest req, HttpServletResponse resp) {
+        String action = req.getParameter(ACTION);
+        try {
+            if (DELETE_USER.equals(action)) {
+                String email = req.getParameter(EMAIL);
+                String password = req.getParameter(PASSWORD);
+                HttpSession session = req.getSession();
+                User deleteUser = (User) session.getAttribute(AUTHORIZE_USER);
+                if (Factory.getInstance().getUserService().findUserByEmail(email) == null ||
+                        !deleteUser.getEmail().equals(Factory.getInstance().getUserService().findUserByEmail(email).getEmail())) {
+                    session.setAttribute(DELETE_ACCOUNT_USER, "Неверный адрес электронной почты");
+                    req.getServletContext().getRequestDispatcher("/deleteUser.jsp").forward(req, resp);
+                } else if (!deleteUser.getPassword().equals(password)) {
+                    session.setAttribute(DELETE_ACCOUNT_USER, "Неверный пароль");
+                    req.getServletContext().getRequestDispatcher("/deleteUser.jsp").forward(req, resp);
+                } else {
+                    session.setAttribute(DELETE_ACCOUNT_USER, "Аккаунт пользователя успешно удален");
+                    Factory.getInstance().getUserService().deleteUserByEmail(deleteUser, email, password);
+                    session.setAttribute(AUTHORIZE_USER, null);
+                    req.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
                 }
-                break;
             }
         } catch (SQLException | ServletException | IOException e) {
             throw new CommandProviderException(e.getMessage());

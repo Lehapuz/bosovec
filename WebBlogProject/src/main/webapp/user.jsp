@@ -27,9 +27,9 @@
     <div>
     <h2>"${possibility}":</h2>
         <div>
-        <button onclick="location.href='updateUser.jsp'">"${updateUser}"</button>
+        <button onclick="location.href='/Controller?command=9'">"${updateUser}"</button>
         <br></br>
-        <button onclick="location.href='deleteUser.jsp'">"${deleteUser}"</button>
+        <button onclick="location.href='/Controller?command=10'">"${deleteUser}"</button>
         <br></br>
         <button onclick="location.href='/Controller?command=3'">"${lookAllPosts}"</button>
         <br></br>
