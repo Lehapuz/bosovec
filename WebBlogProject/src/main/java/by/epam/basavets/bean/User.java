@@ -5,8 +5,8 @@ import java.util.List;
 
 public class User extends Person {
 
-    public User(int id, String name, String email, String password, LocalDateTime registrationTime) {
-        super(id, name, email, password, registrationTime);
+    public User(int id, String name, String email, String password, LocalDateTime registrationTime, Role role, int active) {
+        super(id, name, email, password, registrationTime, role, active);
     }
 
     public User() {
@@ -80,6 +80,26 @@ public class User extends Person {
     @Override
     public void setPostComments(List<PostComment> postComments) {
         super.setPostComments(postComments);
+    }
+
+    @Override
+    public Role getRole() {
+        return super.getRole();
+    }
+
+    @Override
+    public void setRole(Role role) {
+        super.setRole(role);
+    }
+
+    @Override
+    public int getActive() {
+        return super.getActive();
+    }
+
+    @Override
+    public void setActive(int active) {
+        super.setActive(active);
     }
 
     @Override

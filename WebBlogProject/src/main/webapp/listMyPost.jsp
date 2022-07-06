@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="ru">
@@ -7,19 +8,84 @@
 <title>my posts</title>
 </head>
 <body>
-<h1>Мои Посты</h1>
+
+<fmt:setLocale value="${sessionScope.local}"/>
+<fmt:setBundle basename="local" var="local"/>
+<fmt:message bundle="${local}" key="local.listMyPosts" var="listMyPosts"/>
+<fmt:message bundle="${local}" key="local.addMyPost" var="addMyPost"/>
+<fmt:message bundle="${local}" key="local.updateMyPost" var="updateMyPost"/>
+<fmt:message bundle="${local}" key="local.deleteMyPost" var="deleteMyPost"/>
+
+
+<h1>"${listMyPosts}"</h1>
 <ul>
-<c:forEach var="post" items="${post}">
+<c:forEach var="post" items="${myPosts}">
     <li>
-    <c:out value="${post}"/>
+    <c:out value="${post.title}"/>
     <br></br>
-    <button onclick="location.href='/updateMyPost'">Редактировать<button>
+    <c:out value="${post.text}"/>
     <br></br>
-    <button onclick="location.href='/deleteMyPost'">Удалить<button>
     </li>
 </c:forEach>
 <br></br>
-<a href = "/user.jsp">Назад</a>
+<h3>"${addMyPost}"</h3>
+<form action="Controller?action=addPost" method="post">
+<label>Email</label>
+<br>
+<input name="email" type="email"/>
+<br>
+<br>
+<label>Title</label>
+<br>
+<input name="title" type="string"/>
+<br>
+<br>
+<label>Text</label>
+<br>
+<input name="text" type="string"/>
+<br>
+<br>
+<input type="submit" value="Save"/>
+</form>
+<p>"${correctEmail}"</p>
+<br>
+<br>
+
+<h3>"${updateMyPost}"</h3>
+    <form action="Controller?action=updatePost" method="post">
+    <label>Title</label>
+    <br>
+    <input name="updateTitle" type="string"/>
+    <br>
+    <br>
+    <label>newTitle</label>
+    <br>
+    <input name="newTitle" type="string"/>
+    <br>
+    <br>
+    <label>text</label>
+    <br>
+    <input name="updateText" type="string"/>
+    <br>
+    <br>
+    <input type="submit" value="Save"/>
+    </form>
+    <p>"${updatePostText}"</p>
+    <br>
+    <br>
+    <h3>"${deleteMyPost}"</h3>
+    <form action="Controller?action=deletePost" method="post">
+    <label>Title</label>
+    <br>
+    <input name="deleteTitle" type="string"/>
+    <br>
+    <br>
+    <input type="submit" value="Save"/>
+    </form>
+    <p>"${deletePostText}"</p>
+    <br>
+    <br>
+<a href="/user.jsp">Back</a>
 </ul>
 </body>
 </html>

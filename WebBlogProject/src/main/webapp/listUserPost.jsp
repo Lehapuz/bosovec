@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="ru">
@@ -7,20 +8,24 @@
 <title>posts</title>
 </head>
 <body>
-<h1>Посты</h1>
+
+<fmt:setLocale value="${sessionScope.local}"/>
+<fmt:setBundle basename="local" var="local"/>
+<fmt:message bundle="${local}" key="local.posts" var="lookPosts"/>
+
+
+<h1>"${lookPosts}" (<span>"${size}"</span>)</h1>
 <ul>
-<c:forEach var="post" items="${post}">
+<c:forEach var="post" items="${posts}">
     <li>
+    <a href='<c:url value="/Controller?postId=${post.id}&command=7"/>'>
     <c:out value="${post}"/>
-    <br></br>
-    <button onclick="location.href='/addComment'">Добавить комментарий к посту</button>
-    <br></br>
-    <a href='<c:url value="/post/getComments?title=${post.title}" />'>Просмотр комментариев</a>
+    </a>
     <br></br>
     </li>
 </c:forEach>
 <br></br>
-<a href = "/user.jsp">Назад</a>
+<a href = "/user.jsp">Back</a>
 </ul>
 </body>
 </html>

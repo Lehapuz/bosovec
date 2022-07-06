@@ -3,7 +3,7 @@ package by.epam.basavets.bean;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public abstract class Person implements Comparable<Person>{
+public abstract class Person implements Comparable<Person> {
     private int id;
     private String name;
     private String email;
@@ -11,16 +11,21 @@ public abstract class Person implements Comparable<Person>{
     private LocalDateTime registrationTime;
     private List<Post> posts;
     private List<PostComment> postComments;
+    private Role role;
+    private int active;
 
-    public Person(int id, String name, String email, String password, LocalDateTime regTime){
+    public Person(int id, String name, String email, String password, LocalDateTime regTime, Role role, int active) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.registrationTime = regTime;
+        this.role = role;
+        this.active = active;
     }
 
-    public Person(){}
+    public Person() {
+    }
 
     public int getId() {
         return id;
@@ -76,6 +81,22 @@ public abstract class Person implements Comparable<Person>{
 
     public void setPostComments(List<PostComment> postComments) {
         this.postComments = postComments;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     @Override

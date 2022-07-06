@@ -5,29 +5,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Set settings</title>
+<title>Exit</title>
 </head>
 <body>
 
 <fmt:setLocale value="${sessionScope.local}"/>
 <fmt:setBundle basename="local" var="local"/>
-<fmt:message bundle="${local}" key="local.getWebSetting" var="getWebSetting"/>
-<fmt:message bundle="${local}" key="local.setWebSetting" var="setWebSetting"/>
+<fmt:message bundle="${local}" key="local.sureExit" var="sureExit"/>
 
-<h3>"${getWebSetting}"</h3>
-<p>"${settings}"</p>
-<br>
-<h3>"${setWebSetting}"</h3>
-<form method="post">
-    <select name="status">
-        <option value="Yes">Allow posting</option>
-        <option value="No">Disable posting</option>
+<h3>"${sureExit}"?</h3>
+<form action="Controller?action=exit"method="post">
+    <select name="admit">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
     </select>
     <br><br>
     <input type="submit" value="Save"/>
 </form>
 <br>
 <br>
-<a href="/moderator.jsp">Назад</a>
 </body>
 </html>

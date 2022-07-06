@@ -9,6 +9,6 @@
 <h>Page not Found</h>
 <br>
 <br>
-<a href="/">Назад</a>
+<a href="/">Back</a>
 </body>
 </html>

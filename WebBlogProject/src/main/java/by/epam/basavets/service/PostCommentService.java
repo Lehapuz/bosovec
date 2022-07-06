@@ -3,9 +3,9 @@ package by.epam.basavets.service;
 import by.epam.basavets.bean.Post;
 import by.epam.basavets.bean.PostComment;
 import by.epam.basavets.bean.User;
-import by.epam.basavets.dao.PostCommentDAO;
-import by.epam.basavets.dao.PostDAO;
-import by.epam.basavets.dao.UserDAO;
+import by.epam.basavets.dao.impl.PostCommentDAO;
+import by.epam.basavets.dao.impl.PostDAO;
+import by.epam.basavets.dao.impl.UserDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,7 +40,8 @@ public class PostCommentService {
             postComment.setUser(user);
             postCommentDAO.addPostComment(postComment);
         } catch (Exception e) {
-            logger.error("Такого поста не существует");
+            logger.error(e.getMessage());
+            throw new ServiceException(e.getMessage());
         }
     }
 
@@ -54,17 +55,17 @@ public class PostCommentService {
         try {
             PostComment postComment = postCommentDAO.findCommentByText(textComment);
             int id = postComment.getUser().getId();
-            User user = postCommentDAO.findUserById(id);
+            User user = userDAO.findUserById(id);
             User currentUser = userDAO.findUserByEmail(email);
             if (currentUser.getId() == user.getId()) {
                 postCommentDAO.deletePostComment(postComment);
-                logger.info("Комментарий успешно удален");
+                logger.info("Comments deleted");
             } else {
-                logger.info("Вы не являетесь автором поста");
+                logger.info("You are not author");
             }
-
         } catch (Exception e) {
-            logger.error("Такого комментария не существует");
+            logger.error(e.getMessage());
+            throw new ServiceException(e.getMessage());
         }
     }
 
@@ -78,18 +79,19 @@ public class PostCommentService {
         try {
             PostComment postComment = postCommentDAO.findCommentByText(textComment);
             int id = postComment.getUser().getId();
-            User user = postCommentDAO.findUserById(id);
             User currentUser = userDAO.findUserByEmail(email);
+            User user = userDAO.findUserById(id);
             if (currentUser.getId() == user.getId()) {
                 postComment.setId(postComment.getId());
                 postComment.setText(newTextComment);
                 postCommentDAO.updatePostComment(postComment);
-                logger.info("Комментарий успешно обновлен");
+                logger.info("Comments updated");
             } else {
-                logger.info("Вы не являетесь автором комментария");
+                logger.info("You are not author");
             }
         } catch (Exception e) {
-            logger.error("Такого комментария не существует");
+            logger.error(e.getMessage());
+            throw new ServiceException(e.getMessage());
         }
     }
 }

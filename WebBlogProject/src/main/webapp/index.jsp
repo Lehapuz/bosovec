@@ -1,32 +1,37 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Блог</title>
+    <script src="js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
+
+<fmt:setLocale value="${sessionScope.local}"/>
+<fmt:setBundle basename="local" var="local"/>
+<fmt:message bundle="${local}" key="local.authorizeUser" var="authorizeUser"/>
+<fmt:message bundle="${local}" key="local.lookAllPosts" var="lookAllPosts"/>
+<fmt:message bundle="${local}" key="local.changeLanguage" var="changeLanguage"/>
+<fmt:message bundle="${local}" key="local.titleUser" var="titleUser"/>
+<fmt:message bundle="${local}" key="local.unknown" var="unknown"/>
+
     <div>
-        <h1>Добро пожаловать на сайт</h1>
+        <h1>"${titleUser}"</h1>
     </div>
     <div>
-    <h2>Список доступных команд для незарегистрированного пользователя:</h2>
-        <div>
-        <button onclick="location.href='/registrationModerator'">Регистрация модератора</button>
-        <br></br>
-        <button onclick="location.href='/getModerators'">Просмотр всех модераторов</button>
-        <br></br>
-        <button onclick="location.href='/authorizationModerator'">Авторизация модератора</button>
-        <br></br>
-        <button onclick="location.href='/registrationUser'">Регистрация пользователя</button>
-        <br></br>
-        <button onclick="location.href='/getUsers'">Просмотр всех пользователей</button>
-        <br></br>
-        <button onclick="location.href='/getPosts'">Просмотр всех постов</button>
-        <br></br>
-        <button onclick="location.href='/authorizationUser'">Авторизация пользователя</button>
-        <br></br>
-        </div>
+        <h2>"${unknown}":</h2>
+            <div>
+                <button onclick="location.href='/Controller?command=1'">"${changeLanguage}"</button>
+                <br></br>
+                <button onclick="location.href='/Controller?command=2'">"${authorizeUser}"</button>
+                <br></br>
+                <button onclick="location.href='/Controller?command=3'" >"${lookAllPosts}"</button>
+                <br></br>
+            </div>
     </div>
 </body>
 </html>

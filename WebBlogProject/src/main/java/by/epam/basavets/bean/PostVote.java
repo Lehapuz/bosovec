@@ -18,7 +18,8 @@ public class PostVote {
         this.post = post;
     }
 
-    public PostVote(){}
+    public PostVote() {
+    }
 
     public int getId() {
         return id;

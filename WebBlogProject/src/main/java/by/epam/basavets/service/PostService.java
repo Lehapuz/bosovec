@@ -3,10 +3,12 @@ package by.epam.basavets.service;
 import by.epam.basavets.bean.Enum.ModeratorStatus;
 import by.epam.basavets.bean.Enum.SettingStatus;
 import by.epam.basavets.bean.Post;
+import by.epam.basavets.bean.PostComment;
 import by.epam.basavets.bean.User;
-import by.epam.basavets.dao.PostDAO;
-import by.epam.basavets.dao.SettingsDAO;
-import by.epam.basavets.dao.UserDAO;
+import by.epam.basavets.dao.PostCommentDAO;
+import by.epam.basavets.dao.impl.PostDAO;
+import by.epam.basavets.dao.impl.SettingsDAO;
+import by.epam.basavets.dao.impl.UserDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,14 +20,18 @@ public class PostService {
 
     private final PostDAO postDAO;
     private final UserDAO userDAO;
+    private final PostCommentDAO postCommentDAO;
     private final SettingsDAO settingsDAO;
     private final Logger logger = LogManager.getRootLogger();
 
-    public PostService(PostDAO postDAO, UserDAO userDAO, SettingsDAO settingsDAO) {
+
+    public PostService(PostDAO postDAO, UserDAO userDAO, PostCommentDAO postCommentDAO, SettingsDAO settingsDAO) {
         this.postDAO = postDAO;
         this.userDAO = userDAO;
+        this.postCommentDAO = postCommentDAO;
         this.settingsDAO = settingsDAO;
     }
+
 
     public void addNewPost(String email, String title, String text) {
         try {
@@ -42,10 +48,11 @@ public class PostService {
                 post.setModeratorStatus(ModeratorStatus.NEW);
                 postDAO.addPost(post);
             } else {
-                logger.error("На добавление новых постов доступ запрещен");
+                logger.error("Adding posts is denied access");
             }
         } catch (Exception e) {
-            logger.error("Настройки сайта не заданы обратитесь к модератору");
+            logger.error(e.getMessage());
+            throw new ServiceException(e.getMessage());
         }
     }
 
@@ -60,13 +67,28 @@ public class PostService {
     }
 
 
+    public Post getPostById(String id) throws SQLException {
+        return postDAO.findPostById(id);
+    }
+
+
     public void deletePostByTitle(String title) {
         try {
             Post post = postDAO.findPostByTitle(title);
+            List<PostComment>postComments = postCommentDAO.read();
+            if (postComments.size() != 0){
+                for (PostComment postComment : postComments){
+                    if (post.getId() == postComment.getPost().getId()){
+                        postCommentDAO.deletePostComment(postComment);
+                    }
+                }
+            }
             postDAO.deletePost(post);
-            logger.info("Пост удален");
+            logger.info("Post deleted");
         } catch (Exception e) {
-            logger.error("Пост не найден");
+            logger.error(e.getMessage());
+            throw new ServiceException(e.getMessage());
+
         }
     }
 
@@ -79,9 +101,22 @@ public class PostService {
             post.setText(text);
             post.setModeratorStatus(ModeratorStatus.NEW);
             postDAO.updatePost(post);
-            logger.info("Пост обновлен");
+            logger.info("Post updated");
         } catch (Exception e) {
-            logger.error("Пост не найден");
+            logger.error(e.getMessage());
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+
+    public void addPostView(String postId) {
+        try {
+            Post post = postDAO.findPostById(postId);
+            post.setViewCount(post.getViewCount() + 1);
+            postDAO.updatePostByView(post);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new ServiceException(e.getMessage());
         }
     }
 }

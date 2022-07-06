@@ -2,7 +2,7 @@ package by.epam.basavets.service;
 
 import by.epam.basavets.bean.Enum.SettingStatus;
 import by.epam.basavets.bean.Settings;
-import by.epam.basavets.dao.SettingsDAO;
+import by.epam.basavets.dao.impl.SettingsDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,6 +13,8 @@ public class SettingsService {
     Settings settings = new Settings();
     private final SettingsDAO settingsDAO;
     private final Logger logger = LogManager.getRootLogger();
+    private final String YES = "Yes";
+    private final String NO = "No";
 
 
     public SettingsService(SettingsDAO settingsDAO) {
@@ -22,15 +24,15 @@ public class SettingsService {
 
     public void setSettings(String status) throws SQLException {
         settingsDAO.deleteSettings();
-        if (status.equals("Yes")) {
+        if (status.equals(YES)) {
             settings.setSettingStatus(SettingStatus.Yes);
             settingsDAO.addSettings(settings);
-            logger.info("Доступ разрешен");
+            logger.info("Access is allowed");
         }
-        if (status.equals("No")) {
+        if (status.equals(NO)) {
             settings.setSettingStatus(SettingStatus.No);
             settingsDAO.addSettings(settings);
-            logger.info("Доступ запрещен");
+            logger.info("Access is denied");
         }
     }
 
@@ -40,7 +42,7 @@ public class SettingsService {
             settings.setSettingStatus(SettingStatus.No);
             settingsDAO.addSettings(settings);
         }
-        logger.info("Статус добавления постов - " + settingsDAO.getSettings());
+        logger.info("Status - " + settingsDAO.getSettings());
         return settingsDAO.getSettings();
     }
 }

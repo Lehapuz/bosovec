@@ -19,7 +19,8 @@ public class PostComment {
         this.user = user;
     }
 
-    public PostComment(){}
+    public PostComment() {
+    }
 
     public int getId() {
         return id;

@@ -30,7 +30,8 @@ public class Post {
         this.moderatorStatus = moderatorStatus;
     }
 
-    public Post(){}
+    public Post() {
+    }
 
     public int getId() {
         return id;
@@ -104,6 +105,14 @@ public class Post {
         this.postComments = postComments;
     }
 
+    public ModeratorStatus getModeratorStatus() {
+        return moderatorStatus;
+    }
+
+    public void setModeratorStatus(ModeratorStatus moderatorStatus) {
+        this.moderatorStatus = moderatorStatus;
+    }
+
     @Override
     public int hashCode() {
         return super.hashCode();
@@ -116,17 +125,8 @@ public class Post {
 
     @Override
     public String toString() {
-            return "Оглавление поста  - " + title + " Текст поста - " + text +
-                    " дата добавления поста - " + time + " количество просмостров - " + viewCount +
-                    " количество лайков - " + likeCount + " количество дизлайков - " + dislikeCount +
-                    " автор поста - " + user;
-    }
-
-    public ModeratorStatus getModeratorStatus() {
-        return moderatorStatus;
-    }
-
-    public void setModeratorStatus(ModeratorStatus moderatorStatus) {
-        this.moderatorStatus = moderatorStatus;
+        return title + " дата добавления поста - " + time + " количество просмостров - "
+                + viewCount + " количество лайков - " + likeCount + " количество дизлайков - " + dislikeCount +
+                " автор поста - " + user.getName();
     }
 }
