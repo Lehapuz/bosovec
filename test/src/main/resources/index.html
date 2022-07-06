@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+
+<body>
+
+<style>
+    h1{
+    color: red
+    }
+</style>
+
+<h1>Добро пожаловать!</h1>
+
+<div id="all-posts">
+    <div each="post : ${posts}">
+        <a href="#" class="post-link" attr="data-id=${post.id}" text="${post.name}"></a>
+    </div>
+</div>
+
+
+
+<script src="js/script.js">
+</script>
+</body>
+</html>
