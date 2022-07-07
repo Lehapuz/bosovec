@@ -12,7 +12,7 @@ public class Factory {
     private final SettingsDAO settingsDAO = new SettingsDAO();
 
     private final UserService userService = new UserService(userDAO, postDAO);
-    private final PostService postService = new PostService(postDAO, userDAO, postCommentDAO, settingsDAO);
+    private final PostService postService = new PostService(postDAO, userDAO, postCommentDAO, postVoteDAO, settingsDAO);
     private final PostCommentService postCommentService = new PostCommentService(postCommentDAO, postDAO, userDAO);
     private final PostVoteService postVoteService = new PostVoteService(postVoteDAO, postDAO);
     private final SettingsService settingsService = new SettingsService(settingsDAO);

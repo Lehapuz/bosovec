@@ -4,9 +4,11 @@ import by.epam.basavets.bean.Enum.ModeratorStatus;
 import by.epam.basavets.bean.Enum.SettingStatus;
 import by.epam.basavets.bean.Post;
 import by.epam.basavets.bean.PostComment;
+import by.epam.basavets.bean.PostVote;
 import by.epam.basavets.bean.User;
 import by.epam.basavets.dao.PostCommentDAO;
 import by.epam.basavets.dao.impl.PostDAO;
+import by.epam.basavets.dao.impl.PostVoteDAO;
 import by.epam.basavets.dao.impl.SettingsDAO;
 import by.epam.basavets.dao.impl.UserDAO;
 import org.apache.logging.log4j.LogManager;
@@ -21,14 +23,16 @@ public class PostService {
     private final PostDAO postDAO;
     private final UserDAO userDAO;
     private final PostCommentDAO postCommentDAO;
+    private final PostVoteDAO postVoteDAO;
     private final SettingsDAO settingsDAO;
     private final Logger logger = LogManager.getRootLogger();
 
 
-    public PostService(PostDAO postDAO, UserDAO userDAO, PostCommentDAO postCommentDAO, SettingsDAO settingsDAO) {
+    public PostService(PostDAO postDAO, UserDAO userDAO, PostCommentDAO postCommentDAO, PostVoteDAO postVoteDAO, SettingsDAO settingsDAO) {
         this.postDAO = postDAO;
         this.userDAO = userDAO;
         this.postCommentDAO = postCommentDAO;
+        this.postVoteDAO = postVoteDAO;
         this.settingsDAO = settingsDAO;
     }
 
@@ -75,20 +79,21 @@ public class PostService {
     public void deletePostByTitle(String title) {
         try {
             Post post = postDAO.findPostByTitle(title);
-            List<PostComment>postComments = postCommentDAO.read();
-            if (postComments.size() != 0){
-                for (PostComment postComment : postComments){
-                    if (post.getId() == postComment.getPost().getId()){
-                        postCommentDAO.deletePostComment(postComment);
-                    }
-                }
+            List<PostComment> postComments = postCommentDAO.read();
+            List<PostVote> postVotes = postVoteDAO.readPostVotes();
+            if (postComments.size() != 0) {
+                postComments.stream().filter(postComment -> postComment.getPost().getId() == post.getId())
+                        .forEach(postCommentDAO::deletePostComment);
+            }
+            if (postVotes.size() != 0) {
+                postVotes.stream().filter(postVote -> postVote.getPost().getId() == post.getId())
+                        .forEach(postVoteDAO::delete);
             }
             postDAO.deletePost(post);
             logger.info("Post deleted");
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new ServiceException(e.getMessage());
-
         }
     }
 
