@@ -51,62 +51,63 @@ public class ConnectionPool {
             connection = connectionBlockingQueue.take();
             logger.info(connectionBlockingQueue.size() + " - Size of free pool");
 
-            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS roles(" +
-                    "id INT NOT NULL AUTO_INCREMENT, " +
-                    "type TEXT NOT NULL, " +
-                    "PRIMARY KEY(id))");
-
-            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS users(" +
-                    "id INT NOT NULL AUTO_INCREMENT, " +
-                    "name TEXT NOT NULL, " +
-                    "email TEXT NOT NULL, " +
-                    "password TEXT NOT NULL, " +
-                    "registration_time DATETIME NOT NULL, " +
-                    "role_id INT NOT NULL, " +
-                    "active INT NOT NULL, " +
-                    "PRIMARY KEY(id), " +
-                    "FOREIGN KEY(role_id) REFERENCES roles(id))");
-
-            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS posts(" +
-                    "id INT NOT NULL AUTO_INCREMENT, " +
-                    "title TEXT NOT NULL, " +
-                    "text TEXT NOT NULL, " +
-                    "like_count INT, " +
-                    "dislike_count INT, " +
-                    "view_count INT, " +
-                    "time DATETIME NOT NULL, " +
-                    "user_id INT NOT NULL, " +
-                    "moderator_status TEXT NOT NULL, " +
-                    "PRIMARY KEY(id), " +
-                    "FOREIGN KEY(user_id) REFERENCES users(id))");
-
-            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS post_comments(" +
-                    "id INT NOT NULL AUTO_INCREMENT, " +
-                    "text TEXT NOT NULL, " +
-                    "time DATETIME NOT NULL, " +
-                    "post_id INT NOT NULL, " +
-                    "user_id INT NOT NULL, " +
-                    "PRIMARY KEY(id), " +
-                    "FOREIGN KEY(post_id) REFERENCES posts(id), " +
-                    "FOREIGN KEY(user_id) REFERENCES users(id))");
-
-            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS post_votes(" +
-                    "id INT NOT NULL AUTO_INCREMENT, " +
-                    "value INT NOT NULL, " +
-                    "time DATETIME NOT NULL, " +
-                    "post_id INT NOT NULL, " +
-                    "user_id INT NOT NULL, " +
-                    "PRIMARY KEY(id), " +
-                    "FOREIGN KEY(post_id) REFERENCES posts(id), " +
-                    "FOREIGN KEY(user_id) REFERENCES users(id))");
-
-            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS settings(" +
-                    "setting_status VARCHAR(5) NOT NULL, " +
-                    "PRIMARY KEY(setting_status))");
+            // If tables are not created
+//            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS roles(" +
+//                    "id INT NOT NULL AUTO_INCREMENT, " +
+//                    "type TEXT NOT NULL, " +
+//                    "PRIMARY KEY(id))");
+//
+//            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS users(" +
+//                    "id INT NOT NULL AUTO_INCREMENT, " +
+//                    "name TEXT NOT NULL, " +
+//                    "email TEXT NOT NULL, " +
+//                    "password TEXT NOT NULL, " +
+//                    "registration_time DATETIME NOT NULL, " +
+//                    "role_id INT NOT NULL, " +
+//                    "active INT NOT NULL, " +
+//                    "PRIMARY KEY(id), " +
+//                    "FOREIGN KEY(role_id) REFERENCES roles(id))");
+//
+//            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS posts(" +
+//                    "id INT NOT NULL AUTO_INCREMENT, " +
+//                    "title TEXT NOT NULL, " +
+//                    "text TEXT NOT NULL, " +
+//                    "like_count INT, " +
+//                    "dislike_count INT, " +
+//                    "view_count INT, " +
+//                    "time DATETIME NOT NULL, " +
+//                    "user_id INT NOT NULL, " +
+//                    "moderator_status TEXT NOT NULL, " +
+//                    "PRIMARY KEY(id), " +
+//                    "FOREIGN KEY(user_id) REFERENCES users(id))");
+//
+//            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS post_comments(" +
+//                    "id INT NOT NULL AUTO_INCREMENT, " +
+//                    "text TEXT NOT NULL, " +
+//                    "time DATETIME NOT NULL, " +
+//                    "post_id INT NOT NULL, " +
+//                    "user_id INT NOT NULL, " +
+//                    "PRIMARY KEY(id), " +
+//                    "FOREIGN KEY(post_id) REFERENCES posts(id), " +
+//                    "FOREIGN KEY(user_id) REFERENCES users(id))");
+//
+//            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS post_votes(" +
+//                    "id INT NOT NULL AUTO_INCREMENT, " +
+//                    "value INT NOT NULL, " +
+//                    "time DATETIME NOT NULL, " +
+//                    "post_id INT NOT NULL, " +
+//                    "user_id INT NOT NULL, " +
+//                    "PRIMARY KEY(id), " +
+//                    "FOREIGN KEY(post_id) REFERENCES posts(id), " +
+//                    "FOREIGN KEY(user_id) REFERENCES users(id))");
+//
+//            connection.createStatement().execute("CREATE TABLE IF NOT EXISTS settings(" +
+//                    "setting_status VARCHAR(5) NOT NULL, " +
+//                    "PRIMARY KEY(setting_status))");
 
             givenAwayConnectionQueue.add(connection);
             logger.info(givenAwayConnectionQueue.size() + " - Size of busy pool");
-        } catch (InterruptedException | SQLException e) {
+        } catch (InterruptedException e) {
             logger.error(e.getMessage());
         }
         return connection;
