@@ -14,7 +14,7 @@
 <fmt:message bundle="${local}" key="local.updateUser" var="updateUser"/>
 
 <h3>"${updateUser}"</h3>
-<form action="Controller?action=updateUser" method="post">
+<form action="Controller?command=update_user_action&action=updateUser" method="post">
 <label>Email</label>
 <br>
 <input name="email" type="email"/>

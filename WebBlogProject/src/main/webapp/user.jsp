@@ -27,19 +27,19 @@
     <div>
     <h2>"${possibility}":</h2>
         <div>
-        <button onclick="location.href='/Controller?command=9'">"${updateUser}"</button>
+        <button onclick="location.href='/Controller?command=update_user'">"${updateUser}"</button>
         <br></br>
-        <button onclick="location.href='/Controller?command=10'">"${deleteUser}"</button>
+        <button onclick="location.href='/Controller?command=delete_user'">"${deleteUser}"</button>
         <br></br>
-        <button onclick="location.href='/Controller?command=3'">"${lookAllPosts}"</button>
+        <button onclick="location.href='/Controller?command=all_posts'">"${lookAllPosts}"</button>
         <br></br>
-        <button onclick="location.href='/Controller?command=4'">"${lookMyPosts}"</button>
+        <button onclick="location.href='/Controller?command=all_my_posts'">"${lookMyPosts}"</button>
         <br></br>
-        <button onclick="location.href='/Controller?command=8'">"${lookMyComments}"</button>
+        <button onclick="location.href='/Controller?command=all_my-comments'">"${lookMyComments}"</button>
         <br></br>
-        <button onclick="location.href='/Controller?command=5'">"${exitUser}"</button>
+        <button onclick="location.href='/Controller?command=exit_user_prepare'">"${exitUser}"</button>
         <br></br>
-        <button onclick="location.href='/Controller?command=1'">"${changeLanguage}"</button>
+        <button onclick="location.href='/Controller?command=change_language'">"${changeLanguage}"</button>
         <br></br>
         </div>
     </div>

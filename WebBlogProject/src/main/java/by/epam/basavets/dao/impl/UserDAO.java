@@ -1,6 +1,6 @@
 package by.epam.basavets.dao.impl;
 
-import by.epam.basavets.bean.Enum.RoleTypes;
+import by.epam.basavets.bean.RoleTypes;
 import by.epam.basavets.bean.Role;
 import by.epam.basavets.bean.User;
 import by.epam.basavets.dao.ConnectionPool;
@@ -34,7 +34,7 @@ public class UserDAO implements UserDao {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not add role");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not add role", e);
         }
     }
 
@@ -57,7 +57,7 @@ public class UserDAO implements UserDao {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not add user");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not add user", e);
         }
     }
 
@@ -86,7 +86,7 @@ public class UserDAO implements UserDao {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not read users");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not read users", e);
         }
         return users;
     }
@@ -109,7 +109,7 @@ public class UserDAO implements UserDao {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not update user");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not update user", e);
         }
     }
 
@@ -132,7 +132,7 @@ public class UserDAO implements UserDao {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not delete user");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not delete user", e);
         }
     }
 
@@ -160,7 +160,7 @@ public class UserDAO implements UserDao {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not find user");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not find user", e);
         }
         return user;
     }
@@ -187,7 +187,7 @@ public class UserDAO implements UserDao {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not find user for post");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not find user for post", e);
         }
         return user;
     }
@@ -210,7 +210,7 @@ public class UserDAO implements UserDao {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not find user");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not find user", e);
         }
         return role;
     }
@@ -234,7 +234,7 @@ public class UserDAO implements UserDao {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not get last role");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not get last role", e);
         }
         return role;
     }

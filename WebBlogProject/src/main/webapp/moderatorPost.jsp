@@ -26,7 +26,7 @@
 </ul>
 
 <h3>"${setPostStatus}"</h3>
-<form method="post">
+<form action="Controller?command=action_post_id" method="post">
 <br>
 <select name="status">
     <option value="OK">Approve post</option>

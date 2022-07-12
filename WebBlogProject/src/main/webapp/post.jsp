@@ -22,7 +22,7 @@
 <ul>
     <p>"${text}"</p>
 </ul>
-      <form method="post">
+      <form action="Controller?command=action_post_id" method="post">
       <label>"${vote}"</label>
       <br>
       <select name="value">

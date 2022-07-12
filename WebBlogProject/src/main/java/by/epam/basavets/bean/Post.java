@@ -1,21 +1,22 @@
 package by.epam.basavets.bean;
 
-import by.epam.basavets.bean.Enum.ModeratorStatus;
-
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
-public class Post {
-    private int id;
+public class Post implements Serializable {
+    private Integer id;
     private String title;
     private String text;
-    private int likeCount;
-    private int dislikeCount;
-    private int viewCount;
+    private Integer likeCount;
+    private Integer dislikeCount;
+    private Integer viewCount;
     private LocalDateTime time;
     private User user;
     private List<PostComment> postComments;
     private ModeratorStatus moderatorStatus;
+    private static final long serialVersionUID = 1144L;
 
     public Post(int id, String title, String text, int likeCount, int dislikeCount, int viewCount,
                 LocalDateTime time, User user, ModeratorStatus moderatorStatus) {
@@ -33,11 +34,11 @@ public class Post {
     public Post() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -57,27 +58,27 @@ public class Post {
         this.text = text;
     }
 
-    public int getLikeCount() {
+    public Integer getLikeCount() {
         return likeCount;
     }
 
-    public void setLikeCount(int likeCount) {
+    public void setLikeCount(Integer likeCount) {
         this.likeCount = likeCount;
     }
 
-    public int getDislikeCount() {
+    public Integer getDislikeCount() {
         return dislikeCount;
     }
 
-    public void setDislikeCount(int dislikeCount) {
+    public void setDislikeCount(Integer dislikeCount) {
         this.dislikeCount = dislikeCount;
     }
 
-    public int getViewCount() {
+    public Integer getViewCount() {
         return viewCount;
     }
 
-    public void setViewCount(int viewCount) {
+    public void setViewCount(Integer viewCount) {
         this.viewCount = viewCount;
     }
 
@@ -115,12 +116,23 @@ public class Post {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return id == null ? 0 : Objects.hash(id, title, text, likeCount, dislikeCount, viewCount, time, user,
+                moderatorStatus);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Post post = (Post) obj;
+        return Objects.equals(id, post.id) && Objects.equals(title, post.title) && Objects.equals(text,
+                post.text) && Objects.equals(likeCount, post.likeCount) && Objects.equals(dislikeCount,
+                post.dislikeCount) && Objects.equals(viewCount, post.viewCount) && Objects.equals(time, post.time)
+                && Objects.equals(user, post.user) && Objects.equals(moderatorStatus, post.moderatorStatus);
     }
 
     @Override

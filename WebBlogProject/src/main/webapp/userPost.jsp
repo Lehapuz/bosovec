@@ -23,7 +23,7 @@
 <ul>
     <p>"${text}"</p>
 </ul>
-      <form method="post">
+      <form action="Controller?command=25" method="post">
       <label>"${vote}"</label>
       <br>
       <select name="value">
@@ -35,7 +35,7 @@
       <input type="submit" value="Save"/>
       </form>
       <h3>"${addNewComment}"</h3>
-      <form method="post">
+      <form action="Controller?command=action_post_id" method="post">
       <br>
       <label>TextComment</label>
       <br>

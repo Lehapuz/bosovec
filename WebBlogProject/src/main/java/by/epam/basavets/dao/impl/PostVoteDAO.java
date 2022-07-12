@@ -3,7 +3,7 @@ package by.epam.basavets.dao.impl;
 import by.epam.basavets.bean.PostVote;
 import by.epam.basavets.dao.ConnectionPool;
 import by.epam.basavets.dao.DAOException;
-import by.epam.basavets.factory.Factory;
+import by.epam.basavets.dao.DAOFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,7 +35,7 @@ public class PostVoteDAO implements by.epam.basavets.dao.PostVoteDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not add vote");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not add vote", e);
         }
     }
 
@@ -51,7 +51,7 @@ public class PostVoteDAO implements by.epam.basavets.dao.PostVoteDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not delete post_vote");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not delete post_vote", e);
         }
     }
 
@@ -70,15 +70,15 @@ public class PostVoteDAO implements by.epam.basavets.dao.PostVoteDAO {
                 postVote.setValue(resultSet.getInt("value"));
                 postVote.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
                         .ofPattern("yyyy-MM-dd HH:mm:ss")));
-                postVote.setPost(Factory.getInstance().getPostDAO().findPostById(String
+                postVote.setPost(DAOFactory.getInstance().getPostDAO().findPostById(String
                         .valueOf(resultSet.getInt("post_id"))));
-                postVote.setUser(Factory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
+                postVote.setUser(DAOFactory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
                 postVotes.add(postVote);
             }
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not read posts");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not read posts", e);
         }
         return postVotes;
     }

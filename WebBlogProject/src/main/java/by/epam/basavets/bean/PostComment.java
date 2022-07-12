@@ -1,14 +1,17 @@
 package by.epam.basavets.bean;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
-public class PostComment {
+public class PostComment implements Serializable {
 
-    private int id;
+    private Integer id;
     private String text;
     private LocalDateTime time;
     private Post post;
     private User user;
+    private static final long serialVersionUID = 1155L;
 
 
     public PostComment(int id, String text, LocalDateTime time, Post post, User user) {
@@ -22,11 +25,11 @@ public class PostComment {
     public PostComment() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -64,12 +67,20 @@ public class PostComment {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return id == null ? 0 : Objects.hash(id, text, time, post, user);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        PostComment postComment = (PostComment) obj;
+        return Objects.equals(id, postComment.id) && Objects.equals(text, postComment.text) && Objects.equals(time,
+                postComment.time) && Objects.equals(user, postComment.user) && Objects.equals(post, postComment.post);
     }
 
     @Override

@@ -14,7 +14,7 @@
 <fmt:message bundle="${local}" key="local.deleteUser" var="deleteUser"/>
 
 <h3>"${deleteUser}"</h3>
-<form action="Controller?action=deleteUser" method="post">
+<form action="Controller?command=delete_user_action&action=deleteUser" method="post">
 <label>Email</label>
 <br>
 <input name="email" type="email"/>

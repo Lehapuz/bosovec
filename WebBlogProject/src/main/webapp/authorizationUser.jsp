@@ -15,7 +15,7 @@
 <fmt:message bundle="${local}" key="local.register" var="register"/>
 
 <h3>"${enter}"</h3>
-<form action="Controller?action=logIn" method="post">
+<form action="Controller?command=log_in&action=logIn" method="post">
 <label>Email</label>
 <br>
 <input name="email" type="email"/>
@@ -33,7 +33,7 @@
 <br>
 
 <h3>"${register}"</h3>
-<form action="Controller?action=registration" method="post">
+<form action="Controller?command=log_in&action=registration" method="post">
 <label>Name</label>
 <br>
 <input name="name" type="string"/>

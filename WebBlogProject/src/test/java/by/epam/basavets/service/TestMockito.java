@@ -1,8 +1,9 @@
 package by.epam.basavets.service;
 
-import by.epam.basavets.bean.Enum.RoleTypes;
+import by.epam.basavets.bean.RoleTypes;
 import by.epam.basavets.bean.Role;
 import by.epam.basavets.bean.User;
+import by.epam.basavets.service.impl.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

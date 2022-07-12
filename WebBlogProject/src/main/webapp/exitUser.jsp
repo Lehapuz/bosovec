@@ -14,7 +14,7 @@
 <fmt:message bundle="${local}" key="local.sureExit" var="sureExit"/>
 
 <h3>"${sureExit}"?</h3>
-<form action="Controller?action=exit"method="post">
+<form action="Controller?command=exit_user&action=exit" method="post">
     <select name="admit">
         <option value="Yes">Yes</option>
         <option value="No">No</option>

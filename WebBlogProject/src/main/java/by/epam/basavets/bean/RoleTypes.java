@@ -1,4 +1,4 @@
-package by.epam.basavets.bean.Enum;
+package by.epam.basavets.bean;
 
 public enum RoleTypes {
     USER,

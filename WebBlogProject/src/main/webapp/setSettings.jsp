@@ -18,7 +18,7 @@
 <p>"${settings}"</p>
 <br>
 <h3>"${setWebSetting}"</h3>
-<form method="post">
+<form action="Controller?command=set_setting" method="post">
     <select name="status">
         <option value="Yes">Allow posting</option>
         <option value="No">Disable posting</option>

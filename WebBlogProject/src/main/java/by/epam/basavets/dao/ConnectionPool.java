@@ -40,7 +40,8 @@ public class ConnectionPool {
                 logger.info("add connection");
             }
         } catch (SQLException e) {
-            logger.error(e.getMessage());
+            logger.error("Can not init connection");
+            throw new DAOException("Can not init connection", e);
         }
     }
 
@@ -108,7 +109,8 @@ public class ConnectionPool {
             givenAwayConnectionQueue.add(connection);
             logger.info(givenAwayConnectionQueue.size() + " - Size of busy pool");
         } catch (InterruptedException e) {
-            logger.error(e.getMessage());
+            logger.error("Can not create connection");
+            throw new DAOException("Can not create connection", e);
         }
         return connection;
     }
@@ -117,13 +119,10 @@ public class ConnectionPool {
     public void givenAwayConnection(Connection connection, Statement statement, ResultSet resultSet) throws InterruptedException {
         try {
             resultSet.close();
-        } catch (SQLException e) {
-            logger.error("ResultSet not closed");
-        }
-        try {
             statement.close();
         } catch (SQLException e) {
-            logger.error("Statement not closed");
+            logger.error("Statement or resultSet are not closed");
+            throw new DAOException("Statement or resultSet not closed", e);
         }
         givenAwayConnectionQueue.take();
         connectionBlockingQueue.add(connection);
@@ -136,7 +135,8 @@ public class ConnectionPool {
         try {
             statement.close();
         } catch (SQLException e) {
-            logger.error("Statement not closed");
+            logger.error("Statement is not closed");
+            throw new DAOException("Statement or resultSet not closed", e);
         }
         givenAwayConnectionQueue.take();
         connectionBlockingQueue.add(connection);
@@ -145,9 +145,13 @@ public class ConnectionPool {
     }
 
 
-    public static ConnectionPool getInstance() throws IOException, SQLException {
+    public static ConnectionPool getInstance() {
         if (instance == null) {
-            instance = new ConnectionPool();
+            try {
+                instance = new ConnectionPool();
+            } catch (IOException | SQLException e) {
+                throw new DAOException("Can not get instance", e);
+            }
         }
         return instance;
     }

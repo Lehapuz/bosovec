@@ -29,7 +29,7 @@
 </c:forEach>
 <br></br>
 <h3>"${addMyPost}"</h3>
-<form action="Controller?action=addPost" method="post">
+<form action="Controller?command=my_post&action=addPost" method="post">
 <label>Email</label>
 <br>
 <input name="email" type="email"/>
@@ -52,7 +52,7 @@
 <br>
 
 <h3>"${updateMyPost}"</h3>
-    <form action="Controller?action=updatePost" method="post">
+    <form action="Controller?command=my_post&action=updatePost" method="post">
     <label>Title</label>
     <br>
     <input name="updateTitle" type="string"/>
@@ -74,7 +74,7 @@
     <br>
     <br>
     <h3>"${deleteMyPost}"</h3>
-    <form action="Controller?action=deletePost" method="post">
+    <form action="Controller?command=my_post&action=deletePost" method="post">
     <label>Title</label>
     <br>
     <input name="deleteTitle" type="string"/>

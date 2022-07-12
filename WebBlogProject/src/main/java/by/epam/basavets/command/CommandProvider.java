@@ -1,18 +1,18 @@
 package by.epam.basavets.command;
 
-import by.epam.basavets.bean.Enum.ModeratorStatus;
+import by.epam.basavets.bean.ModeratorStatus;
 import by.epam.basavets.bean.Post;
 import by.epam.basavets.bean.PostComment;
 import by.epam.basavets.bean.User;
-import by.epam.basavets.factory.Factory;
+import by.epam.basavets.service.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,12 +73,15 @@ public class CommandProvider {
     private final String ADD_COMMENT = "addComment";
 
 
+    //private static final HashMap<String, Object> commandProviderHashMap = new HashMap<>();
+
+
     public void getPosts(HttpServletRequest req, HttpServletResponse resp) {
         HttpSession session = req.getSession();
         List<Post> posts;
         List<Post> correctPosts;
         try {
-            posts = Factory.getInstance().getPostService().getAllPosts();
+            posts = ServiceFactory.getInstance().getPostService().getAllPosts();
             correctPosts = posts.stream().filter(post -> post.getModeratorStatus().equals(ModeratorStatus.ACCEPTED))
                     .collect(Collectors.toList());
             if (req.getSession().getAttribute(AUTHORIZE_USER) == null) {
@@ -103,8 +106,8 @@ public class CommandProvider {
                     }
                 }
             }
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -118,7 +121,7 @@ public class CommandProvider {
                     String password = req.getParameter(PASSWORD);
                     String email = req.getParameter(EMAIL);
                     HttpSession session = req.getSession();
-                    user = Factory.getInstance().getUserService().authorizationUser(email, password);
+                    user = ServiceFactory.getInstance().getUserService().authorizationUser(email, password);
                     if (user == null) {
                         session.setAttribute(AUTHORIZATION, "Авторизация не удалась");
                         req.getServletContext().getRequestDispatcher("/authorizationUser.jsp").forward(req, resp);
@@ -139,7 +142,7 @@ public class CommandProvider {
                     String email = req.getParameter(EMAIL);
                     String secreteCode = req.getParameter(SECRETE_CODE);
                     HttpSession session = req.getSession();
-                    User newUser = Factory.getInstance().getUserService().findUserByEmail(email);
+                    User newUser = ServiceFactory.getInstance().getUserService().findUserByEmail(email);
                     if (name.length() == 0) {
                         session.setAttribute(REGISTRATION_ACCOUNT_USER, "Имя должно быть указано");
                     } else if (password.length() < 6) {
@@ -148,19 +151,33 @@ public class CommandProvider {
                     } else if (newUser != null) {
                         session.setAttribute(REGISTRATION_ACCOUNT_USER, "Пользователь с таким адресом электронной почты " +
                                 "уже зарегистрирован");
-                    } else if (!Factory.getInstance().getUserService().isValidEmail(email)) {
+                    } else if (!ServiceFactory.getInstance().getUserService().isValidEmail(email)) {
                         session.setAttribute(REGISTRATION_ACCOUNT_USER, "Неккоректный адрес электронной почты");
                     } else {
                         session.setAttribute(REGISTRATION_ACCOUNT_USER, "Пользователь успешно зарегистрирован");
-                        Factory.getInstance().getUserService().addRole(secreteCode);
-                        Factory.getInstance().getUserService().registerUser(name, password, email);
+                        ServiceFactory.getInstance().getUserService().addRole(secreteCode);
+                        ServiceFactory.getInstance().getUserService().registerUser(name, password, email);
                     }
                     req.getServletContext().getRequestDispatcher("/authorizationUser.jsp").forward(req, resp);
                 }
                 break;
             }
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
+        }
+    }
+
+
+    public void getUpdateUserPage(HttpServletRequest req, HttpServletResponse resp) {
+        User user = (User) req.getSession().getAttribute(AUTHORIZE_USER);
+        try {
+            if (user == null) {
+                req.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+            } else {
+                req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
+            }
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -175,8 +192,8 @@ public class CommandProvider {
                 String newPassword = req.getParameter(NEW_PASSWORD);
                 HttpSession session = req.getSession();
                 User updateUser = (User) session.getAttribute(AUTHORIZE_USER);
-                if (Factory.getInstance().getUserService().findUserByEmail(email) == null ||
-                        !updateUser.getEmail().equals(Factory.getInstance().getUserService().findUserByEmail(email).getEmail())) {
+                if (ServiceFactory.getInstance().getUserService().findUserByEmail(email) == null ||
+                        !updateUser.getEmail().equals(ServiceFactory.getInstance().getUserService().findUserByEmail(email).getEmail())) {
                     session.setAttribute(UPDATE_ACCOUNT_USER, "Неверный адрес электронной почты");
                     req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
                 } else if (!updateUser.getPassword().equals(password)) {
@@ -190,15 +207,29 @@ public class CommandProvider {
                     req.getServletContext().getRequestDispatcher("/updateUser.jsp").forward(req, resp);
                 } else {
                     session.setAttribute(UPDATE_ACCOUNT_USER, "Аккаунт пользователя успешно обновлен");
-                    Factory.getInstance().getUserService().updateUserByEmail(updateUser, email, password, name, newPassword);
+                    ServiceFactory.getInstance().getUserService().updateUserByEmail(updateUser, email, password, name, newPassword);
                     switch (updateUser.getRole().getRoleTypes().toString()) {
                         case MODERATOR -> req.getServletContext().getRequestDispatcher("/moderator.jsp").forward(req, resp);
                         case USER -> req.getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);
                     }
                 }
             }
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
+        }
+    }
+
+
+    public void getDeleteUserPage(HttpServletRequest req, HttpServletResponse resp) {
+        User user = (User) req.getSession().getAttribute(AUTHORIZE_USER);
+        try {
+            if (user == null) {
+                req.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+            } else {
+                req.getServletContext().getRequestDispatcher("/deleteUser.jsp").forward(req, resp);
+            }
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -211,8 +242,9 @@ public class CommandProvider {
                 String password = req.getParameter(PASSWORD);
                 HttpSession session = req.getSession();
                 User deleteUser = (User) session.getAttribute(AUTHORIZE_USER);
-                if (Factory.getInstance().getUserService().findUserByEmail(email) == null ||
-                        !deleteUser.getEmail().equals(Factory.getInstance().getUserService().findUserByEmail(email).getEmail())) {
+                if (ServiceFactory.getInstance().getUserService().findUserByEmail(email) == null ||
+                        !deleteUser.getEmail().equals(ServiceFactory.getInstance().getUserService()
+                                .findUserByEmail(email).getEmail())) {
                     session.setAttribute(DELETE_ACCOUNT_USER, "Неверный адрес электронной почты");
                     req.getServletContext().getRequestDispatcher("/deleteUser.jsp").forward(req, resp);
                 } else if (!deleteUser.getPassword().equals(password)) {
@@ -220,13 +252,13 @@ public class CommandProvider {
                     req.getServletContext().getRequestDispatcher("/deleteUser.jsp").forward(req, resp);
                 } else {
                     session.setAttribute(DELETE_ACCOUNT_USER, "Аккаунт пользователя успешно удален");
-                    Factory.getInstance().getUserService().deleteUserByEmail(deleteUser, email, password);
+                    ServiceFactory.getInstance().getUserService().deleteUserByEmail(deleteUser, email, password);
                     session.setAttribute(AUTHORIZE_USER, null);
                     req.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
                 }
             }
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -248,6 +280,15 @@ public class CommandProvider {
     }
 
 
+    public void changeLanguageGet(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            req.getServletContext().getRequestDispatcher("/lang.jsp").forward(req, resp);
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
+        }
+    }
+
+
     public void changeLanguage(HttpServletRequest req, HttpServletResponse resp) {
         req.getSession(true).setAttribute(LOCAL, req.getParameter(LOCAL));
         try {
@@ -260,8 +301,8 @@ public class CommandProvider {
                     case USER -> req.getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);
                 }
             }
-        } catch (ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -272,9 +313,9 @@ public class CommandProvider {
             if (user != null) {
                 List<Post> posts;
                 List<Post> myPosts = new ArrayList<>();
-                posts = Factory.getInstance().getPostService().getAllPosts();
+                posts = ServiceFactory.getInstance().getPostService().getAllPosts();
                 for (Post post : posts) {
-                    if (user.getId() == post.getUser().getId()) {
+                    if (user.getId().equals(post.getUser().getId())) {
                         myPosts.add(post);
                     }
                 }
@@ -284,8 +325,8 @@ public class CommandProvider {
             } else {
                 req.getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
             }
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -304,39 +345,48 @@ public class CommandProvider {
         try {
             switch (action) {
                 case ADD_POST: {
-                    if (Factory.getInstance().getSettingsService().showSettings().toString().equals("No")) {
+                    if (ServiceFactory.getInstance().getSettingsService().showSettings().toString().equals("No")) {
                         session.setAttribute(CORRECT_EMAIL, "На добавление новых постов наложен запрет");
-                    } else if (Factory.getInstance().getUserService().findUserByEmail(email) == null ||
+                    } else if (ServiceFactory.getInstance().getUserService().findUserByEmail(email) == null ||
                             !user.getEmail()
-                                    .equals(Factory.getInstance().getUserService().findUserByEmail(email).getEmail())) {
+                                    .equals(ServiceFactory.getInstance().getUserService().findUserByEmail(email).getEmail())) {
                         session.setAttribute(CORRECT_EMAIL, "Адрес электронной почты указан неверно");
                     } else {
-                        Factory.getInstance().getPostService().addNewPost(email, title, text);
+                        ServiceFactory.getInstance().getPostService().addNewPost(email, title, text);
                         session.setAttribute(CORRECT_EMAIL, "Пост успешно добавлен");
                     }
                 }
                 case UPDATE_POST: {
-                    Post post = Factory.getInstance().getPostService().getPostByTitle(updateTitle);
-                    if (post == null || user.getId() != post.getUser().getId()) {
+                    Post post = ServiceFactory.getInstance().getPostService().getPostByTitle(updateTitle);
+                    if (post == null || !user.getId().equals(post.getUser().getId())) {
                         session.setAttribute(UPDATE_POST_TEXT, "Введено неверное название поста");
                     } else {
                         session.setAttribute(UPDATE_POST_TEXT, "Пост пользователя успешно обновлен");
-                        Factory.getInstance().getPostService().updatePostByTitle(updateTitle, newTitle, updateText);
+                        ServiceFactory.getInstance().getPostService().updatePostByTitle(updateTitle, newTitle, updateText);
                     }
                 }
                 case DELETE_POST: {
-                    Post post = Factory.getInstance().getPostService().getPostByTitle(deleteTitle);
-                    if (post == null || user.getId() != post.getUser().getId()) {
+                    Post post = ServiceFactory.getInstance().getPostService().getPostByTitle(deleteTitle);
+                    if (post == null || !user.getId().equals(post.getUser().getId())) {
                         session.setAttribute(DELETE_POST_TEXT, "Введено неверное название поста");
                     } else {
                         session.setAttribute(DELETE_POST_TEXT, "Пост пользователя успешно удален");
-                        Factory.getInstance().getPostService().deletePostByTitle(deleteTitle);
+                        ServiceFactory.getInstance().getPostService().deletePostByTitle(deleteTitle);
                     }
                 }
             }
-            req.getServletContext().getRequestDispatcher("/listMyPost.jsp").forward(req, resp);
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+            req.getServletContext().getRequestDispatcher("/authorizationUser.jsp").forward(req, resp);
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
+        }
+    }
+
+
+    public void getExitPage(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            req.getServletContext().getRequestDispatcher("/exitUser.jsp").forward(req, resp);
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -345,24 +395,28 @@ public class CommandProvider {
         HttpSession session = req.getSession();
         User user = (User) req.getSession().getAttribute(AUTHORIZE_USER);
         try {
-            String action = req.getParameter(ACTION);
-            if (EXIT.equals(action)) {
-                String admit = req.getParameter(ADMIT);
-                switch (admit) {
-                    case YES -> {
-                        session.setAttribute(AUTHORIZE_USER, null);
-                        req.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
-                    }
-                    case NO -> {
-                        switch (user.getRole().getRoleTypes().toString()) {
-                            case MODERATOR -> req.getServletContext().getRequestDispatcher("/moderator.jsp").forward(req, resp);
-                            case USER -> req.getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);
+            if (user == null) {
+                req.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+            } else {
+                String action = req.getParameter(ACTION);
+                if (EXIT.equals(action)) {
+                    String admit = req.getParameter(ADMIT);
+                    switch (admit) {
+                        case YES -> {
+                            session.setAttribute(AUTHORIZE_USER, null);
+                            req.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+                        }
+                        case NO -> {
+                            switch (user.getRole().getRoleTypes().toString()) {
+                                case MODERATOR -> req.getServletContext().getRequestDispatcher("/moderator.jsp").forward(req, resp);
+                                case USER -> req.getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);
+                            }
                         }
                     }
                 }
             }
-        } catch (ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -372,13 +426,13 @@ public class CommandProvider {
         User user = (User) req.getSession().getAttribute(AUTHORIZE_USER);
         try {
             if (user != null) {
-                session.setAttribute(SETTINGS, Factory.getInstance().getSettingsService().showSettings());
+                session.setAttribute(SETTINGS, ServiceFactory.getInstance().getSettingsService().showSettings());
                 req.getServletContext().getRequestDispatcher("/setSettings.jsp").forward(req, resp);
             } else {
                 req.getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
             }
-        } catch (ServletException | IOException | SQLException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -386,10 +440,10 @@ public class CommandProvider {
     public void setSettings(HttpServletRequest req, HttpServletResponse resp) {
         String status = req.getParameter(STATUS);
         try {
-            Factory.getInstance().getSettingsService().setSettings(status);
+            ServiceFactory.getInstance().getSettingsService().setSettings(status);
             req.getServletContext().getRequestDispatcher("/moderator.jsp").forward(req, resp);
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -398,39 +452,43 @@ public class CommandProvider {
         try {
             HttpSession session = req.getSession();
             String postId = req.getParameter(POST_ID);
-            Post postById = Factory.getInstance().getPostService().getPostById(postId);
-            Factory.getInstance().getPostService().addPostView(postId);
-            session.setAttribute(POST, postId);
-            List<PostComment> postComments;
-            List<PostComment> currentPostComments;
-            postComments = Factory.getInstance().getPostCommentService().getAllPostComments();
-
-            currentPostComments = postComments.stream()
-                    .filter(postComment -> postComment.getPost().getId() == postById.getId())
-                    .collect(Collectors.toList());
-
-            int postCommentSize = currentPostComments.size();
-            session.setAttribute(POST_COMMENT_SIZE, postCommentSize);
-            session.setAttribute(POST_COMMENTS, currentPostComments);
-
-            if (req.getSession().getAttribute(AUTHORIZE_USER) == null) {
-                session.setAttribute(TEXT, postById.getText());
-                req.getServletContext().getRequestDispatcher("/post.jsp").forward(req, resp);
+            Post postById = ServiceFactory.getInstance().getPostService().getPostById(postId);
+            if (postById == null) {
+                req.getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
             } else {
-                User user = (User) req.getSession().getAttribute(AUTHORIZE_USER);
-                switch (user.getRole().getRoleTypes().toString()) {
-                    case MODERATOR -> {
-                        session.setAttribute(TEXT, postById.getText());
-                        req.getServletContext().getRequestDispatcher("/moderatorPost.jsp").forward(req, resp);
-                    }
-                    case USER -> {
-                        session.setAttribute(TEXT, postById.getText());
-                        req.getServletContext().getRequestDispatcher("/userPost.jsp").forward(req, resp);
+                ServiceFactory.getInstance().getPostService().addPostView(postId);
+                session.setAttribute(POST, postId);
+                List<PostComment> postComments;
+                List<PostComment> currentPostComments;
+                postComments = ServiceFactory.getInstance().getPostCommentService().getAllPostComments();
+
+                currentPostComments = postComments.stream()
+                        .filter(postComment -> postComment.getPost().getId().equals(postById.getId()))
+                        .collect(Collectors.toList());
+
+                int postCommentSize = currentPostComments.size();
+                session.setAttribute(POST_COMMENT_SIZE, postCommentSize);
+                session.setAttribute(POST_COMMENTS, currentPostComments);
+
+                if (req.getSession().getAttribute(AUTHORIZE_USER) == null) {
+                    session.setAttribute(TEXT, postById.getText());
+                    req.getServletContext().getRequestDispatcher("/post.jsp").forward(req, resp);
+                } else {
+                    User user = (User) req.getSession().getAttribute(AUTHORIZE_USER);
+                    switch (user.getRole().getRoleTypes().toString()) {
+                        case MODERATOR -> {
+                            session.setAttribute(TEXT, postById.getText());
+                            req.getServletContext().getRequestDispatcher("/moderatorPost.jsp").forward(req, resp);
+                        }
+                        case USER -> {
+                            session.setAttribute(TEXT, postById.getText());
+                            req.getServletContext().getRequestDispatcher("/userPost.jsp").forward(req, resp);
+                        }
                     }
                 }
             }
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -438,10 +496,10 @@ public class CommandProvider {
     public void actionPostById(HttpServletRequest req, HttpServletResponse resp) {
         String postId = (String) req.getSession().getAttribute(POST);
         try {
-            Post postById = Factory.getInstance().getPostService().getPostById(postId);
+            Post postById = ServiceFactory.getInstance().getPostService().getPostById(postId);
             if (req.getSession().getAttribute(AUTHORIZE_USER) == null) {
                 String value = req.getParameter(VALUE);
-                Factory.getInstance().getPostVoteService().setPostVote(postId, value);
+                ServiceFactory.getInstance().getPostVoteService().setPostVote(postId, value);
                 req.getServletContext().getRequestDispatcher("/post.jsp").forward(req, resp);
             } else if (req.getSession().getAttribute(AUTHORIZE_USER) != null) {
                 User user = (User) req.getSession().getAttribute(AUTHORIZE_USER);
@@ -452,10 +510,10 @@ public class CommandProvider {
                         String email = user.getEmail();
                         String textComment = req.getParameter(TEXT_COMMENT);
                         if (textComment == null) {
-                            Factory.getInstance().getPostVoteService().setPostVote(postId, value);
+                            ServiceFactory.getInstance().getPostVoteService().setPostVote(postId, value);
                         }
                         if (value == null) {
-                            Factory.getInstance().getPostCommentService().addPostComment(title, email, textComment);
+                            ServiceFactory.getInstance().getPostCommentService().addPostComment(title, email, textComment);
                             req.setAttribute(ADD_COMMENT, "Add comment to post");
                         }
                         req.getServletContext().getRequestDispatcher("/userPost.jsp").forward(req, resp);
@@ -463,13 +521,13 @@ public class CommandProvider {
                     case MODERATOR -> {
                         String title = postById.getTitle();
                         String status = req.getParameter(STATUS);
-                        Factory.getInstance().getUserService().setModeratorStatus(title, status);
+                        ServiceFactory.getInstance().getUserService().setModeratorStatus(title, status);
                         req.getServletContext().getRequestDispatcher("/moderatorPost.jsp").forward(req, resp);
                     }
                 }
             }
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -483,17 +541,17 @@ public class CommandProvider {
                 User user = (User) req.getSession().getAttribute(AUTHORIZE_USER);
                 List<PostComment> postComments;
                 List<PostComment> myPostComments = new ArrayList<>();
-                postComments = Factory.getInstance().getPostCommentService().getAllPostComments();
+                postComments = ServiceFactory.getInstance().getPostCommentService().getAllPostComments();
                 for (PostComment postComment : postComments) {
-                    if (user.getId() == postComment.getUser().getId()) {
+                    if (user.getId().equals(postComment.getUser().getId())) {
                         myPostComments.add(postComment);
                     }
                 }
                 session.setAttribute(POST_COMMENT, myPostComments);
                 req.getServletContext().getRequestDispatcher("/listMyPostComment.jsp").forward(req, resp);
             }
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -510,42 +568,38 @@ public class CommandProvider {
         try {
             switch (action) {
                 case UPDATE_COMMENT: {
-                    User user = Factory.getInstance().getUserService().findUserByEmail(email);
-                    PostComment postComment = Factory.getInstance().getPostCommentService()
+                    User user = ServiceFactory.getInstance().getUserService().findUserByEmail(email);
+                    PostComment postComment = ServiceFactory.getInstance().getPostCommentService()
                             .getPostCommentByText(textComment);
-                    if (postComment == null || authoriseUser.getId() != postComment.getUser().getId()) {
+                    if (postComment == null || !authoriseUser.getId().equals(postComment.getUser().getId())) {
                         session.setAttribute(UPDATE_TEXT_COMMENT, "Введен неверный комментарий");
-                    } else if (user == null || authoriseUser.getId() != user.getId()) {
+                    } else if (user == null || !authoriseUser.getId().equals(user.getId())) {
                         session.setAttribute(UPDATE_TEXT_COMMENT, "Введен неверный адрес электронной почты");
                     } else {
                         session.setAttribute(UPDATE_TEXT_COMMENT, "Комментарий пользователя успешно обновлен");
-                        Factory.getInstance().getPostCommentService()
+                        ServiceFactory.getInstance().getPostCommentService()
                                 .updatePostCommentByText(textComment, email, newTextComment);
                     }
                 }
                 case DELETE_COMMENT: {
-                    try {
-                        User user = Factory.getInstance().getUserService().findUserByEmail(deleteEmail);
-                        PostComment postComment = Factory.getInstance().getPostCommentService()
-                                .getPostCommentByText(deleteTextComment);
-                        if (postComment == null || authoriseUser.getId() != postComment.getUser().getId()) {
-                            session.setAttribute(DELETE_TEXT_COMMENT, "Введен неверный комментарий");
+                    User user = ServiceFactory.getInstance().getUserService().findUserByEmail(deleteEmail);
+                    PostComment postComment = ServiceFactory.getInstance().getPostCommentService()
+                            .getPostCommentByText(deleteTextComment);
+                    if (postComment == null || !authoriseUser.getId().equals(postComment.getUser().getId())) {
+                        session.setAttribute(DELETE_TEXT_COMMENT, "Введен неверный комментарий");
 
-                        } else if (user == null || authoriseUser.getId() != user.getId()) {
-                            session.setAttribute(DELETE_TEXT_COMMENT, "Введен неверный адрес электронной почты");
+                    } else if (user == null || !authoriseUser.getId().equals(user.getId())) {
+                        session.setAttribute(DELETE_TEXT_COMMENT, "Введен неверный адрес электронной почты");
 
-                        } else {
-                            session.setAttribute(DELETE_TEXT_COMMENT, "Комментарий пользователя успешно удален");
-                            Factory.getInstance().getPostCommentService().deletePostComment(deleteTextComment, deleteEmail);
-                        }
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
+                    } else {
+                        session.setAttribute(DELETE_TEXT_COMMENT, "Комментарий пользователя успешно удален");
+                        ServiceFactory.getInstance().getPostCommentService().deletePostComment(deleteTextComment, deleteEmail);
                     }
                 }
             }
             req.getServletContext().getRequestDispatcher("/listMyPostComment.jsp").forward(req, resp);
-        } catch (SQLException | ServletException | IOException e) {
-            throw new CommandProviderException(e.getMessage());
+        } catch (Exception e) {
+            throw new CommandProviderException(e);
         }
     }
 
@@ -553,4 +607,15 @@ public class CommandProvider {
     public static CommandProvider getInstance() {
         return new CommandProvider();
     }
+
+//    public void addCommandProviderHashMap() {
+//        commandProviderHashMap.put("1", changeLanguageGet(request, response));
+//        commandProviderHashMap.put("21", changeLanguage(request, response));
+//
+//    }
+
+//    public Object getCommand(String commandName) {
+//        return commandProviderHashMap.get(commandName);
+//    }
+
 }

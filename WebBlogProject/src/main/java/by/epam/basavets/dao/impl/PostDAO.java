@@ -1,10 +1,10 @@
 package by.epam.basavets.dao.impl;
 
-import by.epam.basavets.bean.Enum.ModeratorStatus;
+import by.epam.basavets.bean.ModeratorStatus;
 import by.epam.basavets.bean.Post;
-import by.epam.basavets.factory.Factory;
 import by.epam.basavets.dao.ConnectionPool;
 import by.epam.basavets.dao.DAOException;
+import by.epam.basavets.dao.DAOFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -42,7 +42,7 @@ public class PostDAO implements by.epam.basavets.dao.PostDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not add post");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not add post", e);
         }
     }
 
@@ -65,14 +65,14 @@ public class PostDAO implements by.epam.basavets.dao.PostDAO {
                 post.setViewCount(resultSet.getInt("view_count"));
                 post.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
                         .ofPattern("yyyy-MM-dd HH:mm:ss")));
-                post.setUser(Factory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
+                post.setUser(DAOFactory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
                 post.setModeratorStatus(ModeratorStatus.valueOf(resultSet.getString("moderator_status")));
                 posts.add(post);
             }
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not read posts");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not read posts", e);
         }
         return posts;
     }
@@ -90,7 +90,7 @@ public class PostDAO implements by.epam.basavets.dao.PostDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not update moderator status");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not update moderator status", e);
         }
     }
 
@@ -109,7 +109,7 @@ public class PostDAO implements by.epam.basavets.dao.PostDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not update post");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not update post", e);
         }
     }
 
@@ -125,7 +125,7 @@ public class PostDAO implements by.epam.basavets.dao.PostDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not delete post");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not delete post", e);
         }
     }
 
@@ -149,13 +149,13 @@ public class PostDAO implements by.epam.basavets.dao.PostDAO {
                 post.setViewCount(resultSet.getInt("view_count"));
                 post.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
                         .ofPattern("yyyy-MM-dd HH:mm:ss")));
-                post.setUser(Factory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
+                post.setUser(DAOFactory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
                 post.setModeratorStatus(ModeratorStatus.valueOf(resultSet.getString("moderator_status")));
             }
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not find post by title");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not find post by title", e);
         }
         return post;
     }
@@ -180,13 +180,13 @@ public class PostDAO implements by.epam.basavets.dao.PostDAO {
                 post.setViewCount(resultSet.getInt("view_count"));
                 post.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
                         .ofPattern("yyyy-MM-dd HH:mm:ss")));
-                post.setUser(Factory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
+                post.setUser(DAOFactory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
                 post.setModeratorStatus(ModeratorStatus.valueOf(resultSet.getString("moderator_status")));
             }
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not find post by id");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not find post by id", e);
         }
         return post;
     }
@@ -205,7 +205,7 @@ public class PostDAO implements by.epam.basavets.dao.PostDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not update post by vote");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not update post by vote", e);
         }
     }
 
@@ -222,7 +222,7 @@ public class PostDAO implements by.epam.basavets.dao.PostDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not update post by view");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not update post by view", e);
         }
     }
 }

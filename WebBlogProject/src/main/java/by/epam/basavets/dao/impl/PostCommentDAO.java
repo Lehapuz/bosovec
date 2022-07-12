@@ -1,9 +1,9 @@
 package by.epam.basavets.dao.impl;
 
 import by.epam.basavets.bean.PostComment;
-import by.epam.basavets.factory.Factory;
 import by.epam.basavets.dao.ConnectionPool;
 import by.epam.basavets.dao.DAOException;
+import by.epam.basavets.dao.DAOFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,7 +36,7 @@ public class PostCommentDAO implements by.epam.basavets.dao.PostCommentDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not add comment");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not add comment", e);
         }
     }
 
@@ -55,18 +55,18 @@ public class PostCommentDAO implements by.epam.basavets.dao.PostCommentDAO {
                 postComment.setText(resultSet.getString("text"));
                 postComment.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
                         .ofPattern("yyyy-MM-dd HH:mm:ss")));
-                postComment.setPost(Factory.getInstance().getPostDAO().findPostById(resultSet.getString("post_id")));
-                postComment.setUser(Factory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
+                postComment.setPost(DAOFactory.getInstance().getPostDAO().findPostById(resultSet.getString("post_id")));
+                postComment.setUser(DAOFactory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
                 postComments.add(postComment);
                 logger.info(postComment.toString());
             }
             if (!resultSet.next()) {
-                logger.info("Комментарии отсутствуют");
+                logger.info("No comments");
             }
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not read comments");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not read comments", e);
         }
         return postComments;
     }
@@ -87,14 +87,14 @@ public class PostCommentDAO implements by.epam.basavets.dao.PostCommentDAO {
                 postComment.setText(resultSet.getString("text"));
                 postComment.setTime(LocalDateTime.parse(resultSet.getString("time"), DateTimeFormatter
                         .ofPattern("yyyy-MM-dd HH:mm:ss")));
-                postComment.setPost(Factory.getInstance().getPostDAO().findPostById(resultSet.getString("post_id")));
-                postComment.setUser(Factory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
+                postComment.setPost(DAOFactory.getInstance().getPostDAO().findPostById(resultSet.getString("post_id")));
+                postComment.setUser(DAOFactory.getInstance().getUserDAO().findUserById(resultSet.getInt("user_id")));
 
             }
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not find comment");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not find comment", e);
         }
         return postComment;
     }
@@ -112,7 +112,7 @@ public class PostCommentDAO implements by.epam.basavets.dao.PostCommentDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not update comment");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not update comment", e);
         }
     }
 
@@ -128,7 +128,7 @@ public class PostCommentDAO implements by.epam.basavets.dao.PostCommentDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not delete comment");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not delete comment", e);
         }
     }
 }

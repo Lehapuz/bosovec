@@ -25,7 +25,7 @@
 </c:forEach>
 <br></br>
 <h3>"${updateComment}"</h3>
-<form action="Controller?action=updateComment" method="post">
+<form action="Controller?command=my_comment&action=updateComment" method="post">
 <label>textComment</label>
 <br>
 <input name="textComment" type="string"/>
@@ -47,7 +47,7 @@
 <br>
 <br>
 <h3>"${deleteComment}"</h3>
-<form action="Controller?action=deleteComment" method="post">
+<form action="Controller?command=my_comment&action=deleteComment" method="post">
 <label>textComment</label>
 <br>
 <input name="deleteTextComment" type="string"/>

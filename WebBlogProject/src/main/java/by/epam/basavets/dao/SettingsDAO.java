@@ -1,6 +1,6 @@
 package by.epam.basavets.dao;
 
-import by.epam.basavets.bean.Enum.SettingStatus;
+import by.epam.basavets.bean.SettingStatus;
 import by.epam.basavets.bean.Settings;
 
 public interface SettingsDAO {

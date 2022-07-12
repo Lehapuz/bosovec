@@ -1,24 +1,27 @@
 package by.epam.basavets.bean;
 
-import by.epam.basavets.bean.Enum.RoleTypes;
+import java.io.Serializable;
+import java.util.Objects;
 
-public class Role {
+public class Role implements Serializable {
 
-    private int id;
+    private Integer id;
     private RoleTypes roleTypes;
+    private static final long serialVersionUID = 1133L;
 
-    public Role(){}
+    public Role() {
+    }
 
     public Role(int id, RoleTypes roleTypes) {
         this.id = id;
         this.roleTypes = roleTypes;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -32,16 +35,23 @@ public class Role {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return id == null ? 0 : Objects.hash(id, roleTypes);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Role role = (Role) obj;
+        return Objects.equals(id, role.id) && Objects.equals(roleTypes, role.roleTypes);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Тип пользователя  - " + roleTypes;
     }
 }

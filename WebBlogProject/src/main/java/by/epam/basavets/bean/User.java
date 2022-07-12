@@ -5,7 +5,7 @@ import java.util.List;
 
 public class User extends Person {
 
-    public User(int id, String name, String email, String password, LocalDateTime registrationTime, Role role, int active) {
+    public User(Integer id, String name, String email, String password, LocalDateTime registrationTime, Role role, Integer active) {
         super(id, name, email, password, registrationTime, role, active);
     }
 
@@ -13,12 +13,12 @@ public class User extends Person {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return super.getId();
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(Integer id) {
         super.setId(id);
     }
 
@@ -93,12 +93,12 @@ public class User extends Person {
     }
 
     @Override
-    public int getActive() {
+    public Integer getActive() {
         return super.getActive();
     }
 
     @Override
-    public void setActive(int active) {
+    public void setActive(Integer active) {
         super.setActive(active);
     }
 

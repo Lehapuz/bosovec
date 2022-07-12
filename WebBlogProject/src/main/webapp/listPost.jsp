@@ -25,7 +25,7 @@
         <c:when test="${size!=0}">
             <c:forEach var="post" items="${posts}">
                 <li>
-                    <a href='<c:url value="/Controller?postId=${post.id}&command=7"/>'>
+                    <a href='<c:url value="/Controller?postId=${post.id}&command=post_id"/>'>
                         <c:out value="${post}"/>
                         <br></br>
                     </a>

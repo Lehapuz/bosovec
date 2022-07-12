@@ -2,7 +2,7 @@ package by.epam.basavets.dao.impl;
 
 import by.epam.basavets.dao.ConnectionPool;
 import by.epam.basavets.dao.DAOException;
-import by.epam.basavets.bean.Enum.SettingStatus;
+import by.epam.basavets.bean.SettingStatus;
 import by.epam.basavets.bean.Settings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +28,7 @@ public class SettingsDAO implements by.epam.basavets.dao.SettingsDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement);
         } catch (Exception e) {
             logger.error("Can not add setting");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not add setting", e);
         }
     }
 
@@ -53,7 +53,7 @@ public class SettingsDAO implements by.epam.basavets.dao.SettingsDAO {
             }
         } catch (Exception e) {
             logger.error("Can not delete setting");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not delete setting", e);
         }
     }
 
@@ -72,7 +72,7 @@ public class SettingsDAO implements by.epam.basavets.dao.SettingsDAO {
             ConnectionPool.getInstance().givenAwayConnection(connection, statement, resultSet);
         } catch (Exception e) {
             logger.error("Can not delete setting");
-            throw new DAOException(e.getMessage());
+            throw new DAOException("Can not delete setting", e);
         }
         return settings.getSettingStatus();
     }
