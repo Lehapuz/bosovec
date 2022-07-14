@@ -7,6 +7,9 @@ import by.epam.basavets.dao.impl.SettingsDAO;
 import by.epam.basavets.dao.impl.*;
 import by.epam.basavets.service.*;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class DAOFactory {
 
     private final UserDAO userDAO = new UserDAO();
@@ -37,7 +40,7 @@ public class DAOFactory {
         return settingsDAO;
     }
 
-    public synchronized static DAOFactory getInstance() {
+    public static DAOFactory getInstance() {
         if (instance == null) {
             instance = new DAOFactory();
         }

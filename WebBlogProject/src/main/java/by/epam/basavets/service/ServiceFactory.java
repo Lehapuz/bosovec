@@ -42,7 +42,7 @@ public class ServiceFactory {
         return settingsService;
     }
 
-    public synchronized static ServiceFactory getInstance() {
+    public static ServiceFactory getInstance() {
         if (instance == null) {
             instance = new ServiceFactory();
         }

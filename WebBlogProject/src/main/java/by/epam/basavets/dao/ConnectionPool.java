@@ -150,7 +150,7 @@ public class ConnectionPool {
             try {
                 instance = new ConnectionPool();
             } catch (IOException | SQLException e) {
-                throw new DAOException("Can not get instance", e);
+                throw new DAOException("Can not get instance of connection", e);
             }
         }
         return instance;
