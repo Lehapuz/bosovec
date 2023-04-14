@@ -25,11 +25,11 @@
     <div>
         <h2>"${unknown}":</h2>
             <div>
-                <button onclick="location.href='/Controller?command=change_language'">"${changeLanguage}"</button>
+                <button onclick="location.href='/web/Controller?command=change_language'">"${changeLanguage}"</button>
                 <br></br>
-                <button onclick="location.href='/Controller?command=authorize_user'">"${authorizeUser}"</button>
+                <button onclick="location.href='/web/Controller?command=authorize_user'">"${authorizeUser}"</button>
                 <br></br>
-                <button onclick="location.href='/Controller?command=all_posts'" >"${lookAllPosts}"</button>
+                <button onclick="location.href='/web/Controller?command=all_posts'" >"${lookAllPosts}"</button>
                 <br></br>
             </div>
     </div>

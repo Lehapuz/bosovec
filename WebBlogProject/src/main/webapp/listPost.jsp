@@ -34,7 +34,7 @@
         </c:when>
     </c:choose>
     <br></br>
-    <a href="/index.jsp">Back</a>
+    <a href="/web/index.jsp">Back</a>
 </ul>
 </body>
 </html>

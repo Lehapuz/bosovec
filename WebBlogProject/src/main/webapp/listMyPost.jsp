@@ -85,7 +85,7 @@
     <p>"${deletePostText}"</p>
     <br>
     <br>
-<a href="/user.jsp">Back</a>
+<a href="/web/user.jsp">Back</a>
 </ul>
 </body>
 </html>

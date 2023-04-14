@@ -28,6 +28,6 @@
 </form>
 <br>
 <br>
-<a href="/moderator.jsp">Назад</a>
+<a href="/web/moderator.jsp">Назад</a>
 </body>
 </html>

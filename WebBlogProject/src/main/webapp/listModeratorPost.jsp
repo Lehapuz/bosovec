@@ -30,7 +30,7 @@
     </li>
 </c:forEach>
 <br></br>
-<a href = "/moderator.jsp">Back</a>
+<a href = "/web/moderator.jsp">Back</a>
 </ul>
 </body>
 </html>

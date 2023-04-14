@@ -60,6 +60,6 @@
 <br>
 <br>
 
-<a href="/">Back</a>
+<a href="/web/index.jsp">Back</a>
 </body>
 </html>

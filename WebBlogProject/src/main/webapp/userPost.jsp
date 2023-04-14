@@ -73,7 +73,7 @@
       <br></br>
       </c:when>
       </c:choose>
-      <a href="/listUserPost.jsp">Back</a>
+      <a href="/web/listUserPost.jsp">Back</a>
 </body>
 </html>
 
